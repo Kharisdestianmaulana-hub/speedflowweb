@@ -10,16 +10,16 @@ import AppSimulator from './AppSimulator.astro';
       <div class="hero-badge">
         <span class="badge badge-brand">
           <span class="dot-indicator"></span>
-          <span id="hero-tag-text">v0.1.0-beta</span> • <span id="hero-status-text">Pre-release</span>
+          <span id="hero-tag-text">v0.1.0-beta</span> • <span id="hero-status-text" data-i18n="hero_badge_status">Pre-release</span>
         </span>
       </div>
 
       <h1 class="hero-headline">
-        Faster downloads.<br />
-        <span class="text-brand">Zero lag.</span>
+        <span data-i18n="hero_headline_1">Faster downloads.</span><br />
+        <span class="text-brand" data-i18n="hero_headline_2">Zero lag.</span>
       </h1>
 
-      <p class="hero-subhead">
+      <p class="hero-subhead" data-i18n="hero_subhead">
         A super-fast download manager for Windows. Downloads files in up to 32 streams at once, lets you pause and resume anytime, and never slows down your PC.
       </p>
 
@@ -35,7 +35,7 @@ import AppSimulator from './AppSimulator.astro';
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          <span>Download for Windows</span>
+          <span data-i18n="hero_btn_download">Download for Windows</span>
         </a>
 
         <a
@@ -52,7 +52,7 @@ import AppSimulator from './AppSimulator.astro';
             <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
             <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
           </svg>
-          <span>Browser Extension</span>
+          <span data-i18n="hero_btn_extension">Browser Extension</span>
         </a>
       </div>
 
@@ -76,11 +76,7 @@ import AppSimulator from './AppSimulator.astro';
       </div>
 
       <div class="hero-specs-line font-mono text-tertiary">
-        <span>~18 MB Portable</span>
-        <span>•</span>
-        <span>&lt; 35 MB RAM</span>
-        <span>•</span>
-        <span>100% Free &amp; Open Source</span>
+        <span data-i18n="hero_specs">~18 MB Portable • &lt; 35 MB RAM • 100% Free &amp; Open Source</span>
       </div>
     </div>
 

@@ -5,9 +5,9 @@
 <section class="section-spacing" id="extension-guide">
   <div class="container">
     <div class="section-head-minimal">
-      <span class="badge badge-brand">Panduan Instalasi</span>
-      <h2>Cara Memasang Ekstensi Browser SpeedFlow</h2>
-      <p>Ikuti panduan langkah demi langkah sesuai browser yang Anda gunakan untuk mengaktifkan integrasi otomatis.</p>
+      <span class="badge badge-brand" data-i18n="guide_badge">Installation Guide</span>
+      <h2 data-i18n="guide_title">How to Install the SpeedFlow Browser Extension</h2>
+      <p data-i18n="guide_subtitle">Follow this step-by-step guide for your preferred browser to activate seamless download catching.</p>
     </div>
 
     <div class="guide-container pane">
@@ -21,7 +21,7 @@
             <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
             <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
           </svg>
-          <span>Chrome & Brave</span>
+          <span data-i18n="guide_tab_chrome">Chrome & Brave</span>
         </button>
 
         <button class="guide-tab-btn" data-target="edge" type="button">
@@ -30,7 +30,7 @@
             <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"></path>
             <path d="M12 6a6 6 0 0 1 6 6c0 3.31-2.69 6-6 6"></path>
           </svg>
-          <span>Microsoft Edge</span>
+          <span data-i18n="guide_tab_edge">Microsoft Edge</span>
         </button>
 
         <button class="guide-tab-btn" data-target="firefox" type="button">
@@ -40,7 +40,7 @@
             <line x1="9" y1="9" x2="9.01" y2="9"></line>
             <line x1="15" y1="9" x2="15.01" y2="9"></line>
           </svg>
-          <span>Mozilla Firefox</span>
+          <span data-i18n="guide_tab_firefox">Mozilla Firefox</span>
         </button>
       </div>
 
@@ -48,11 +48,11 @@
       <div id="guide-panel-chrome" class="guide-panel active">
         <div class="panel-header">
           <div class="panel-title-wrap">
-            <h3 class="panel-title">Setup Ekstensi di Chrome & Brave (Mode Unpacked)</h3>
+            <h3 class="panel-title" data-i18n="guide_chrome_title">Extension Setup in Chrome & Brave (Unpacked Mode)</h3>
             <span class="badge badge-brand font-mono">Chromium Standard</span>
           </div>
-          <p class="panel-desc">
-            Browser berbasis Chromium seperti Google Chrome dan Brave dapat memuat ekstensi SpeedFlow langsung dari folder yang belum dibongkar (*unpacked*).
+          <p class="panel-desc" data-i18n="guide_chrome_desc">
+            Chromium-based browsers like Google Chrome and Brave can load the SpeedFlow extension directly from an unpacked folder.
           </p>
         </div>
 
@@ -60,13 +60,13 @@
           <li class="step-guide-item">
             <div class="step-guide-index font-mono">1</div>
             <div class="step-guide-content">
-              <strong class="step-guide-name">Buka halaman ekstensi browser:</strong>
-              <p class="step-guide-detail">Ketik dan buka URL berikut di bilah alamat browser Anda:</p>
+              <strong class="step-guide-name" data-i18n="guide_chrome_step1_name">Open browser extensions page:</strong>
+              <p class="step-guide-detail" data-i18n="guide_chrome_step1_desc">Type and enter the following URL in your browser address bar:</p>
               
               <div class="url-copy-group">
                 <div class="code-url-row font-mono">
                   <code>chrome://extensions</code>
-                  <button class="btn-copy-url" data-copy="chrome://extensions" type="button" title="Salin URL Chrome">
+                  <button class="btn-copy-url" data-copy="chrome://extensions" type="button" title="Copy URL">
                     <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -77,7 +77,7 @@
 
                 <div class="code-url-row font-mono">
                   <code>brave://extensions</code>
-                  <button class="btn-copy-url" data-copy="brave://extensions" type="button" title="Salin URL Brave">
+                  <button class="btn-copy-url" data-copy="brave://extensions" type="button" title="Copy URL">
                     <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -92,25 +92,25 @@
           <li class="step-guide-item">
             <div class="step-guide-index font-mono">2</div>
             <div class="step-guide-content">
-              <strong class="step-guide-name">Aktifkan Mode Pengembang:</strong>
-              <p class="step-guide-detail">Nyalakan tombol sakelar <strong>"Developer mode"</strong> di sudut kanan atas halaman ekstensi.</p>
+              <strong class="step-guide-name" data-i18n="guide_chrome_step2_name">Enable Developer Mode:</strong>
+              <p class="step-guide-detail" data-i18n-html="guide_chrome_step2_desc">Turn on the "Developer mode" switch in the top right corner of the extensions page.</p>
             </div>
           </li>
 
           <li class="step-guide-item">
             <div class="step-guide-index font-mono">3</div>
             <div class="step-guide-content">
-              <strong class="step-guide-name">Muat Ekstensi SpeedFlow:</strong>
-              <p class="step-guide-detail">Klik tombol <strong>"Load unpacked"</strong> (Muat yang belum dibongkar) yang muncul di sudut kiri atas.</p>
+              <strong class="step-guide-name" data-i18n="guide_chrome_step3_name">Load SpeedFlow Extension:</strong>
+              <p class="step-guide-detail" data-i18n-html="guide_chrome_step3_desc">Click the "Load unpacked" button in the top left corner.</p>
             </div>
           </li>
 
           <li class="step-guide-item">
             <div class="step-guide-index font-mono">4</div>
             <div class="step-guide-content">
-              <strong class="step-guide-name">Pilih Folder Ekstensi:</strong>
-              <p class="step-guide-detail">
-                Pilih folder <code>extension</code> yang berada di dalam folder instalasi SpeedFlow (atau Anda bisa klik tombol <strong>"Open Extension Folder"</strong> langsung dari menu Settings di aplikasi SpeedFlow Desktop).
+              <strong class="step-guide-name" data-i18n="guide_chrome_step4_name">Select the Extension Folder:</strong>
+              <p class="step-guide-detail" data-i18n="guide_chrome_step4_desc">
+                Select the extension folder located inside your SpeedFlow installation folder (or click "Open Extension Folder" directly from the Settings menu in SpeedFlow Desktop).
               </p>
             </div>
           </li>
@@ -118,9 +118,9 @@
           <li class="step-guide-item">
             <div class="step-guide-index font-mono">5</div>
             <div class="step-guide-content">
-              <strong class="step-guide-name">Selesai:</strong>
-              <p class="step-guide-detail">
-                Sematkan (*pin*) ikon SpeedFlow di toolbar browser Anda. SpeedFlow sekarang siap menangkap unduhan secara otomatis!
+              <strong class="step-guide-name" data-i18n="guide_chrome_step5_name">Finished:</strong>
+              <p class="step-guide-detail" data-i18n="guide_chrome_step5_desc">
+                Pin the SpeedFlow icon to your browser toolbar. SpeedFlow is now ready to catch downloads automatically!
               </p>
             </div>
           </li>
@@ -131,11 +131,11 @@
       <div id="guide-panel-edge" class="guide-panel">
         <div class="panel-header">
           <div class="panel-title-wrap">
-            <h3 class="panel-title">Setup Ekstensi di Microsoft Edge</h3>
+            <h3 class="panel-title" data-i18n="guide_edge_title">Extension Setup in Microsoft Edge</h3>
             <span class="badge badge-brand font-mono">Native Integration</span>
           </div>
-          <p class="panel-desc">
-            Pilih metode otomatis 1-klik yang direkomendasikan, atau pasang secara manual melalui mode pengembang.
+          <p class="panel-desc" data-i18n="guide_edge_desc">
+            Choose the recommended 1-click automatic method, or install manually via developer mode.
           </p>
         </div>
 
@@ -144,14 +144,14 @@
           <div class="method-subcard pane">
             <div class="method-subcard-header">
               <span class="badge badge-brand font-mono">Metode A</span>
-              <span class="badge badge-brand font-mono">Rekomendasi</span>
+              <span class="badge badge-brand font-mono" data-i18n="guide_edge_method_a_rec">Recommended</span>
             </div>
-            <h4 class="method-subcard-title">Otomatis 1-Klik</h4>
+            <h4 class="method-subcard-title" data-i18n="guide_edge_method_a_title">Automatic 1-Click</h4>
             <ol class="method-steps">
-              <li>Buka aplikasi <strong>SpeedFlow Desktop</strong>.</li>
-              <li>Buka menu <strong>Settings</strong> (Pengaturan).</li>
-              <li>Di bagian "Browser Integration", klik tombol <strong>"Connect Edge & Firefox"</strong>.</li>
-              <li>Restart (tutup dan buka kembali) Microsoft Edge. Ekstensi langsung aktif otomatis.</li>
+              <li data-i18n-html="guide_edge_method_a_s1">Open SpeedFlow Desktop.</li>
+              <li data-i18n-html="guide_edge_method_a_s2">Open Settings.</li>
+              <li data-i18n-html="guide_edge_method_a_s3">Under "Browser Integration", click "Connect Edge & Firefox".</li>
+              <li data-i18n-html="guide_edge_method_a_s4">Restart Microsoft Edge. The extension is now active.</li>
             </ol>
           </div>
 
@@ -161,13 +161,13 @@
               <span class="badge font-mono">Metode B</span>
               <span class="font-mono text-tertiary" style="font-size: 11px;">Developer Mode</span>
             </div>
-            <h4 class="method-subcard-title">Manual Developer Mode</h4>
+            <h4 class="method-subcard-title" data-i18n="guide_edge_method_b_title">Manual Developer Mode</h4>
             <ol class="method-steps">
               <li>
-                Buka alamat berikut di bilah alamat Edge:
+                <span data-i18n="guide_edge_method_b_s1">Open this URL in Edge address bar:</span>
                 <div class="code-url-row font-mono" style="margin-top: 6px;">
                   <code>edge://extensions</code>
-                  <button class="btn-copy-url" data-copy="edge://extensions" type="button" title="Salin URL Edge">
+                  <button class="btn-copy-url" data-copy="edge://extensions" type="button" title="Copy URL">
                     <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -176,8 +176,8 @@
                   </button>
                 </div>
               </li>
-              <li>Aktifkan sakelar <strong>"Developer mode"</strong> di panel menu kiri bawah.</li>
-              <li>Klik tombol <strong>"Load unpacked"</strong> di bagian atas dan pilih folder <code>extension</code> SpeedFlow.</li>
+              <li data-i18n-html="guide_edge_method_b_s2">Enable "Developer mode" switch in the lower left menu.</li>
+              <li data-i18n-html="guide_edge_method_b_s3">Click "Load unpacked" and choose the SpeedFlow extension folder.</li>
             </ol>
           </div>
         </div>
@@ -187,11 +187,11 @@
       <div id="guide-panel-firefox" class="guide-panel">
         <div class="panel-header">
           <div class="panel-title-wrap">
-            <h3 class="panel-title">Setup Ekstensi di Mozilla Firefox</h3>
+            <h3 class="panel-title" data-i18n="guide_firefox_title">Extension Setup in Mozilla Firefox</h3>
             <span class="badge badge-brand font-mono">Gecko Engine</span>
           </div>
-          <p class="panel-desc">
-            Aktifkan ekstensi Firefox secara instan melalui aplikasi desktop atau muat sementara melalui menu debugging.
+          <p class="panel-desc" data-i18n="guide_firefox_desc">
+            Activate the Firefox extension instantly via the desktop app or load temporarily via debugging.
           </p>
         </div>
 
@@ -200,13 +200,13 @@
           <div class="method-subcard pane">
             <div class="method-subcard-header">
               <span class="badge badge-brand font-mono">Metode A</span>
-              <span class="badge badge-brand font-mono">Rekomendasi</span>
+              <span class="badge badge-brand font-mono" data-i18n="guide_firefox_method_a_rec">Recommended</span>
             </div>
-            <h4 class="method-subcard-title">Otomatis 1-Klik</h4>
+            <h4 class="method-subcard-title" data-i18n="guide_firefox_method_a_title">Automatic 1-Click</h4>
             <ol class="method-steps">
-              <li>Buka aplikasi <strong>SpeedFlow Desktop</strong>.</li>
-              <li>Buka menu <strong>Settings</strong>, lalu klik tombol <strong>"Connect Edge & Firefox"</strong>.</li>
-              <li>Restart Mozilla Firefox Anda. Ekstensi siap digunakan.</li>
+              <li data-i18n-html="guide_firefox_method_a_s1">Open SpeedFlow Desktop.</li>
+              <li data-i18n-html="guide_firefox_method_a_s2">Open Settings, then click "Connect Edge & Firefox".</li>
+              <li data-i18n-html="guide_firefox_method_a_s3">Restart Mozilla Firefox. Ready to use.</li>
             </ol>
           </div>
 
@@ -216,13 +216,13 @@
               <span class="badge font-mono">Metode B</span>
               <span class="font-mono text-tertiary" style="font-size: 11px;">Manual Debug</span>
             </div>
-            <h4 class="method-subcard-title">Manual via Debugging</h4>
+            <h4 class="method-subcard-title" data-i18n="guide_firefox_method_b_title">Manual via Debugging</h4>
             <ol class="method-steps">
               <li>
-                Buka URL berikut di bilah alamat Firefox:
+                <span data-i18n="guide_firefox_method_b_s1">Open this URL in Firefox address bar:</span>
                 <div class="code-url-row font-mono" style="margin-top: 6px;">
                   <code>about:debugging#/runtime/this-firefox</code>
-                  <button class="btn-copy-url" data-copy="about:debugging#/runtime/this-firefox" type="button" title="Salin URL Firefox">
+                  <button class="btn-copy-url" data-copy="about:debugging#/runtime/this-firefox" type="button" title="Copy URL">
                     <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -231,8 +231,8 @@
                   </button>
                 </div>
               </li>
-              <li>Klik tombol <strong>"Load Temporary Add-on..."</strong>.</li>
-              <li>Pilih file <code>manifest.json</code> yang ada di dalam folder <code>extension</code> SpeedFlow.</li>
+              <li data-i18n-html="guide_firefox_method_b_s2">Click "Load Temporary Add-on...".</li>
+              <li data-i18n-html="guide_firefox_method_b_s3">Select the manifest.json file inside the SpeedFlow extension folder.</li>
             </ol>
           </div>
         </div>
@@ -246,10 +246,13 @@
           </svg>
         </div>
         <div class="callout-text">
-          <strong class="text-primary">100% Lokal & Privat:</strong>
-          SpeedFlow Bridge Server berjalan di port lokal <code>127.0.0.1:19760</code> untuk menghubungkan ekstensi browser dengan aplikasi desktop tanpa mengirim data ke internet luar (100% lokal & privat).
+          <strong class="text-primary" data-i18n="guide_callout_title">100% Local & Private:</strong>
+          <span data-i18n="guide_callout_desc">The SpeedFlow Bridge Server runs on local port 127.0.0.1:19760 to connect the browser extension to your desktop app without sending data to external servers (100% local and private).</span>
         </div>
       </div>
+    </div>
+  </div>
+</section>
     </div>
   </div>
 </section>

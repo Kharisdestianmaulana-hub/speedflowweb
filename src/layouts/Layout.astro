@@ -32,7 +32,7 @@ const {
       rel="stylesheet"
     />
 
-    <!-- Theme initialization script (prevents flash of wrong theme) -->
+    <!-- Theme & Language initialization script (prevents flash of wrong theme/lang) -->
     <script is:inline>
       const savedTheme = localStorage.getItem('speedflow-theme');
       if (savedTheme === 'light') {
@@ -42,9 +42,15 @@ const {
         document.documentElement.classList.add('dark');
         document.documentElement.setAttribute('data-theme', 'dark');
       }
+
+      const savedLang = localStorage.getItem('speedflow_lang');
+      if (savedLang === 'id') {
+        document.documentElement.lang = 'id';
+      }
     </script>
   </head>
   <body>
     <slot />
+    <script src="../scripts/i18n.ts"></script>
   </body>
 </html>

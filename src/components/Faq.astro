@@ -36,9 +36,9 @@ const faqs = [
 <section class="section-spacing" id="faq">
   <div class="container">
     <div class="section-head-minimal">
-      <span class="badge badge-brand">FAQ</span>
-      <h2>Frequently Asked Questions</h2>
-      <p>Everything you need to know about download speed, safety, and using SpeedFlow.</p>
+      <span class="badge badge-brand" data-i18n="faq_badge">FAQ</span>
+      <h2 data-i18n="faq_title">Frequently Asked Questions</h2>
+      <p data-i18n="faq_subtitle">Everything you need to know about download speed, safety, and using SpeedFlow.</p>
     </div>
 
     <!-- Flat Accordion Container -->
@@ -46,11 +46,11 @@ const faqs = [
       {faqs.map((faq, idx) => (
         <details class="faq-item" open={idx === 0}>
           <summary class="faq-question">
-            <span class="faq-q-text">{faq.q}</span>
+            <span class="faq-q-text" data-i18n={`faq_q${idx + 1}`}>{faq.q}</span>
             <span class="faq-toggle-icon font-mono">+</span>
           </summary>
           <div class="faq-answer">
-            <p>{faq.a}</p>
+            <p data-i18n={`faq_a${idx + 1}`}>{faq.a}</p>
           </div>
         </details>
       ))}

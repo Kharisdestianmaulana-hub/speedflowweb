@@ -27,6 +27,7 @@ const CACHE_KEY = 'speedflow_github_releases_v2';
 const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
 
 let cachedReleases: GitHubRelease[] = [];
+let currentLatestRelease: GitHubRelease | null = null;
 
 function formatBytes(bytes: number): string {
   if (!bytes || bytes === 0) return '0 MB';
@@ -34,16 +35,16 @@ function formatBytes(bytes: number): string {
   return `${mb.toFixed(1)} MB`;
 }
 
-function formatDate(isoString: string): string {
+function formatDate(isoString: string, lang: 'en' | 'id' = 'en'): string {
   try {
     const date = new Date(isoString);
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-US', {
       month: 'short',
       day: 'numeric',
       year: 'numeric'
     });
   } catch {
-    return 'Recent';
+    return lang === 'id' ? 'Baru saja' : 'Recent';
   }
 }
 
@@ -121,9 +122,11 @@ function escapeHtml(str: string): string {
 }
 
 function applyLatestReleaseToDom(release: GitHubRelease) {
+  currentLatestRelease = release;
+  const lang: 'en' | 'id' = (document.documentElement.lang === 'id' ? 'id' : 'en');
   const isPre = Boolean(release.prerelease);
   const tag = release.tag_name || 'v0.1.0-beta';
-  const pubDate = formatDate(release.published_at);
+  const pubDate = formatDate(release.published_at, lang);
 
   const assets = release.assets || [];
   const setupAsset = assets.find(a => 
@@ -160,7 +163,9 @@ function applyLatestReleaseToDom(release: GitHubRelease) {
 
   const heroStatusText = document.getElementById('hero-status-text');
   if (heroStatusText) {
-    heroStatusText.textContent = isPre ? 'Pre-release' : 'Stable';
+    heroStatusText.textContent = isPre 
+      ? (lang === 'id' ? 'Pra-rilis' : 'Pre-release') 
+      : (lang === 'id' ? 'Stabil' : 'Stable');
   }
 
   const heroDownloadBtn = document.getElementById('hero-download-btn') as HTMLAnchorElement | null;
@@ -179,7 +184,9 @@ function applyLatestReleaseToDom(release: GitHubRelease) {
 
   const releaseStatusBadge = document.getElementById('release-status-badge');
   if (releaseStatusBadge) {
-    releaseStatusBadge.textContent = isPre ? 'Pre-release' : 'Stable';
+    releaseStatusBadge.textContent = isPre 
+      ? (lang === 'id' ? 'Pra-rilis' : 'Pre-release') 
+      : (lang === 'id' ? 'Stabil' : 'Stable');
     if (isPre) {
       releaseStatusBadge.className = 'badge badge-warning';
     } else {
@@ -189,7 +196,7 @@ function applyLatestReleaseToDom(release: GitHubRelease) {
 
   const releaseDateText = document.getElementById('release-date-text');
   if (releaseDateText) {
-    releaseDateText.textContent = `Published: ${pubDate}`;
+    releaseDateText.textContent = lang === 'id' ? `Dirilis: ${pubDate}` : `Published: ${pubDate}`;
   }
 
   const btnInstaller = document.getElementById('btn-download-installer') as HTMLAnchorElement | null;
@@ -212,7 +219,9 @@ function applyLatestReleaseToDom(release: GitHubRelease) {
 
   const downloadsCountEl = document.getElementById('total-downloads-count');
   if (downloadsCountEl) {
-    downloadsCountEl.textContent = `${totalDownloads.toLocaleString()} downloads`;
+    const formattedCount = lang === 'id' ? totalDownloads.toLocaleString('id-ID') : totalDownloads.toLocaleString('en-US');
+    const suffix = lang === 'id' ? 'unduhan' : 'downloads';
+    downloadsCountEl.textContent = `${formattedCount} ${suffix}`;
   }
 
   const ghReleaseLink = document.getElementById('release-github-link') as HTMLAnchorElement | null;
@@ -245,6 +254,7 @@ function renderArchiveModalContent(allReleases: GitHubRelease[]) {
   const container = document.getElementById('archive-modal-content');
   if (!container) return;
 
+  const lang: 'en' | 'id' = (document.documentElement.lang === 'id' ? 'id' : 'en');
   const olderReleases = allReleases.slice(1);
   const latestTag = allReleases[0]?.tag_name || 'v0.1.0-beta';
 
@@ -259,15 +269,17 @@ function renderArchiveModalContent(allReleases: GitHubRelease[]) {
           </svg>
         </div>
         <div class="empty-badge">
-          <span class="badge badge-brand font-mono">Initial Public Release</span>
+          <span class="badge badge-brand font-mono">${lang === 'id' ? 'Rilis Publik Perdana' : 'Initial Public Release'}</span>
         </div>
-        <h4 class="empty-title">No Previous Versions Yet</h4>
+        <h4 class="empty-title">${lang === 'id' ? 'Belum Ada Versi Sebelumnya' : 'No Previous Versions Yet'}</h4>
         <p class="empty-desc">
-          <code>${escapeHtml(latestTag)}</code> is the very first public release of SpeedFlow. Older versions and past release archives will automatically appear here as future updates are published.
+          ${lang === 'id'
+            ? `<code>${escapeHtml(latestTag)}</code> adalah versi rilis publik pertama dari SpeedFlow. Versi sebelumnya dan arsip build akan otomatis muncul di sini saat versi baru dirilis.`
+            : `<code>${escapeHtml(latestTag)}</code> is the very first public release of SpeedFlow. Older versions and past release archives will automatically appear here as future updates are published.`}
         </p>
         <div class="empty-action">
           <a href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm font-mono">
-            <span>View Releases on GitHub ↗</span>
+            <span>${lang === 'id' ? 'Lihat Semua Rilis di GitHub ↗' : 'View Releases on GitHub ↗'}</span>
           </a>
         </div>
       </div>
@@ -288,16 +300,20 @@ function renderArchiveModalContent(allReleases: GitHubRelease[]) {
           a.name.toLowerCase().includes('portable') && a.name.toLowerCase().endsWith('.zip')
         ) || assets.find(a => a.name.toLowerCase().endsWith('.zip'));
 
+        const statusLabel = rel.prerelease 
+          ? (lang === 'id' ? 'Pra-rilis' : 'Pre-release') 
+          : (lang === 'id' ? 'Stabil' : 'Stable');
+
         return `
           <div class="archive-item">
             <div class="archive-item-head">
               <div class="archive-item-tag">
                 <span class="archive-tag-name font-mono font-bold">${escapeHtml(rel.tag_name)}</span>
                 <span class="badge ${rel.prerelease ? 'badge-warning' : 'badge-brand'}">
-                  ${rel.prerelease ? 'Pre-release' : 'Stable'}
+                  ${statusLabel}
                 </span>
               </div>
-              <span class="archive-item-date font-mono text-tertiary">${formatDate(rel.published_at)}</span>
+              <span class="archive-item-date font-mono text-tertiary">${formatDate(rel.published_at, lang)}</span>
             </div>
             <div class="archive-item-actions">
               ${setupAsset ? `
@@ -311,7 +327,7 @@ function renderArchiveModalContent(allReleases: GitHubRelease[]) {
                 </a>
               ` : ''}
               <a href="${rel.html_url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm font-mono">
-                Notes ↗
+                ${lang === 'id' ? 'Catatan ↗' : 'Notes ↗'}
               </a>
             </div>
           </div>
@@ -419,6 +435,17 @@ export async function initGitHubRelease() {
 
   // 3. Fetch Live Repo Stars Count
   fetchGitHubRepoStars();
+
+  // 4. Re-apply on language changes
+  window.addEventListener('speedflow:langchange', () => {
+    if (currentLatestRelease) {
+      applyLatestReleaseToDom(currentLatestRelease);
+    }
+    const backdrop = document.getElementById('archive-modal-backdrop');
+    if (backdrop && backdrop.classList.contains('is-open')) {
+      renderArchiveModalContent(cachedReleases);
+    }
+  });
 }
 
 async function fetchGitHubRepoStars() {

@@ -64,26 +64,26 @@ const rows = [
 <section class="section-spacing" id="compare">
   <div class="container">
     <div class="section-head-minimal">
-      <span class="badge badge-brand">Comparison</span>
-      <h2>Why people choose SpeedFlow</h2>
-      <p>How SpeedFlow compares to IDM, Gopeed, and regular browser downloads.</p>
+      <span class="badge badge-brand" data-i18n="compare_badge">Comparison</span>
+      <h2 data-i18n="compare_title">Why people choose SpeedFlow</h2>
+      <p data-i18n="compare_subtitle">How SpeedFlow compares to IDM, Gopeed, and regular browser downloads.</p>
     </div>
 
     <!-- Responsive Scroll Wrapper -->
     <div class="compare-scroll-hint font-mono text-tertiary">
-      <span>← Swipe horizontally to view full matrix →</span>
+      <span data-i18n="compare_hint">← Swipe horizontally to view full matrix →</span>
     </div>
 
     <div class="compare-table-container pane">
       <table class="compare-table">
         <thead>
           <tr>
-            <th class="col-metric">Metric / Capability</th>
+            <th class="col-metric" data-i18n="compare_th_metric">Metric / Capability</th>
             <th class="col-speedflow">
               <div class="th-brand-header">
                 <div class="th-brand-top">
                   <span class="th-brand-title">SpeedFlow</span>
-                  <span class="badge badge-brand">Recommended</span>
+                  <span class="badge badge-brand" data-i18n="compare_th_rec">Recommended</span>
                 </div>
                 <span class="th-brand-sub font-mono">Rust • Slint • Tokio</span>
               </div>
@@ -97,46 +97,46 @@ const rows = [
               <span class="th-other-sub font-mono">Go / Flutter</span>
             </th>
             <th class="col-other">
-              <span class="th-other-title">Default Browser</span>
+              <span class="th-other-title" data-i18n="compare_th_browser">Default Browser</span>
               <span class="th-other-sub font-mono">Chrome / Edge / Firefox</span>
             </th>
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => (
+          {rows.map((row, idx) => (
             <tr>
-              <td class="cell-metric font-medium">
+              <td class="cell-metric font-medium" data-i18n={`compare_row${idx + 1}_metric`}>
                 {row.metric}
               </td>
               <td class="cell-speedflow">
                 <div class="cell-val-wrapper">
-                  <span class="cell-speedflow-val text-brand font-semibold">{row.speedflow.value}</span>
+                  <span class="cell-speedflow-val text-brand font-semibold" data-i18n={`compare_row${idx + 1}_sf_val`}>{row.speedflow.value}</span>
                   {row.speedflow.note && (
-                    <span class="cell-speedflow-note font-mono">{row.speedflow.note}</span>
+                    <span class="cell-speedflow-note font-mono" data-i18n={`compare_row${idx + 1}_sf_note`}>{row.speedflow.note}</span>
                   )}
                 </div>
               </td>
               <td class="cell-other">
                 <div class="cell-val-wrapper">
-                  <span class="cell-other-val">{row.idm.value}</span>
+                  <span class="cell-other-val" data-i18n={`compare_row${idx + 1}_idm_val`}>{row.idm.value}</span>
                   {row.idm.sub && (
-                    <span class="cell-other-sub font-mono">{row.idm.sub}</span>
+                    <span class="cell-other-sub font-mono" data-i18n={`compare_row${idx + 1}_idm_sub`}>{row.idm.sub}</span>
                   )}
                 </div>
               </td>
               <td class="cell-other">
                 <div class="cell-val-wrapper">
-                  <span class="cell-other-val">{row.gopeed.value}</span>
+                  <span class="cell-other-val" data-i18n={`compare_row${idx + 1}_gop_val`}>{row.gopeed.value}</span>
                   {row.gopeed.sub && (
-                    <span class="cell-other-sub font-mono">{row.gopeed.sub}</span>
+                    <span class="cell-other-sub font-mono" data-i18n={`compare_row${idx + 1}_gop_sub`}>{row.gopeed.sub}</span>
                   )}
                 </div>
               </td>
               <td class="cell-other">
                 <div class="cell-val-wrapper">
-                  <span class="cell-other-val">{row.browser.value}</span>
+                  <span class="cell-other-val" data-i18n={`compare_row${idx + 1}_brw_val`}>{row.browser.value}</span>
                   {row.browser.sub && (
-                    <span class="cell-other-sub font-mono">{row.browser.sub}</span>
+                    <span class="cell-other-sub font-mono" data-i18n={`compare_row${idx + 1}_brw_sub`}>{row.browser.sub}</span>
                   )}
                 </div>
               </td>

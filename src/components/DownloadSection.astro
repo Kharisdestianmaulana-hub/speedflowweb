@@ -5,9 +5,9 @@
 <section class="section-spacing" id="download">
   <div class="container">
     <div class="section-head-minimal">
-      <span class="badge badge-brand">Get SpeedFlow</span>
-      <h2>Start downloading at full speed</h2>
-      <p>Clean, native, and completely open source. No tracking, no ads.</p>
+      <span class="badge badge-brand" data-i18n="dl_badge">Get SpeedFlow</span>
+      <h2 data-i18n="dl_title">Start downloading at full speed</h2>
+      <p data-i18n="dl_subtitle">Clean, native, and completely open source. No tracking, no ads.</p>
     </div>
 
     <div class="download-card pane">
@@ -21,8 +21,8 @@
           <span class="font-mono text-tertiary" id="release-date-text">Published: Nov 8, 2026</span>
         </div>
 
-        <h3 class="download-title">SpeedFlow for Windows</h3>
-        <p class="download-desc">
+        <h3 class="download-title" data-i18n="dl_card_title">SpeedFlow for Windows</h3>
+        <p class="download-desc" data-i18n="dl_card_desc">
           Super fast and lightweight download manager built with Rust. Compatible with Windows 10 and 11.
         </p>
 
@@ -39,7 +39,7 @@
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            <span>Download Installer (.exe)</span>
+            <span data-i18n="dl_btn_installer">Download Installer (.exe)</span>
             <span class="btn-file-size font-mono" id="installer-size-tag">6.6 MB</span>
           </a>
 
@@ -49,7 +49,7 @@
             class="btn btn-secondary btn-lg"
             download
           >
-            <span>Portable (.zip)</span>
+            <span data-i18n="dl_btn_portable">Portable (.zip)</span>
             <span class="btn-file-size font-mono" id="portable-size-tag">6.3 MB</span>
           </a>
         </div>
@@ -65,7 +65,7 @@
             <span id="total-downloads-count">0 downloads</span>
           </span>
           <span class="sep">•</span>
-          <span>SHA-256 Verified</span>
+          <span data-i18n="dl_meta_verified">SHA-256 Verified</span>
           <span class="sep">•</span>
           <span>RAM: &lt; 35 MB</span>
           <span class="sep">•</span>
@@ -74,7 +74,7 @@
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
-            <span>Older Versions</span>
+            <span data-i18n="dl_meta_older">Older Versions</span>
           </button>
           <span class="sep">•</span>
           <a
@@ -84,7 +84,7 @@
             rel="noopener noreferrer"
             class="release-gh-link"
           >
-            GitHub Release ↗
+            <span data-i18n="dl_meta_gh">GitHub Release</span> ↗
           </a>
         </div>
 
@@ -120,11 +120,11 @@
       <!-- Developer Command Box -->
       <div class="dev-bar font-mono">
         <div class="dev-left">
-          <span class="text-tertiary">Build from source:</span>
+          <span class="text-tertiary" data-i18n="dl_winget_label">Build from source:</span>
           <code class="text-brand">cargo run --release</code>
         </div>
         <button id="copy-btn-minimal" class="btn btn-ghost btn-sm" title="Copy command">
-          <span id="copy-status">Copy</span>
+          <span id="copy-status" data-i18n="dl_winget_copy">Copy</span>
         </button>
       </div>
     </div>
@@ -138,7 +138,7 @@
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
-            <h3 id="archive-modal-title" class="modal-title">Version Archive</h3>
+            <h3 id="archive-modal-title" class="modal-title" data-i18n="modal_title">Release Archive</h3>
           </div>
           <button id="btn-close-archive-modal" class="modal-close-btn" aria-label="Close dialog">✕</button>
         </div>
@@ -154,13 +154,13 @@
             <div class="empty-badge">
               <span class="badge badge-brand font-mono">Initial Public Release</span>
             </div>
-            <h4 class="empty-title">No Previous Versions Yet</h4>
-            <p class="empty-desc">
-              <code>v0.1.0-beta</code> is the very first public release of SpeedFlow. Previous versions and standalone build archives will automatically appear here as future updates are published.
+            <h4 class="empty-title" data-i18n="modal_empty_title">No Prior Releases Yet</h4>
+            <p class="empty-desc" data-i18n="modal_empty_desc">
+              This is the very first public release of SpeedFlow. As newer builds roll out, older versions will automatically be archived here.
             </p>
             <div class="empty-action">
               <a href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm font-mono">
-                <span>View Releases on GitHub ↗</span>
+                <span data-i18n="modal_empty_btn">View on GitHub Releases</span> ↗
               </a>
             </div>
           </div>

@@ -57,7 +57,7 @@ const slides = [
     {slides.map((slide, index) => (
       <button class={`monitor-tag-pill ${index === 0 ? 'active' : ''}`} data-target-index={index}>
         <span class="pill-dot"></span>
-        <span>{slide.label}</span>
+        <span data-i18n={`monitor_tab_${slide.id}`}>{slide.label}</span>
       </button>
     ))}
   </div>
