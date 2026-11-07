@@ -1,0 +1,306 @@
+---
+// src/components/ComparisonTable.astro
+
+const rows = [
+  {
+    metric: 'App Speed & Feel',
+    speedflow: { value: 'Built with Rust', highlight: true, note: 'Opens instantly, zero lag' },
+    idm: { value: 'Older Windows App', sub: 'Legacy C++ interface' },
+    gopeed: { value: 'Modern App', sub: 'Flutter graphics engine' },
+    browser: { value: 'Web Browser', sub: 'Standard browser UI' },
+  },
+  {
+    metric: 'RAM & Memory Usage',
+    speedflow: { value: 'Under 35 MB RAM', highlight: true, note: "Won't slow down your PC" },
+    idm: { value: '~45 MB RAM', sub: 'Lightweight' },
+    gopeed: { value: '~95 MB RAM', sub: 'Higher memory usage' },
+    browser: { value: '300 MB+ RAM', sub: 'Heavy per-tab usage' },
+  },
+  {
+    metric: 'Download Threads',
+    speedflow: { value: 'Up to 32 Threads', highlight: true, note: 'Max speed on fast internet' },
+    idm: { value: 'Up to 32 Threads', sub: 'Multi-connection' },
+    gopeed: { value: 'Up to 16 Threads', sub: 'Multi-connection' },
+    browser: { value: '1 Stream', sub: 'Slow single download' },
+  },
+  {
+    metric: 'Smart Speed Booster',
+    speedflow: { value: 'Yes (Automatic)', highlight: true, note: 'Speeds up lagging parts' },
+    idm: { value: 'No', sub: 'Static chunk splitting' },
+    gopeed: { value: 'No', sub: 'Static chunk splitting' },
+    browser: { value: 'No', sub: 'No splitting' },
+  },
+  {
+    metric: 'Price & License',
+    speedflow: { value: '100% Free Forever', highlight: true, note: 'Open Source (GPLv3)' },
+    idm: { value: 'Paid ($24.95 / year)', sub: 'Commercial license' },
+    gopeed: { value: 'Free & Open Source', sub: 'GPLv3 license' },
+    browser: { value: 'Free', sub: 'Built into browser' },
+  },
+  {
+    metric: 'Ads & Privacy',
+    speedflow: { value: 'Zero Ads, Zero Tracking', highlight: true, note: 'Never collects your data' },
+    idm: { value: 'License Popups', sub: 'Periodic activation checks' },
+    gopeed: { value: 'Zero Ads', sub: 'No telemetry' },
+    browser: { value: 'Browser Analytics', sub: 'Tracks browsing data' },
+  },
+  {
+    metric: 'File Safety Check (SHA-256)',
+    speedflow: { value: 'Automatic with 1-click copy', highlight: true, note: 'Verifies files instantly' },
+    idm: { value: 'Manual check', sub: 'In file properties dialog' },
+    gopeed: { value: 'Basic check', sub: 'Limited verification' },
+    browser: { value: 'Not Available', sub: 'Need third-party tool' },
+  },
+  {
+    metric: 'Browser Integration',
+    speedflow: { value: 'Clean 1-Click Popup', highlight: true, note: 'Edge, Chrome, Firefox' },
+    idm: { value: 'Browser Extension', sub: 'Older style popups' },
+    gopeed: { value: 'Browser Extension', sub: 'Separate background service' },
+    browser: { value: 'Built-in', sub: 'Standard download bar' },
+  },
+];
+---
+
+<section class="section-spacing" id="compare">
+  <div class="container">
+    <div class="section-head-minimal">
+      <span class="badge badge-brand">Comparison</span>
+      <h2>Why people choose SpeedFlow</h2>
+      <p>How SpeedFlow compares to IDM, Gopeed, and regular browser downloads.</p>
+    </div>
+
+    <!-- Responsive Scroll Wrapper -->
+    <div class="compare-scroll-hint font-mono text-tertiary">
+      <span>← Swipe horizontally to view full matrix →</span>
+    </div>
+
+    <div class="compare-table-container pane">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th class="col-metric">Metric / Capability</th>
+            <th class="col-speedflow">
+              <div class="th-brand-header">
+                <div class="th-brand-top">
+                  <span class="th-brand-title">SpeedFlow</span>
+                  <span class="badge badge-brand">Recommended</span>
+                </div>
+                <span class="th-brand-sub font-mono">Rust • Slint • Tokio</span>
+              </div>
+            </th>
+            <th class="col-other">
+              <span class="th-other-title">IDM</span>
+              <span class="th-other-sub font-mono">Delphi / C++</span>
+            </th>
+            <th class="col-other">
+              <span class="th-other-title">Gopeed</span>
+              <span class="th-other-sub font-mono">Go / Flutter</span>
+            </th>
+            <th class="col-other">
+              <span class="th-other-title">Default Browser</span>
+              <span class="th-other-sub font-mono">Chrome / Edge / Firefox</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr>
+              <td class="cell-metric font-medium">
+                {row.metric}
+              </td>
+              <td class="cell-speedflow">
+                <div class="cell-val-wrapper">
+                  <span class="cell-speedflow-val text-brand font-semibold">{row.speedflow.value}</span>
+                  {row.speedflow.note && (
+                    <span class="cell-speedflow-note font-mono">{row.speedflow.note}</span>
+                  )}
+                </div>
+              </td>
+              <td class="cell-other">
+                <div class="cell-val-wrapper">
+                  <span class="cell-other-val">{row.idm.value}</span>
+                  {row.idm.sub && (
+                    <span class="cell-other-sub font-mono">{row.idm.sub}</span>
+                  )}
+                </div>
+              </td>
+              <td class="cell-other">
+                <div class="cell-val-wrapper">
+                  <span class="cell-other-val">{row.gopeed.value}</span>
+                  {row.gopeed.sub && (
+                    <span class="cell-other-sub font-mono">{row.gopeed.sub}</span>
+                  )}
+                </div>
+              </td>
+              <td class="cell-other">
+                <div class="cell-val-wrapper">
+                  <span class="cell-other-val">{row.browser.value}</span>
+                  {row.browser.sub && (
+                    <span class="cell-other-sub font-mono">{row.browser.sub}</span>
+                  )}
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .compare-scroll-hint {
+    display: none;
+    text-align: center;
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .compare-scroll-hint {
+      display: block;
+    }
+  }
+
+  .compare-table-container {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .compare-table {
+    width: 100%;
+    min-width: 780px;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13px;
+  }
+
+  .compare-table thead tr {
+    background-color: var(--surface-secondary);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compare-table th {
+    padding: 16px 18px;
+    font-weight: 600;
+    vertical-align: bottom;
+  }
+
+  .col-metric {
+    width: 26%;
+    color: var(--text-secondary);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .col-speedflow {
+    width: 26%;
+    background-color: var(--brand-subtle);
+    border-left: 1px solid var(--border-strong);
+    border-right: 1px solid var(--border-strong);
+  }
+
+  .th-brand-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .th-brand-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .th-brand-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brand-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .th-brand-sub {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .col-other {
+    width: 16%;
+    color: var(--text-primary);
+  }
+
+  .th-other-title {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .th-other-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+  }
+
+  .compare-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background-color 0.1s ease;
+  }
+
+  .compare-table tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  .compare-table tbody tr:hover {
+    background-color: var(--surface-hover);
+  }
+
+  .compare-table td {
+    padding: 14px 18px;
+    vertical-align: middle;
+  }
+
+  .cell-metric {
+    color: var(--text-primary);
+    font-size: 13px;
+  }
+
+  .cell-speedflow {
+    background-color: var(--brand-subtle);
+    border-left: 1px solid var(--border-strong);
+    border-right: 1px solid var(--border-strong);
+  }
+
+  .cell-val-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cell-speedflow-val {
+    font-size: 13px;
+  }
+
+  .cell-speedflow-note {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .cell-other-val {
+    font-size: 13px;
+    color: var(--text-primary);
+  }
+
+  .cell-other-sub {
+    font-size: 11px;
+    color: var(--text-tertiary);
+  }
+</style>

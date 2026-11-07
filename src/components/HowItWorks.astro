@@ -1,0 +1,196 @@
+---
+// src/components/HowItWorks.astro
+---
+
+<section class="how-section" id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-brand">Architecture Pipeline</span>
+      <h2 class="section-title">How SpeedFlow Accelerates Downloads</h2>
+      <p class="section-subtitle">
+        Understanding the multi-threaded range pipeline from remote URL ingestion to on-disk chunk assembly.
+      </p>
+    </div>
+
+    <!-- 4-Stage Flat Pipeline -->
+    <div class="pipeline-container grid-hairline">
+      <!-- Step 1 -->
+      <div class="step-card">
+        <div class="step-top">
+          <span class="step-num font-mono">01</span>
+          <span class="badge">Handshake</span>
+        </div>
+        <h3 class="step-title">Server Capability Discovery</h3>
+        <p class="step-desc">
+          SpeedFlow sends a non-destructive HEAD request to examine HTTP response headers. It checks for <code>Accept-Ranges: bytes</code>, confirms total byte length, and records the server's <code>ETag</code> for safe resumption.
+        </p>
+        <div class="code-snippet font-mono">
+          <span class="code-comment">// Remote Server Response</span>
+          <span>HTTP/2 206 Partial Content</span>
+          <span>Accept-Ranges: bytes</span>
+          <span>Content-Length: 4294967296</span>
+          <span>ETag: "63e18a-100000000"</span>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card">
+        <div class="step-top">
+          <span class="step-num font-mono">02</span>
+          <span class="step-badge badge">Segmentation</span>
+        </div>
+        <h3 class="step-title">Range Partitioning & Pre-allocation</h3>
+        <p class="step-desc">
+          The file is mathematically partitioned into equal, non-overlapping byte ranges. A sparse file container is allocated on disk so each async worker writes directly to its designated position without intermediate copies.
+        </p>
+        <div class="code-snippet font-mono">
+          <span class="code-comment">// Tokio Segment Allocation</span>
+          <span>Seg #0: [000000000 - 0268435455]</span>
+          <span>Seg #1: [0268435456 - 0536870911]</span>
+          <span>...</span>
+          <span>Seg #15: [4026531840 - 4294967295]</span>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card">
+        <div class="step-top">
+          <span class="step-num font-mono">03</span>
+          <span class="step-badge badge">Concurrency</span>
+        </div>
+        <h3 class="step-title">Parallel Async Worker Execution</h3>
+        <p class="step-desc">
+          Tokio spawns independent worker tasks. Each worker requests its assigned range through an isolated HTTP connection, bypassing single-thread network throttles applied by CDNs and edge servers.
+        </p>
+        <div class="code-snippet font-mono">
+          <span class="code-comment">// Async Range Streams</span>
+          <span>Worker-01 &lt;-- HTTP Stream 1 [ACTIVE]</span>
+          <span>Worker-02 &lt;-- HTTP Stream 2 [ACTIVE]</span>
+          <span>Worker-16 &lt;-- HTTP Stream 16 [ACTIVE]</span>
+          <span class="text-brand">Throughput Aggregated: 48.2 MB/s</span>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card">
+        <div class="step-top">
+          <span class="step-num font-mono">04</span>
+          <span class="step-badge badge">Verification</span>
+        </div>
+        <h3 class="step-title">Atomic Finalization & SHA-256</h3>
+        <p class="step-desc">
+          When the final segment finishes, temporary handles are flushed and closed. SpeedFlow performs an atomic file rename, computes a streaming SHA-256 digest, and notifies the desktop UI and OS shell.
+        </p>
+        <div class="code-snippet font-mono">
+          <span class="code-comment">// Integrity & Local State</span>
+          <span>Integrity: SHA-256 Validated</span>
+          <span>Target: C:\Downloads\archive.iso</span>
+          <span class="text-brand">SQLite Task Status: COMPLETED (0ms)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how-section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--surface-secondary);
+  }
+
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    max-width: 680px;
+    margin: 0 auto 40px auto;
+  }
+
+  .section-title {
+    font-size: clamp(22px, 3.2vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .pipeline-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .step-card {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--surface);
+  }
+
+  .step-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .step-num {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brand-primary);
+  }
+
+  .step-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .step-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .step-desc code {
+    background-color: var(--surface-secondary);
+    padding: 2px 4px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--brand-primary);
+  }
+
+  .code-snippet {
+    background-color: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    color: var(--text-primary);
+    overflow-x: auto;
+  }
+
+  .code-comment {
+    color: var(--text-tertiary);
+  }
+
+  .text-brand {
+    color: var(--brand-primary);
+  }
+
+  @media (max-width: 768px) {
+    .pipeline-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,251 @@
+---
+// src/components/TechStack.astro
+---
+
+<section class="tech-section" id="architecture">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-brand">System Architecture</span>
+      <h2 class="section-title">Built with Pure Rust & Modern Native Primitives</h2>
+      <p class="section-subtitle">
+        Eliminating web engine overhead to deliver immediate response times and maximum network throughput.
+      </p>
+    </div>
+
+    <!-- Tech Stack Matrix -->
+    <div class="tech-matrix grid-hairline">
+      <div class="tech-card">
+        <div class="tech-card-header">
+          <span class="tech-role font-mono">CORE LANGUAGE</span>
+          <span class="badge badge-brand">Rust 1.80+</span>
+        </div>
+        <h4 class="tech-name">Memory Safety without Garbage Collection</h4>
+        <p class="tech-desc">
+          Guarantees zero data races across multi-threaded socket streams and disk writers. Compile-time borrow checking ensures zero use-after-free or buffer overflow vulnerabilities.
+        </p>
+      </div>
+
+      <div class="tech-card">
+        <div class="tech-card-header">
+          <span class="tech-role font-mono">GUI TOOLKIT</span>
+          <span class="badge badge-brand">Slint Declarative UI</span>
+        </div>
+        <h4 class="tech-name">Native Desktop Graphics Pipeline</h4>
+        <p class="tech-desc">
+          Compiled directly into native C++/Rust machine code. Operates with sub-millisecond input latency, minimal CPU overhead during heavy 100MB/s transfers, and seamless dark/light styling.
+        </p>
+      </div>
+
+      <div class="tech-card">
+        <div class="tech-card-header">
+          <span class="tech-role font-mono">ASYNC RUNTIME</span>
+          <span class="badge badge-brand">Tokio Multi-Thread</span>
+        </div>
+        <h4 class="tech-name">Non-Blocking Work-Stealing Reactor</h4>
+        <p class="tech-desc">
+          Handles hundreds of concurrent HTTP chunk streams and asynchronous disk write operations without starving UI render threads or blocking user interactions.
+        </p>
+      </div>
+
+      <div class="tech-card">
+        <div class="tech-card-header">
+          <span class="tech-role font-mono">LOCAL DATABASE</span>
+          <span class="badge badge-brand">SQLite + SQLx</span>
+        </div>
+        <h4 class="tech-name">ACID Task State Journaling</h4>
+        <p class="tech-desc">
+          Compile-time SQL query validation and robust write-ahead logging (WAL). Preserves segment states even across sudden power cuts or OS reboot cycles.
+        </p>
+      </div>
+    </div>
+
+    <!-- Comparison Table: SpeedFlow vs Electron -->
+    <div class="comparison-pane pane">
+      <div class="comparison-header">
+        <h3 class="comparison-title">Why Native Rust Matters: Benchmark Overview</h3>
+        <span class="font-mono text-tertiary" style="font-size: 11px;">Desktop Download Manager Comparison</span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="benchmark-table font-mono">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th class="col-highlight">SpeedFlow (Rust + Slint)</th>
+              <th>Typical Electron App</th>
+              <th>Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-name">Idle Memory Usage</td>
+              <td class="col-highlight text-brand font-bold">~ 28 MB RAM</td>
+              <td class="text-secondary">250 MB - 450 MB RAM</td>
+              <td>10x Less Memory Consumption</td>
+            </tr>
+            <tr>
+              <td class="col-name">Application Cold Startup</td>
+              <td class="col-highlight text-brand font-bold">&lt; 150 ms</td>
+              <td class="text-secondary">2,200 ms - 4,000 ms</td>
+              <td>Instant launch on system boot</td>
+            </tr>
+            <tr>
+              <td class="col-name">Bundle Executable Size</td>
+              <td class="col-highlight text-brand font-bold">~ 18 MB</td>
+              <td class="text-secondary">120 MB - 180 MB</td>
+              <td>Lightweight portable download</td>
+            </tr>
+            <tr>
+              <td class="col-name">Telemetry & Tracking</td>
+              <td class="col-highlight text-brand font-bold">0% (Zero Telemetry)</td>
+              <td class="text-secondary">Analytics & Crashlytics</td>
+              <td>Complete user privacy guarantee</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tech-section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--surface-secondary);
+  }
+
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    max-width: 680px;
+    margin: 0 auto 40px auto;
+  }
+
+  .section-title {
+    font-size: clamp(22px, 3.2vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .tech-matrix {
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 32px;
+  }
+
+  .tech-card {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--surface);
+  }
+
+  .tech-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tech-role {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+  }
+
+  .tech-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .tech-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Benchmark Table */
+  .comparison-pane {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .comparison-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--surface-secondary);
+  }
+
+  .comparison-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  .benchmark-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    text-align: left;
+  }
+
+  .benchmark-table th,
+  .benchmark-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .benchmark-table thead tr {
+    background-color: var(--surface);
+    color: var(--text-tertiary);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .benchmark-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .col-highlight {
+    background-color: var(--brand-subtle);
+  }
+
+  .col-name {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .font-bold {
+    font-weight: 600;
+  }
+
+  .text-brand {
+    color: var(--brand-primary);
+  }
+
+  @media (max-width: 768px) {
+    .tech-matrix {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

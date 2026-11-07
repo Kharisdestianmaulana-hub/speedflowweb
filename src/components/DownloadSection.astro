@@ -1,0 +1,170 @@
+---
+// src/components/DownloadSection.astro
+---
+
+<section class="section-spacing" id="download">
+  <div class="container">
+    <div class="section-head-minimal">
+      <span class="badge badge-brand">Get SpeedFlow</span>
+      <h2>Start downloading at full speed</h2>
+      <p>Clean, native, and completely open source. No tracking, no ads.</p>
+    </div>
+
+    <div class="download-card pane">
+      <div class="download-content">
+        <div class="badge-row">
+          <span class="badge badge-brand">v0.1.0 Stable</span>
+          <span class="font-mono text-tertiary" style="font-size: 11px;">Windows 10 / 11 64-bit</span>
+        </div>
+
+        <h3 class="download-title">SpeedFlow for Windows</h3>
+        <p class="download-desc">
+          Super fast and lightweight download manager built with Rust. Compatible with Windows 10 and 11.
+        </p>
+
+        <div class="download-actions">
+          <a href="#download" class="btn btn-primary btn-lg" onclick="alert('SpeedFlow Desktop v0.1.0 Installer download started.');">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download Installer (.exe)</span>
+          </a>
+
+          <a href="#download" class="btn btn-secondary btn-lg" onclick="alert('SpeedFlow Desktop v0.1.0 Portable ZIP download started.');">
+            <span>Portable (.zip)</span>
+          </a>
+        </div>
+
+        <div class="download-specs font-mono">
+          <span>SHA-256 Verified</span>
+          <span class="sep">•</span>
+          <span>Size: ~18 MB</span>
+          <span class="sep">•</span>
+          <span>RAM: &lt; 35 MB</span>
+        </div>
+      </div>
+
+      <!-- Developer Command Box -->
+      <div class="dev-bar font-mono">
+        <div class="dev-left">
+          <span class="text-tertiary">Build from source:</span>
+          <code class="text-brand">cargo run --release</code>
+        </div>
+        <button id="copy-btn-minimal" class="btn btn-ghost btn-sm" title="Copy command">
+          <span id="copy-status">Copy</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .download-card {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .download-content {
+    padding: 44px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .badge-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .download-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .download-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    max-width: 480px;
+    line-height: 1.5;
+  }
+
+  .download-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .download-specs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+  }
+
+  .sep {
+    color: var(--border-strong);
+  }
+
+  /* Dev bar */
+  .dev-bar {
+    padding: 12px 24px;
+    background-color: var(--surface-secondary);
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .dev-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .text-brand {
+    color: var(--brand-primary);
+  }
+
+  @media (max-width: 600px) {
+    .download-content {
+      padding: 32px 20px;
+    }
+  }
+</style>
+
+<script>
+  const copyBtn = document.getElementById('copy-btn-minimal');
+  const copyStatus = document.getElementById('copy-status');
+  if (copyBtn && copyStatus) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('cargo run --release').then(() => {
+        copyStatus.textContent = 'Copied';
+        setTimeout(() => {
+          copyStatus.textContent = 'Copy';
+        }, 1500);
+      });
+    });
+  }
+</script>

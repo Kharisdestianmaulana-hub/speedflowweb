@@ -1,0 +1,181 @@
+---
+// src/components/FeaturesGrid.astro
+---
+
+<section class="section-spacing" id="features">
+  <div class="container">
+    <div class="section-head-minimal">
+      <span class="badge badge-brand">Why SpeedFlow?</span>
+      <h2>Fast, simple, and reliable downloads</h2>
+      <p>Everything you need in a modern download manager, without the bloat.</p>
+    </div>
+
+    <!-- 4 Distinct Flat Cards in 2x2 Grid -->
+    <div class="features-grid-container">
+      <!-- Card 1 -->
+      <div class="feature-box">
+        <div class="feature-box-header">
+          <div class="feature-icon-square">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <span class="feature-pill font-mono">32 THREADS</span>
+        </div>
+        <h3 class="feature-box-title">Up to 32x Faster Downloads</h3>
+        <p class="feature-box-desc">
+          Downloads files in up to 32 parts simultaneously, unlocking your full internet bandwidth so you finish downloads in seconds instead of minutes.
+        </p>
+        <div class="feature-box-footer font-mono">
+          <span>Multi-Thread Acceleration</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="feature-box">
+        <div class="feature-box-header">
+          <div class="feature-icon-square">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+            </svg>
+          </div>
+          <span class="feature-pill font-mono">PAUSE &amp; RESUME</span>
+        </div>
+        <h3 class="feature-box-title">Safe Pause &amp; Resume</h3>
+        <p class="feature-box-desc">
+          Internet dropped or need to shut down your PC? Pause anytime and resume right where you left off. Never waste quota or restart from 0% again.
+        </p>
+        <div class="feature-box-footer font-mono">
+          <span>Zero Lost Progress • Safe Recovery</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="feature-box">
+        <div class="feature-box-header">
+          <div class="feature-icon-square">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="8" y1="6" x2="21" y2="6"></line>
+              <line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="21" y2="18"></line>
+              <line x1="3" y1="6" x2="3.01" y2="6"></line>
+              <line x1="3" y1="12" x2="3.01" y2="12"></line>
+              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            </svg>
+          </div>
+          <span class="feature-pill font-mono">SMART QUEUE</span>
+        </div>
+        <h3 class="feature-box-title">Download Queue Manager</h3>
+        <p class="feature-box-desc">
+          Line up multiple downloads easily. SpeedFlow downloads them one by one or together, and lets you prioritize urgent files with one click.
+        </p>
+        <div class="feature-box-footer font-mono">
+          <span>Auto-Download • Priority Control</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="feature-box">
+        <div class="feature-box-header">
+          <div class="feature-icon-square">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+          </div>
+          <span class="feature-pill font-mono">SHA-256 CHECKSUM</span>
+        </div>
+        <h3 class="feature-box-title">Automatic File Verification</h3>
+        <p class="feature-box-desc">
+          Automatically verifies file integrity with SHA-256 as soon as it completes. Copy the checksum with 1 click to confirm your file is genuine and safe.
+        </p>
+        <div class="feature-box-footer font-mono">
+          <span>1-Click Copy • Anti-Tamper</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-grid-container {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+    width: 100% !important;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .feature-box {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color 0.15s ease;
+  }
+
+  .feature-box:hover {
+    border-color: var(--brand-primary) !important;
+  }
+
+  .feature-box-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .feature-icon-square {
+    width: 34px;
+    height: 34px;
+    background-color: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brand-primary);
+  }
+
+  .feature-pill {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--brand-primary);
+    background-color: var(--brand-subtle);
+    border: 1px solid var(--brand-primary);
+    padding: 2px 7px;
+    border-radius: var(--radius);
+    letter-spacing: 0.04em;
+  }
+
+  .feature-box-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+  }
+
+  .feature-box-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .feature-box-footer {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 680px) {
+    .features-grid-container {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

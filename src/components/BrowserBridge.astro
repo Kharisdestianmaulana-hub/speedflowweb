@@ -1,0 +1,65 @@
+---
+// src/components/BrowserBridge.astro
+---
+
+<section class="section-spacing" id="extension">
+  <div class="container">
+    <div class="section-head-minimal">
+      <span class="badge badge-brand">Browser Extension</span>
+      <h2>Catches downloads with one click</h2>
+      <p>No more copying and pasting links. SpeedFlow grabs downloads directly from your browser.</p>
+    </div>
+
+    <!-- 2-Column Clean Flat Pane -->
+    <div class="extension-flat-pane pane">
+      <div class="extension-left">
+        <span class="font-bold text-primary" style="font-size: 16px;">SpeedFlow for Your Browser</span>
+        <p class="ext-desc">
+          Install the free companion extension for Microsoft Edge, Firefox, or Chrome. When you click to download files like <code>.zip</code>, <code>.iso</code>, <code>.exe</code>, or <code>.mp4</code>, SpeedFlow automatically starts downloading them at maximum speed.
+        </p>
+
+        <div class="ext-feature-points font-mono">
+          <div class="ext-point">
+            <span class="text-brand">✓</span>
+            <span>Catches downloads automatically</span>
+          </div>
+          <div class="ext-point">
+            <span class="text-brand">✓</span>
+            <span>1-Click On/Off switch in toolbar</span>
+          </div>
+          <div class="ext-point">
+            <span class="text-brand">✓</span>
+            <span>Quick popup — never interrupts your browsing</span>
+          </div>
+        </div>
+
+        <div class="browser-downloads">
+          <a href="/downloads/speedflow-edge-store.zip" download class="browser-btn font-mono" title="Download for Microsoft Edge">
+            <span>Microsoft Edge</span>
+            <span class="btn-zip text-brand">.zip</span>
+          </a>
+          <a href="/downloads/speedflow-firefox-amo.zip" download class="browser-btn font-mono" title="Download for Mozilla Firefox">
+            <span>Firefox AMO</span>
+            <span class="btn-zip text-brand">.zip</span>
+          </a>
+          <a href="/downloads/speedflow-extension.zip" download class="browser-btn font-mono" title="Download Chromium Source">
+            <span>Chromium</span>
+            <span class="btn-zip text-brand">.zip</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="extension-right">
+        <div class="popup-frame">
+          <img
+            src="/extension-popup.png"
+            alt="SpeedFlow Browser Extension Popup"
+            class="popup-image"
+            width="365"
+            height="287"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

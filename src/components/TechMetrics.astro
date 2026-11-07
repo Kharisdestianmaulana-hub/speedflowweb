@@ -1,0 +1,113 @@
+---
+// src/components/TechMetrics.astro
+---
+
+<section class="metrics-section">
+  <div class="container">
+    <div class="metrics-grid grid-hairline">
+      <div class="metric-card">
+        <div class="metric-top">
+          <span class="metric-number font-mono text-brand">16x</span>
+          <span class="badge">Throughput</span>
+        </div>
+        <h4 class="metric-heading">Multi-Connection Segments</h4>
+        <p class="metric-body">
+          Divides large downloads into up to 16 distinct byte-ranges using HTTP Range headers, overcoming per-connection server throttles.
+        </p>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-top">
+          <span class="metric-number font-mono text-brand">&lt; 35 MB</span>
+          <span class="badge">Efficiency</span>
+        </div>
+        <h4 class="metric-heading">Zero-Electron Memory Footprint</h4>
+        <p class="metric-body">
+          Built natively in Rust with Slint declarative GUI. No embedded Chromium runtime, no node.js overhead, and instantaneous startup.
+        </p>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-top">
+          <span class="metric-number font-mono text-brand">SHA-256</span>
+          <span class="badge">Integrity</span>
+        </div>
+        <h4 class="metric-heading">Automatic Checksum Validation</h4>
+        <p class="metric-body">
+          Calculates streaming SHA-256 hashes on the fly during segment reassembly to guarantee zero corruption for OS ISOs and software packages.
+        </p>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-top">
+          <span class="metric-number font-mono text-brand">100%</span>
+          <span class="badge">Private</span>
+        </div>
+        <h4 class="metric-heading">Local SQLite Persistence</h4>
+        <p class="metric-body">
+          All history, queued tasks, and custom download paths are stored exclusively in an embedded local SQLite database. No telemetry or cloud tracking.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .metrics-section {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--surface-secondary);
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .metric-card {
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--surface);
+  }
+
+  .metric-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .metric-number {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .metric-heading {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .metric-body {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .text-brand {
+    color: var(--brand-primary);
+  }
+
+  @media (max-width: 960px) {
+    .metrics-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 580px) {
+    .metrics-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

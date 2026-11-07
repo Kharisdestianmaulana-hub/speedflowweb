@@ -1,0 +1,81 @@
+---
+// src/components/Hero.astro
+import AppSimulator from './AppSimulator.astro';
+---
+
+<section class="hero-section">
+  <div class="container hero-container-2col">
+    <!-- Left Column: Text & CTAs -->
+    <div class="hero-text-col">
+      <div class="hero-badge">
+        <span class="badge badge-brand">
+          <span class="dot-indicator"></span>
+          v0.1.0 • Built with Rust
+        </span>
+      </div>
+
+      <h1 class="hero-headline">
+        Faster downloads.<br />
+        <span class="text-brand">Zero lag.</span>
+      </h1>
+
+      <p class="hero-subhead">
+        A super-fast download manager for Windows. Downloads files in up to 32 streams at once, lets you pause and resume anytime, and never slows down your PC.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#download" class="btn btn-primary btn-lg">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Download for Windows</span>
+        </a>
+
+        <a href="#extension" class="btn btn-secondary btn-lg">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="21.17" y1="8" x2="12" y2="8"></line>
+            <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+            <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+          </svg>
+          <span>Browser Extension</span>
+        </a>
+      </div>
+
+      <!-- Quick Platform & Extension Links (like Gopeed) -->
+      <div class="hero-ext-pills font-mono">
+        <a href="/downloads/speedflow-edge-store.zip" download class="hero-ext-pill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+            <path d="M2 12h20"></path>
+          </svg>
+          <span>Edge Extension</span>
+        </a>
+        <a href="/downloads/speedflow-firefox-amo.zip" download class="hero-ext-pill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 12a4 4 0 1 0 8 0"></path>
+          </svg>
+          <span>Firefox Add-on</span>
+        </a>
+      </div>
+
+      <div class="hero-specs-line font-mono text-tertiary">
+        <span>~18 MB Portable</span>
+        <span>•</span>
+        <span>&lt; 35 MB RAM</span>
+        <span>•</span>
+        <span>100% Free &amp; Open Source</span>
+      </div>
+    </div>
+
+    <!-- Right Column: App Window Frame / Monitor Preview -->
+    <div class="hero-visual-col">
+      <AppSimulator />
+    </div>
+  </div>
+</section>

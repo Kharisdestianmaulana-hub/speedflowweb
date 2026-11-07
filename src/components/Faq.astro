@@ -1,0 +1,130 @@
+---
+// src/components/Faq.astro
+
+const faqs = [
+  {
+    q: "Why is SpeedFlow so much faster than normal browser downloads?",
+    a: "Standard browsers usually download files through a single connection, which servers often throttle. SpeedFlow splits your file into up to 32 parts and downloads them all simultaneously over multi-thread connections. If one connection slows down, SpeedFlow automatically redistributes the workload so your download completes as fast as possible."
+  },
+  {
+    q: "Is SpeedFlow completely free? Are there any ads or subscriptions?",
+    a: "Yes, 100% free and open source under the GPLv3 license. There are zero ads, zero hidden fees, and zero tracking. You get all features with no limits and no expiration."
+  },
+  {
+    q: "Can I pause and resume downloads without losing my progress?",
+    a: "Absolutely. You can pause anytime, close the app, or turn off your PC. When you resume, SpeedFlow continues right from the exact percentage where you stopped and verifies that your file remains safe and intact — never starting over from 0%."
+  },
+  {
+    q: "What if a download link expires while paused?",
+    a: "Many cloud and file-sharing websites expire download links after a few hours. In SpeedFlow, you don't need to download from scratch! Just paste the renewed link into your paused task, and SpeedFlow keeps downloading the remaining part seamlessly."
+  },
+  {
+    q: "How does the browser extension work?",
+    a: "The extension connects Google Chrome, Microsoft Edge, or Mozilla Firefox directly to SpeedFlow. Whenever you click a download link on the web, it catches the file automatically and sends it straight to SpeedFlow so you don't have to copy and paste links manually."
+  },
+  {
+    q: "Will SpeedFlow slow down or freeze my PC?",
+    a: "Not at all. Unlike heavy apps made with web technologies that consume hundreds of megabytes of memory, SpeedFlow is built with Rust. It idles under 35 MB of RAM and opens almost instantly, leaving all your PC's power free for gaming, streaming, or work."
+  },
+  {
+    q: "What is the SHA-256 checksum feature for?",
+    a: "It lets you easily verify that your downloaded file (like Windows installers, drivers, or game updates) is genuine, complete, and hasn't been corrupted or altered. SpeedFlow calculates the hash automatically and lets you copy it with a single click."
+  }
+];
+---
+
+<section class="section-spacing" id="faq">
+  <div class="container">
+    <div class="section-head-minimal">
+      <span class="badge badge-brand">FAQ</span>
+      <h2>Frequently Asked Questions</h2>
+      <p>Everything you need to know about download speed, safety, and using SpeedFlow.</p>
+    </div>
+
+    <!-- Flat Accordion Container -->
+    <div class="faq-accordion-container pane">
+      {faqs.map((faq, idx) => (
+        <details class="faq-item" open={idx === 0}>
+          <summary class="faq-question">
+            <span class="faq-q-text">{faq.q}</span>
+            <span class="faq-toggle-icon font-mono">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>{faq.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-accordion-container {
+    max-width: 820px;
+    margin: 0 auto;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    background-color: var(--surface);
+    transition: background-color 0.1s ease;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question:hover {
+    background-color: var(--surface-hover);
+  }
+
+  .faq-q-text {
+    flex: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .faq-toggle-icon {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--brand-primary);
+    transition: transform 0.15s ease;
+  }
+
+  details[open] .faq-toggle-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 0 20px 18px 20px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    background-color: var(--surface);
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+</style>

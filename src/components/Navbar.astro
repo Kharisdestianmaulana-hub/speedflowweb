@@ -1,0 +1,163 @@
+---
+// src/components/Navbar.astro
+---
+
+<header class="navbar-wrapper">
+  <div class="container navbar-inner">
+    <!-- Brand -->
+    <a href="#" class="brand-link">
+      <img src="/LogoSpeedFlow.png" alt="SpeedFlow" width="22" height="22" class="brand-img" />
+      <span class="brand-name">SpeedFlow</span>
+      <span class="badge badge-brand">v0.1</span>
+    </a>
+
+    <!-- Nav Links (Concise) -->
+    <nav class="nav-links">
+      <a href="#features" class="nav-item">Features</a>
+      <a href="#compare" class="nav-item">Compare</a>
+      <a href="#extension" class="nav-item">Extension</a>
+      <a href="#faq" class="nav-item">FAQ</a>
+      <a href="#download" class="nav-item">Download</a>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="nav-actions">
+      <!-- Theme Switcher -->
+      <button id="theme-toggle-btn" class="theme-toggle btn-ghost" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+        <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+        <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </button>
+
+      <!-- Clean Download CTA -->
+      <a href="#download" class="btn btn-primary btn-sm">
+        <span>Download</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .navbar-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+  }
+
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 54px;
+  }
+
+  .brand-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text-primary);
+  }
+
+  .brand-img {
+    display: block;
+  }
+
+  .brand-name {
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-item {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color 0.1s ease;
+  }
+
+  .nav-item:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius);
+    color: var(--text-secondary);
+    border: 1px solid transparent;
+  }
+
+  .theme-toggle:hover {
+    background-color: var(--surface-hover);
+    color: var(--text-primary);
+    border-color: var(--border);
+  }
+
+  :global(html.dark) .sun-icon {
+    display: block;
+  }
+  :global(html.dark) .moon-icon {
+    display: none;
+  }
+
+  :global(html:not(.dark)) .sun-icon {
+    display: none;
+  }
+  :global(html:not(.dark)) .moon-icon {
+    display: block;
+  }
+
+  @media (max-width: 600px) {
+    .nav-links {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      if (isDark) {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('speedflow-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('speedflow-theme', 'dark');
+      }
+    });
+  }
+</script>

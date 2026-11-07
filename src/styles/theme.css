@@ -1,0 +1,78 @@
+:root {
+  /* Brand Accent (#78C375 - Gopeed/SpeedFlow Signature Green) */
+  --brand-primary: #78C375;
+  --brand-hover: #65B462;
+  --brand-active: #529F4F;
+  --brand-subtle: #EAF7E9;
+  --brand-text: #111827;
+
+  /* Light Theme Surfaces & Text (Clean Light Flat Pane) */
+  --bg: #F3F4F6;
+  --surface: #FFFFFF;
+  --surface-secondary: #EBECEF;
+  --surface-hover: #E2E5E9;
+  --surface-active: #D6DAE0;
+
+  /* 1px Hairline Borders */
+  --border: #DCE0E6;
+  --border-strong: #C4CAD3;
+
+  /* Typography */
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --text-tertiary: #9CA3AF;
+  --text-disabled: #D1D5DB;
+
+  /* Semantic Status Colors */
+  --status-downloading: #78C375;
+  --status-queued: #6B7280;
+  --status-paused: #F59E0B;
+  --status-completed: #10B981;
+  --status-failed: #EF4444;
+  --status-retrying: #F59E0B;
+  --status-cancelled: #6B7280;
+
+  /* Flat Dimensions & Radius (Strictly 2px or 0px, No curved cards) */
+  --radius: 2px;
+  --radius-sm: 2px;
+  --radius-none: 0px;
+
+  /* Typography Families */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, 'Courier New', monospace;
+
+  /* Container width */
+  --container-max: 1200px;
+}
+
+/* Dark Theme (Default Desktop App Aesthetic: Matte Dark #2A2D32) */
+html.dark,
+[data-theme="dark"] {
+  --brand-primary: #78C375;
+  --brand-hover: #65B462;
+  --brand-active: #529F4F;
+  --brand-subtle: #1C2D1F;
+  --brand-text: #111827;
+
+  --bg: #2A2D32;
+  --surface: #343840;
+  --surface-secondary: #212327;
+  --surface-hover: #3E434D;
+  --surface-active: #474D58;
+
+  --border: #383C45;
+  --border-strong: #484E5A;
+
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  --text-tertiary: #6B7280;
+  --text-disabled: #4B5563;
+
+  --status-downloading: #78C375;
+  --status-queued: #9CA3AF;
+  --status-paused: #F59E0B;
+  --status-completed: #10B981;
+  --status-failed: #EF4444;
+  --status-retrying: #F59E0B;
+  --status-cancelled: #9CA3AF;
+}

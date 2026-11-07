@@ -1,0 +1,307 @@
+---
+// src/components/AppSimulator.astro
+
+const slides = [
+  { id: 'tasks', label: 'Tasks', src: '/screenshots/screenshot-tasks.png', alt: 'SpeedFlow Tasks View' },
+  { id: 'queue', label: 'Queue', src: '/screenshots/screenshot-queue.png', alt: 'SpeedFlow Queue View' },
+  { id: 'history', label: 'History', src: '/screenshots/screenshot-history.png', alt: 'SpeedFlow History View' },
+  { id: 'settings', label: 'Settings', src: '/screenshots/screenshot-settings.png', alt: 'SpeedFlow Settings View' },
+];
+---
+
+<div class="physical-monitor-wrapper">
+  <!-- The Monitor Display Panel -->
+  <div class="monitor-display">
+    <!-- Webcam dot at top bezel -->
+    <div class="monitor-camera-dot" aria-hidden="true"></div>
+
+    <!-- Inner Glass Screen with Rotating App Screenshots -->
+    <div class="monitor-glass-screen">
+      {slides.map((slide, index) => (
+        <div class={`screen-slide ${index === 0 ? 'active' : ''}`} data-index={index} data-label={slide.label}>
+          <img
+            src={slide.src}
+            alt={slide.alt}
+            class="slide-img"
+            loading={index === 0 ? 'eager' : 'lazy'}
+          />
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom Bezel Chin with Brand Mark -->
+    <div class="monitor-bottom-bezel">
+      <div class="monitor-chin-logo" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="chin-logo-icon">
+          <path d="M4 7.5L9 3.5H19L14 7.5H4Z" fill="#78C375" opacity="0.9"/>
+          <path d="M4 14.5L9 10.5H19L14 14.5H4Z" fill="#78C375" opacity="0.7"/>
+          <path d="M4 20.5L9 16.5H19L14 20.5H4Z" fill="#78C375" opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Physical Monitor Neck / Stem -->
+  <div class="monitor-stand-neck" aria-hidden="true"></div>
+
+  <!-- Physical Monitor Base / Foot (Pedestal) -->
+  <div class="monitor-stand-base" aria-hidden="true">
+    <div class="base-surface-highlight"></div>
+  </div>
+
+  <!-- Ambient Contact Shadow on Desk -->
+  <div class="monitor-desk-shadow" aria-hidden="true"></div>
+
+  <!-- Clean Minimalist View Switcher Pills -->
+  <div class="monitor-view-tags font-mono">
+    {slides.map((slide, index) => (
+      <button class={`monitor-tag-pill ${index === 0 ? 'active' : ''}`} data-target-index={index}>
+        <span class="pill-dot"></span>
+        <span>{slide.label}</span>
+      </button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .physical-monitor-wrapper {
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Physical Monitor Housing / Bezel */
+  .monitor-display {
+    width: 100%;
+    background-color: #17191E;
+    border: 2px solid #2E333D;
+    border-radius: 8px;
+    padding: 8px 8px 10px 8px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .monitor-camera-dot {
+    width: 4px;
+    height: 4px;
+    background-color: #262B34;
+    border-radius: 50%;
+    margin-bottom: 6px;
+    box-shadow: inset 0 0 1px #0A0C0E;
+  }
+
+  /* Inner Display Glass (Exact 16:9 for 1024x576 Screenshots) */
+  .monitor-glass-screen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #121418;
+    border: 1px solid #20242C;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .screen-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.45s ease-in-out, visibility 0.45s ease-in-out;
+  }
+
+  .screen-slide.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  /* Bottom Chin */
+  .monitor-bottom-bezel {
+    width: 100%;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+  }
+
+  .monitor-chin-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+  }
+
+  .monitor-display:hover .monitor-chin-logo {
+    opacity: 0.95;
+  }
+
+  /* Stand Neck / Stem */
+  .monitor-stand-neck {
+    width: 52px;
+    height: 42px;
+    background: linear-gradient(90deg, #181A1F 0%, #2A2E36 50%, #181A1F 100%);
+    border-left: 1px solid #363C47;
+    border-right: 1px solid #363C47;
+    margin-top: -1px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Stand Pedestal / Base */
+  .monitor-stand-base {
+    width: 168px;
+    height: 20px;
+    background: linear-gradient(180deg, #2A2E36 0%, #181A20 100%);
+    border: 1px solid #383E4B;
+    border-radius: 4px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45), 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+    margin-top: -1px;
+  }
+
+  .base-surface-highlight {
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    right: 2px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  }
+
+  /* Ambient Desk Shadow */
+  .monitor-desk-shadow {
+    width: 260px;
+    height: 12px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5) 0%, transparent 72%);
+    margin-top: -5px;
+    margin-bottom: 14px;
+    z-index: 0;
+  }
+
+  /* View Switcher Pills */
+  .monitor-view-tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 2px;
+  }
+
+  .monitor-tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .pill-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid var(--text-tertiary);
+    transition: all 0.15s ease;
+  }
+
+  .monitor-tag-pill:hover {
+    background-color: var(--surface-hover);
+    color: var(--text-primary);
+  }
+
+  .monitor-tag-pill.active {
+    background-color: var(--brand-subtle);
+    border-color: var(--brand-primary);
+    color: var(--brand-primary);
+    font-weight: 600;
+  }
+
+  .monitor-tag-pill.active .pill-dot {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+  }
+</style>
+
+<script>
+  // Auto-cycling monitor carousel with manual tab selection
+  const slides = document.querySelectorAll('.screen-slide');
+  const tagPills = document.querySelectorAll('.monitor-tag-pill');
+  let currentIndex = 0;
+  let timer: ReturnType<typeof setInterval> | null = null;
+
+  const setActiveSlide = (index: number) => {
+    currentIndex = index;
+    slides.forEach((slide, i) => {
+      if (i === index) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+
+    tagPills.forEach((pill, i) => {
+      if (i === index) {
+        pill.classList.add('active');
+      } else {
+        pill.classList.remove('active');
+      }
+    });
+  };
+
+  const startAutoCycle = () => {
+    stopAutoCycle();
+    timer = setInterval(() => {
+      const nextIndex = (currentIndex + 1) % slides.length;
+      setActiveSlide(nextIndex);
+    }, 3200);
+  };
+
+  const stopAutoCycle = () => {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  };
+
+  tagPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const target = Number(pill.getAttribute('data-target-index') || 0);
+      setActiveSlide(target);
+      startAutoCycle();
+    });
+  });
+
+  // Start auto cycle immediately
+  startAutoCycle();
+
+  // Pause on hover
+  const monitorEl = document.querySelector('.physical-monitor-wrapper');
+  if (monitorEl) {
+    monitorEl.addEventListener('mouseenter', stopAutoCycle);
+    monitorEl.addEventListener('mouseleave', startAutoCycle);
+  }
+</script>
