@@ -439,6 +439,41 @@ html:not(.dark) .moon-icon { display: block; }
   }
 }
 
+@media (max-width: 600px) {
+  .hero-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    max-width: 380px !important;
+    gap: 8px !important;
+    justify-content: center !important;
+  }
+
+  .hero-actions .btn {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    padding: 0 10px !important;
+    height: 42px !important;
+    font-size: 12px !important;
+    gap: 6px !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+  }
+
+  .hero-actions .btn svg {
+    flex-shrink: 0 !important;
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .hero-actions .btn span {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+}
+
 /* ==========================================================================
    PHYSICAL DESKTOP MONITOR MOCKUP (WITH STEM & BASE)
    ========================================================================== */
@@ -849,6 +884,12 @@ html:not(.dark) .moon-icon { display: block; }
   gap: 8px;
 }
 
+.badge-tags-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .download-title {
   font-size: 24px;
   font-weight: 700;
@@ -1035,6 +1076,36 @@ html:not(.dark) .moon-icon { display: block; }
 @media (max-width: 600px) {
   .download-content {
     padding: 32px 20px;
+  }
+
+  .badge-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .badge-tags-wrap {
+    display: flex !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .badge-tags-wrap .badge {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 6px 10px !important;
+    font-size: 11.5px !important;
+  }
+
+  #release-date-text {
+    display: block !important;
+    text-align: center !important;
+    font-size: 11px !important;
+    width: 100% !important;
   }
 }
 
