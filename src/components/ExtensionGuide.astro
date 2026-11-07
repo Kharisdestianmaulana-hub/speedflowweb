@@ -1,0 +1,618 @@
+---
+// src/components/ExtensionGuide.astro
+---
+
+<section class="section-spacing" id="extension-guide">
+  <div class="container">
+    <div class="section-head-minimal">
+      <span class="badge badge-brand">Panduan Instalasi</span>
+      <h2>Cara Memasang Ekstensi Browser SpeedFlow</h2>
+      <p>Ikuti panduan langkah demi langkah sesuai browser yang Anda gunakan untuk mengaktifkan integrasi otomatis.</p>
+    </div>
+
+    <div class="guide-container pane">
+      <!-- Interactive Browser Tab Selector -->
+      <div class="guide-tabs-nav font-mono">
+        <button class="guide-tab-btn active" data-target="chrome" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="21.17" y1="8" x2="12" y2="8"></line>
+            <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+            <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+          </svg>
+          <span>Chrome & Brave</span>
+        </button>
+
+        <button class="guide-tab-btn" data-target="edge" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"></path>
+            <path d="M12 6a6 6 0 0 1 6 6c0 3.31-2.69 6-6 6"></path>
+          </svg>
+          <span>Microsoft Edge</span>
+        </button>
+
+        <button class="guide-tab-btn" data-target="firefox" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+          <span>Mozilla Firefox</span>
+        </button>
+      </div>
+
+      <!-- TAB 1: Google Chrome & Brave -->
+      <div id="guide-panel-chrome" class="guide-panel active">
+        <div class="panel-header">
+          <div class="panel-title-wrap">
+            <h3 class="panel-title">Setup Ekstensi di Chrome & Brave (Mode Unpacked)</h3>
+            <span class="badge badge-brand font-mono">Chromium Standard</span>
+          </div>
+          <p class="panel-desc">
+            Browser berbasis Chromium seperti Google Chrome dan Brave dapat memuat ekstensi SpeedFlow langsung dari folder yang belum dibongkar (*unpacked*).
+          </p>
+        </div>
+
+        <ol class="step-guide-list">
+          <li class="step-guide-item">
+            <div class="step-guide-index font-mono">1</div>
+            <div class="step-guide-content">
+              <strong class="step-guide-name">Buka halaman ekstensi browser:</strong>
+              <p class="step-guide-detail">Ketik dan buka URL berikut di bilah alamat browser Anda:</p>
+              
+              <div class="url-copy-group">
+                <div class="code-url-row font-mono">
+                  <code>chrome://extensions</code>
+                  <button class="btn-copy-url" data-copy="chrome://extensions" type="button" title="Salin URL Chrome">
+                    <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span class="copy-label">Copy</span>
+                  </button>
+                </div>
+
+                <div class="code-url-row font-mono">
+                  <code>brave://extensions</code>
+                  <button class="btn-copy-url" data-copy="brave://extensions" type="button" title="Salin URL Brave">
+                    <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span class="copy-label">Copy</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="step-guide-item">
+            <div class="step-guide-index font-mono">2</div>
+            <div class="step-guide-content">
+              <strong class="step-guide-name">Aktifkan Mode Pengembang:</strong>
+              <p class="step-guide-detail">Nyalakan tombol sakelar <strong>"Developer mode"</strong> di sudut kanan atas halaman ekstensi.</p>
+            </div>
+          </li>
+
+          <li class="step-guide-item">
+            <div class="step-guide-index font-mono">3</div>
+            <div class="step-guide-content">
+              <strong class="step-guide-name">Muat Ekstensi SpeedFlow:</strong>
+              <p class="step-guide-detail">Klik tombol <strong>"Load unpacked"</strong> (Muat yang belum dibongkar) yang muncul di sudut kiri atas.</p>
+            </div>
+          </li>
+
+          <li class="step-guide-item">
+            <div class="step-guide-index font-mono">4</div>
+            <div class="step-guide-content">
+              <strong class="step-guide-name">Pilih Folder Ekstensi:</strong>
+              <p class="step-guide-detail">
+                Pilih folder <code>extension</code> yang berada di dalam folder instalasi SpeedFlow (atau Anda bisa klik tombol <strong>"Open Extension Folder"</strong> langsung dari menu Settings di aplikasi SpeedFlow Desktop).
+              </p>
+            </div>
+          </li>
+
+          <li class="step-guide-item">
+            <div class="step-guide-index font-mono">5</div>
+            <div class="step-guide-content">
+              <strong class="step-guide-name">Selesai:</strong>
+              <p class="step-guide-detail">
+                Sematkan (*pin*) ikon SpeedFlow di toolbar browser Anda. SpeedFlow sekarang siap menangkap unduhan secara otomatis!
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- TAB 2: Microsoft Edge -->
+      <div id="guide-panel-edge" class="guide-panel">
+        <div class="panel-header">
+          <div class="panel-title-wrap">
+            <h3 class="panel-title">Setup Ekstensi di Microsoft Edge</h3>
+            <span class="badge badge-brand font-mono">Native Integration</span>
+          </div>
+          <p class="panel-desc">
+            Pilih metode otomatis 1-klik yang direkomendasikan, atau pasang secara manual melalui mode pengembang.
+          </p>
+        </div>
+
+        <div class="methods-2col">
+          <!-- Metode A -->
+          <div class="method-subcard pane">
+            <div class="method-subcard-header">
+              <span class="badge badge-brand font-mono">Metode A</span>
+              <span class="badge badge-brand font-mono">Rekomendasi</span>
+            </div>
+            <h4 class="method-subcard-title">Otomatis 1-Klik</h4>
+            <ol class="method-steps">
+              <li>Buka aplikasi <strong>SpeedFlow Desktop</strong>.</li>
+              <li>Buka menu <strong>Settings</strong> (Pengaturan).</li>
+              <li>Di bagian "Browser Integration", klik tombol <strong>"Connect Edge & Firefox"</strong>.</li>
+              <li>Restart (tutup dan buka kembali) Microsoft Edge. Ekstensi langsung aktif otomatis.</li>
+            </ol>
+          </div>
+
+          <!-- Metode B -->
+          <div class="method-subcard pane">
+            <div class="method-subcard-header">
+              <span class="badge font-mono">Metode B</span>
+              <span class="font-mono text-tertiary" style="font-size: 11px;">Developer Mode</span>
+            </div>
+            <h4 class="method-subcard-title">Manual Developer Mode</h4>
+            <ol class="method-steps">
+              <li>
+                Buka alamat berikut di bilah alamat Edge:
+                <div class="code-url-row font-mono" style="margin-top: 6px;">
+                  <code>edge://extensions</code>
+                  <button class="btn-copy-url" data-copy="edge://extensions" type="button" title="Salin URL Edge">
+                    <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span class="copy-label">Copy</span>
+                  </button>
+                </div>
+              </li>
+              <li>Aktifkan sakelar <strong>"Developer mode"</strong> di panel menu kiri bawah.</li>
+              <li>Klik tombol <strong>"Load unpacked"</strong> di bagian atas dan pilih folder <code>extension</code> SpeedFlow.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: Mozilla Firefox -->
+      <div id="guide-panel-firefox" class="guide-panel">
+        <div class="panel-header">
+          <div class="panel-title-wrap">
+            <h3 class="panel-title">Setup Ekstensi di Mozilla Firefox</h3>
+            <span class="badge badge-brand font-mono">Gecko Engine</span>
+          </div>
+          <p class="panel-desc">
+            Aktifkan ekstensi Firefox secara instan melalui aplikasi desktop atau muat sementara melalui menu debugging.
+          </p>
+        </div>
+
+        <div class="methods-2col">
+          <!-- Metode A -->
+          <div class="method-subcard pane">
+            <div class="method-subcard-header">
+              <span class="badge badge-brand font-mono">Metode A</span>
+              <span class="badge badge-brand font-mono">Rekomendasi</span>
+            </div>
+            <h4 class="method-subcard-title">Otomatis 1-Klik</h4>
+            <ol class="method-steps">
+              <li>Buka aplikasi <strong>SpeedFlow Desktop</strong>.</li>
+              <li>Buka menu <strong>Settings</strong>, lalu klik tombol <strong>"Connect Edge & Firefox"</strong>.</li>
+              <li>Restart Mozilla Firefox Anda. Ekstensi siap digunakan.</li>
+            </ol>
+          </div>
+
+          <!-- Metode B -->
+          <div class="method-subcard pane">
+            <div class="method-subcard-header">
+              <span class="badge font-mono">Metode B</span>
+              <span class="font-mono text-tertiary" style="font-size: 11px;">Manual Debug</span>
+            </div>
+            <h4 class="method-subcard-title">Manual via Debugging</h4>
+            <ol class="method-steps">
+              <li>
+                Buka URL berikut di bilah alamat Firefox:
+                <div class="code-url-row font-mono" style="margin-top: 6px;">
+                  <code>about:debugging#/runtime/this-firefox</code>
+                  <button class="btn-copy-url" data-copy="about:debugging#/runtime/this-firefox" type="button" title="Salin URL Firefox">
+                    <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span class="copy-label">Copy</span>
+                  </button>
+                </div>
+              </li>
+              <li>Klik tombol <strong>"Load Temporary Add-on..."</strong>.</li>
+              <li>Pilih file <code>manifest.json</code> yang ada di dalam folder <code>extension</code> SpeedFlow.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security & Bridge Callout Box -->
+      <div class="guide-callout-box">
+        <div class="callout-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <div class="callout-text">
+          <strong class="text-primary">100% Lokal & Privat:</strong>
+          SpeedFlow Bridge Server berjalan di port lokal <code>127.0.0.1:19760</code> untuk menghubungkan ekstensi browser dengan aplikasi desktop tanpa mengirim data ke internet luar (100% lokal & privat).
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .guide-container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  /* Tab Navigator */
+  .guide-tabs-nav {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--surface-secondary);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .guide-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .guide-tab-btn:hover {
+    color: var(--text-primary);
+    background-color: var(--surface-hover);
+  }
+
+  .guide-tab-btn.active {
+    color: var(--brand-primary);
+    font-weight: 600;
+    border-bottom-color: var(--brand-primary);
+    background-color: var(--surface);
+  }
+
+  /* Panels */
+  .guide-panel {
+    display: none;
+    padding: 28px 24px;
+    animation: fadeIn 0.15s ease-out;
+  }
+
+  .guide-panel.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .panel-header {
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+
+  .panel-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+
+  .panel-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .panel-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Step List (Chrome) */
+  .step-guide-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .step-guide-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background-color: var(--surface-secondary);
+  }
+
+  .step-guide-index {
+    width: 26px;
+    height: 26px;
+    border-radius: var(--radius);
+    background-color: var(--brand-subtle);
+    border: 1px solid var(--brand-primary);
+    color: var(--brand-primary);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .step-guide-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .step-guide-name {
+    font-size: 13.5px;
+    color: var(--text-primary);
+  }
+
+  .step-guide-detail {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .step-guide-detail code {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1px 5px;
+    border-radius: var(--radius);
+    color: var(--brand-primary);
+  }
+
+  /* URL Copy Box */
+  .url-copy-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .code-url-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px 4px 10px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 12px;
+    color: var(--brand-primary);
+  }
+
+  .code-url-row code {
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+  }
+
+  .btn-copy-url {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 7px;
+    background-color: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 11px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .btn-copy-url:hover {
+    background-color: var(--surface-hover);
+    color: var(--text-primary);
+    border-color: var(--brand-primary);
+  }
+
+  .btn-copy-url.is-copied {
+    background-color: var(--brand-subtle) !important;
+    border-color: var(--brand-primary) !important;
+    color: var(--brand-primary) !important;
+    font-weight: 600;
+  }
+
+  /* 2-Column Methods (Edge & Firefox) */
+  .methods-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .method-subcard {
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .method-subcard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .method-subcard-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .method-steps {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .method-steps li strong {
+    color: var(--text-primary);
+  }
+
+  .method-steps code {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1px 5px;
+    border-radius: var(--radius);
+    color: var(--brand-primary);
+  }
+
+  /* Security & Bridge Callout Box */
+  .guide-callout-box {
+    margin: 20px 24px 24px 24px;
+    padding: 14px 16px;
+    background-color: var(--brand-subtle);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .callout-icon-wrap {
+    color: var(--brand-primary);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .callout-text {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .callout-text code {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1px 5px;
+    border-radius: var(--radius);
+    color: var(--brand-primary);
+    font-family: var(--font-mono);
+  }
+
+  @media (max-width: 680px) {
+    .methods-2col {
+      grid-template-columns: 1fr;
+    }
+    .guide-panel {
+      padding: 20px 16px;
+    }
+    .guide-callout-box {
+      margin: 16px 16px 20px 16px;
+      padding: 12px 14px;
+    }
+    .url-copy-group {
+      flex-direction: column;
+    }
+    .code-url-row {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+</style>
+
+<script>
+  // Tab switching logic
+  const tabBtns = document.querySelectorAll('.guide-tab-btn');
+  const panels = document.querySelectorAll('.guide-panel');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-target');
+      
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      panels.forEach(p => p.classList.remove('active'));
+      const activePanel = document.getElementById(`guide-panel-${target}`);
+      if (activePanel) {
+        activePanel.classList.add('active');
+      }
+    });
+  });
+
+  // URL Copy to clipboard with visual feedback
+  const copyBtns = document.querySelectorAll('.btn-copy-url');
+  copyBtns.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const textToCopy = btn.getAttribute('data-copy');
+      if (!textToCopy) return;
+
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        const label = btn.querySelector('.copy-label');
+        const origText = label ? label.textContent : 'Copy';
+        
+        btn.classList.add('is-copied');
+        if (label) label.textContent = 'Copied!';
+
+        setTimeout(() => {
+          btn.classList.remove('is-copied');
+          if (label) label.textContent = origText;
+        }, 2000);
+      } catch (err) {
+        console.warn('Clipboard write failed:', err);
+      }
+    });
+  });
+</script>

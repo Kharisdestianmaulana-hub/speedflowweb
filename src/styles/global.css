@@ -1953,3 +1953,24 @@ details[open] .faq-toggle-icon {
     justify-content: center !important;
   }
 }
+
+
+.bridge-guide-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin-top: 4px !important;
+}
+
+.bridge-guide-link {
+  font-size: 11px !important;
+  color: var(--brand-primary) !important;
+  text-decoration: underline !important;
+  transition: opacity 0.15s ease !important;
+}
+
+.bridge-guide-link:hover {
+  opacity: 0.85 !important;
+}

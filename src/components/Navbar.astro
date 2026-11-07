@@ -160,6 +160,9 @@
     align-items: center;
     justify-content: space-between;
     height: 54px;
+    max-width: 1140px !important;
+    width: 100% !important;
+    padding: 0 24px !important;
   }
 
   .brand-link {
@@ -189,12 +192,14 @@
     flex-shrink: 0 !important;
     font-size: 11px !important;
     padding: 2px 7px !important;
+    margin-left: 2px;
   }
 
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 18px;
+    flex-shrink: 0;
   }
 
   .nav-item {
@@ -203,6 +208,7 @@
     color: var(--text-secondary);
     transition: color 0.1s ease;
     text-decoration: none;
+    white-space: nowrap !important;
   }
 
   .nav-item:hover {
@@ -213,6 +219,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-shrink: 0;
   }
 
   .theme-toggle {
