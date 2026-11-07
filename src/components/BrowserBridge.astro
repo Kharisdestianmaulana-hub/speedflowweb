@@ -33,19 +33,23 @@
           </div>
         </div>
 
-        <div class="browser-downloads">
-          <a href="/downloads/speedflow-edge-store.zip" download class="browser-btn font-mono" title="Download for Microsoft Edge">
-            <span>Microsoft Edge</span>
-            <span class="btn-zip text-brand">.zip</span>
+        <div class="browser-download-action">
+          <a
+            id="bridge-extension-btn"
+            href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/download/v0.1.0-beta/speedflow-extension-v1.0.0.zip"
+            download
+            class="btn btn-primary btn-extension-dl"
+            title="Download SpeedFlow Extension"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download Extension (.zip)</span>
+            <span class="btn-file-size font-mono" id="bridge-ext-size-tag">21 KB</span>
           </a>
-          <a href="/downloads/speedflow-firefox-amo.zip" download class="browser-btn font-mono" title="Download for Mozilla Firefox">
-            <span>Firefox AMO</span>
-            <span class="btn-zip text-brand">.zip</span>
-          </a>
-          <a href="/downloads/speedflow-extension.zip" download class="browser-btn font-mono" title="Download Chromium Source">
-            <span>Chromium</span>
-            <span class="btn-zip text-brand">.zip</span>
-          </a>
+          <span class="bridge-ext-note font-mono text-tertiary">Works on Microsoft Edge, Google Chrome, Brave, and Mozilla Firefox</span>
         </div>
       </div>
 

@@ -132,7 +132,11 @@ function applyLatestReleaseToDom(release: GitHubRelease) {
 
   const portableAsset = assets.find(a => 
     a.name.toLowerCase().includes('portable') && a.name.toLowerCase().endsWith('.zip')
-  ) || assets.find(a => a.name.toLowerCase().endsWith('.zip'));
+  ) || assets.find(a => a.name.toLowerCase().endsWith('.zip') && !a.name.toLowerCase().includes('extension'));
+
+  const extensionAsset = assets.find(a => 
+    a.name.toLowerCase().includes('extension') && a.name.toLowerCase().endsWith('.zip')
+  );
 
   const totalDownloads = assets.reduce((acc, cur) => acc + (cur.download_count || 0), 0);
 
@@ -157,6 +161,11 @@ function applyLatestReleaseToDom(release: GitHubRelease) {
   const heroDownloadBtn = document.getElementById('hero-download-btn') as HTMLAnchorElement | null;
   if (heroDownloadBtn && setupAsset) {
     heroDownloadBtn.href = setupAsset.browser_download_url;
+  }
+
+  const heroExtensionBtn = document.getElementById('hero-extension-btn') as HTMLAnchorElement | null;
+  if (heroExtensionBtn && extensionAsset) {
+    heroExtensionBtn.href = extensionAsset.browser_download_url;
   }
 
   // 3. Download Section elements
@@ -213,6 +222,17 @@ function applyLatestReleaseToDom(release: GitHubRelease) {
   const notesBody = document.getElementById('release-notes-body');
   if (notesBody && release.body) {
     notesBody.innerHTML = parseMarkdownToHtml(release.body);
+  }
+
+  // 5. Browser Extension Section
+  const bridgeExtensionBtn = document.getElementById('bridge-extension-btn') as HTMLAnchorElement | null;
+  const bridgeExtSizeTag = document.getElementById('bridge-ext-size-tag');
+  if (bridgeExtensionBtn && extensionAsset) {
+    bridgeExtensionBtn.href = extensionAsset.browser_download_url;
+    if (bridgeExtSizeTag) {
+      const kb = Math.round(extensionAsset.size / 1024);
+      bridgeExtSizeTag.textContent = `${kb} KB`;
+    }
   }
 }
 
@@ -390,6 +410,30 @@ export async function initGitHubRelease() {
     }));
   } catch (err) {
     console.warn('[SpeedFlow] Could not fetch latest release from GitHub:', err);
+  }
+
+  // 3. Fetch Live Repo Stars Count
+  fetchGitHubRepoStars();
+}
+
+async function fetchGitHubRepoStars() {
+  const REPO_API = 'https://api.github.com/repos/Kharisdestianmaulana-hub/speedflow';
+  try {
+    const response = await fetch(REPO_API, {
+      headers: {
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+    if (response.ok) {
+      const data = await response.json();
+      const stars = data.stargazers_count ?? 0;
+      const navStarCount = document.getElementById('nav-star-count');
+      if (navStarCount) {
+        navStarCount.textContent = stars.toString();
+      }
+    }
+  } catch (err) {
+    console.warn('[SpeedFlow] Could not fetch repo stars:', err);
   }
 }
 

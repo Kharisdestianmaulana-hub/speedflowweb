@@ -1872,3 +1872,84 @@ details[open] .faq-toggle-icon {
     align-items: center;
   }
 }
+
+
+/* ==========================================================================
+   NAVBAR GITHUB REPO STAR BUTTON
+   ========================================================================== */
+.nav-gh-star-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  height: 32px !important;
+  padding: 0 10px !important;
+  background-color: var(--surface-secondary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  color: var(--text-primary) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease !important;
+}
+
+.nav-gh-star-btn:hover {
+  background-color: var(--surface-hover) !important;
+  border-color: var(--brand-primary) !important;
+  color: var(--brand-primary) !important;
+}
+
+.nav-gh-star-btn .star-icon {
+  color: #FACC15 !important;
+}
+
+.nav-gh-star-btn .star-count {
+  font-size: 11px !important;
+  color: var(--text-secondary) !important;
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  padding: 1px 6px !important;
+  border-radius: var(--radius) !important;
+  margin-left: 2px !important;
+}
+
+@media (max-width: 480px) {
+  .nav-gh-star-btn .star-label {
+    display: none !important;
+  }
+  .nav-gh-star-btn {
+    padding: 0 6px !important;
+    gap: 4px !important;
+  }
+}
+
+/* ==========================================================================
+   BROWSER BRIDGE SINGLE DOWNLOAD BUTTON
+   ========================================================================== */
+.browser-download-action {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  margin-top: 4px !important;
+}
+
+.btn-extension-dl {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: fit-content !important;
+}
+
+.bridge-ext-note {
+  font-size: 11px !important;
+}
+
+@media (max-width: 768px) {
+  .browser-download-action {
+    width: 100% !important;
+  }
+  .btn-extension-dl {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
