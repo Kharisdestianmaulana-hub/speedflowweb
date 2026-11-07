@@ -69,41 +69,36 @@ const rows = [
       <p>How SpeedFlow compares to IDM, Gopeed, and regular browser downloads.</p>
     </div>
 
-    <!-- Mobile Segmented Competitor Switcher (Visible on mobile screens) -->
-    <div class="compare-mobile-nav font-mono">
-      <span class="mobile-nav-label">Compare with:</span>
-      <div class="mobile-nav-pills">
-        <button class="comp-tab-btn active" data-target="idm" type="button">vs IDM</button>
-        <button class="comp-tab-btn" data-target="gopeed" type="button">vs Gopeed</button>
-        <button class="comp-tab-btn" data-target="browser" type="button">vs Browser</button>
-      </div>
+    <!-- Responsive Scroll Wrapper -->
+    <div class="compare-scroll-hint font-mono text-tertiary">
+      <span>← Swipe horizontally to view full matrix →</span>
     </div>
 
-    <div class="compare-table-container pane show-idm" id="compare-table-box">
+    <div class="compare-table-container pane">
       <table class="compare-table">
         <thead>
           <tr>
-            <th class="col-metric">Metric / Feature</th>
+            <th class="col-metric">Metric / Capability</th>
             <th class="col-speedflow">
               <div class="th-brand-header">
                 <div class="th-brand-top">
                   <span class="th-brand-title">SpeedFlow</span>
                   <span class="badge badge-brand">Recommended</span>
                 </div>
-                <span class="th-brand-sub font-mono">Rust Native</span>
+                <span class="th-brand-sub font-mono">Rust • Slint • Tokio</span>
               </div>
             </th>
-            <th class="col-other col-idm">
+            <th class="col-other">
               <span class="th-other-title">IDM</span>
               <span class="th-other-sub font-mono">Delphi / C++</span>
             </th>
-            <th class="col-other col-gopeed">
+            <th class="col-other">
               <span class="th-other-title">Gopeed</span>
               <span class="th-other-sub font-mono">Go / Flutter</span>
             </th>
-            <th class="col-other col-browser">
+            <th class="col-other">
               <span class="th-other-title">Default Browser</span>
-              <span class="th-other-sub font-mono">Chrome / Edge</span>
+              <span class="th-other-sub font-mono">Chrome / Edge / Firefox</span>
             </th>
           </tr>
         </thead>
@@ -121,7 +116,7 @@ const rows = [
                   )}
                 </div>
               </td>
-              <td class="cell-other col-idm">
+              <td class="cell-other">
                 <div class="cell-val-wrapper">
                   <span class="cell-other-val">{row.idm.value}</span>
                   {row.idm.sub && (
@@ -129,7 +124,7 @@ const rows = [
                   )}
                 </div>
               </td>
-              <td class="cell-other col-gopeed">
+              <td class="cell-other">
                 <div class="cell-val-wrapper">
                   <span class="cell-other-val">{row.gopeed.value}</span>
                   {row.gopeed.sub && (
@@ -137,7 +132,7 @@ const rows = [
                   )}
                 </div>
               </td>
-              <td class="cell-other col-browser">
+              <td class="cell-other">
                 <div class="cell-val-wrapper">
                   <span class="cell-other-val">{row.browser.value}</span>
                   {row.browser.sub && (
@@ -153,24 +148,159 @@ const rows = [
   </div>
 </section>
 
-<script>
-  // Mobile competitor column switcher
-  const tabBtns = document.querySelectorAll('.comp-tab-btn');
-  const tableBox = document.getElementById('compare-table-box');
-
-  if (tableBox) {
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.getAttribute('data-target');
-        
-        tabBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        tableBox.classList.remove('show-idm', 'show-gopeed', 'show-browser');
-        if (target) {
-          tableBox.classList.add(`show-${target}`);
-        }
-      });
-    });
+<style>
+  .compare-scroll-hint {
+    display: none;
+    text-align: center;
+    font-size: 11px;
+    margin-bottom: 8px;
   }
-</script>
+
+  @media (max-width: 768px) {
+    .compare-scroll-hint {
+      display: block;
+    }
+  }
+
+  .compare-table-container {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .compare-table {
+    width: 100%;
+    min-width: 780px;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13px;
+  }
+
+  .compare-table thead tr {
+    background-color: var(--surface-secondary);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compare-table th {
+    padding: 16px 18px;
+    font-weight: 600;
+    vertical-align: bottom;
+  }
+
+  .col-metric {
+    width: 26%;
+    color: var(--text-secondary);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .col-speedflow {
+    width: 26%;
+    background-color: var(--brand-subtle);
+    border-left: 1px solid var(--border-strong);
+    border-right: 1px solid var(--border-strong);
+  }
+
+  .th-brand-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .th-brand-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .th-brand-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brand-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .th-brand-sub {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .col-other {
+    width: 16%;
+    color: var(--text-primary);
+  }
+
+  .th-other-title {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .th-other-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+  }
+
+  .compare-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background-color 0.1s ease;
+  }
+
+  .compare-table tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  .compare-table tbody tr:hover {
+    background-color: var(--surface-hover);
+  }
+
+  .compare-table td {
+    padding: 14px 18px;
+    vertical-align: middle;
+  }
+
+  .cell-metric {
+    color: var(--text-primary);
+    font-size: 13px;
+  }
+
+  .cell-speedflow {
+    background-color: var(--brand-subtle);
+    border-left: 1px solid var(--border-strong);
+    border-right: 1px solid var(--border-strong);
+  }
+
+  .cell-val-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cell-speedflow-val {
+    font-size: 13px;
+  }
+
+  .cell-speedflow-note {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .cell-other-val {
+    font-size: 13px;
+    color: var(--text-primary);
+  }
+
+  .cell-other-sub {
+    font-size: 11px;
+    color: var(--text-tertiary);
+  }
+</style>

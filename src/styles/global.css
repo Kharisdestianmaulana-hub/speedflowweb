@@ -317,32 +317,7 @@ html:not(.dark) .sun-icon { display: none; }
 html:not(.dark) .moon-icon { display: block; }
 
 @media (max-width: 600px) {
-  .container {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
-  .section-spacing {
-    padding: 48px 0 !important;
-  }
-  .section-head-minimal {
-    margin-bottom: 24px !important;
-  }
-  .section-head-minimal h2 {
-    font-size: 22px !important;
-  }
-  .section-head-minimal p {
-    font-size: 13px !important;
-  }
-  .nav-links { display: none !important; }
-}
-
-@media (max-width: 480px) {
-  #nav-version-badge {
-    display: none !important;
-  }
-  .navbar-inner {
-    padding: 0 14px !important;
-  }
+  .nav-links { display: none; }
 }
 
 /* ==========================================================================
@@ -461,70 +436,6 @@ html:not(.dark) .moon-icon { display: block; }
   }
   .hero-actions {
     justify-content: center !important;
-  }
-}
-
-@media (max-width: 540px) {
-  .hero-section {
-    padding: 36px 0 44px 0 !important;
-  }
-  .hero-headline {
-    font-size: 32px !important;
-    line-height: 1.15 !important;
-    text-align: center !important;
-  }
-  .hero-subhead {
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-    text-align: center !important;
-  }
-  .hero-actions {
-    width: 100% !important;
-    max-width: 320px !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 10px !important;
-    margin: 4px auto 0 auto !important;
-  }
-  .hero-actions .btn {
-    width: 100% !important;
-    height: 42px !important;
-    justify-content: center !important;
-  }
-  .hero-ext-pills, .hero-specs-line {
-    justify-content: center !important;
-    flex-wrap: wrap !important;
-    gap: 6px !important;
-    text-align: center !important;
-  }
-  .hero-specs-line {
-    font-size: 10.5px !important;
-  }
-  .monitor-display {
-    padding: 6px 6px 8px 6px !important;
-  }
-  .monitor-stand-neck {
-    width: 34px !important;
-    height: 22px !important;
-  }
-  .monitor-stand-base {
-    width: 110px !important;
-    height: 12px !important;
-    margin-bottom: 8px !important;
-  }
-  .monitor-desk-shadow {
-    width: 160px !important;
-    height: 8px !important;
-    margin-bottom: 8px !important;
-  }
-  .monitor-view-tags {
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 6px !important;
-  }
-  .monitor-tag-pill {
-    padding: 3px 8px !important;
-    font-size: 10px !important;
   }
 }
 
@@ -903,23 +814,10 @@ html:not(.dark) .moon-icon { display: block; }
   .extension-flat-pane {
     grid-template-columns: 1fr !important;
   }
-  .extension-left {
-    padding: 24px 20px !important;
-  }
-  .browser-downloads {
-    flex-direction: column !important;
-    width: 100% !important;
-    gap: 8px !important;
-  }
-  .browser-btn {
-    width: 100% !important;
-    justify-content: center !important;
-    padding: 8px 12px !important;
-  }
   .extension-right {
-    border-left: none !important;
-    border-top: 1px solid var(--border) !important;
-    padding: 20px 16px !important;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding: 24px;
   }
 }
 
@@ -1136,42 +1034,7 @@ html:not(.dark) .moon-icon { display: block; }
 
 @media (max-width: 600px) {
   .download-content {
-    padding: 28px 16px !important;
-  }
-  .download-actions {
-    width: 100% !important;
-    max-width: 320px !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 10px !important;
-    margin: 4px auto 0 auto !important;
-  }
-  .download-actions .btn {
-    width: 100% !important;
-    height: 42px !important;
-    justify-content: center !important;
-  }
-  .download-meta-row {
-    flex-direction: column !important;
-    gap: 6px !important;
-    text-align: center !important;
-  }
-  .download-meta-row .sep {
-    display: none !important;
-  }
-  .release-notes-details {
-    max-width: 100% !important;
-  }
-  .release-notes-body {
-    padding: 12px 14px !important;
-    max-height: 240px !important;
-  }
-  .dev-bar {
-    padding: 12px 16px !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    gap: 8px !important;
+    padding: 32px 20px;
   }
 }
 
@@ -1241,13 +1104,7 @@ html:not(.dark) .moon-icon { display: block; }
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    gap: 14px !important;
-    padding: 8px 16px !important;
-  }
-  .footer-nav {
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 12px 18px !important;
+    gap: 12px !important;
   }
 }
 
@@ -1359,59 +1216,20 @@ details[open] .faq-toggle-icon {
   margin: 0 !important;
 }
 
-@media (max-width: 600px) {
-  .faq-question {
-    padding: 14px 16px !important;
-    font-size: 13.5px !important;
-  }
-  .faq-answer {
-    padding: 0 16px 14px 16px !important;
-    font-size: 12.5px !important;
-  }
-}
-
 /* ==========================================================================
    BENCHMARK & COMPARISON TABLE (FLAT MATRIX)
    ========================================================================== */
-.compare-mobile-nav {
+.compare-scroll-hint {
   display: none !important;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 14px;
+  text-align: center !important;
+  font-size: 11px !important;
+  margin-bottom: 8px !important;
 }
 
-.mobile-nav-label {
-  font-size: 11px;
-  color: var(--text-tertiary);
-}
-
-.mobile-nav-pills {
-  display: inline-flex;
-  gap: 6px;
-}
-
-.comp-tab-btn {
-  padding: 4px 10px;
-  font-size: 11px;
-  border-radius: var(--radius);
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.comp-tab-btn:hover {
-  background-color: var(--surface-hover);
-  color: var(--text-primary);
-}
-
-.comp-tab-btn.active {
-  background-color: var(--brand-subtle);
-  border-color: var(--brand-primary);
-  color: var(--brand-primary);
-  font-weight: 600;
+@media (max-width: 768px) {
+  .compare-scroll-hint {
+    display: block !important;
+  }
 }
 
 .compare-table-container {
@@ -1554,61 +1372,6 @@ details[open] .faq-toggle-icon {
 .cell-other-sub {
   font-size: 11px !important;
   color: var(--text-tertiary) !important;
-}
-
-@media (max-width: 768px) {
-  .compare-mobile-nav {
-    display: flex !important;
-  }
-  .compare-table-container {
-    overflow-x: hidden !important;
-    width: 100% !important;
-  }
-  .compare-table {
-    min-width: 100% !important;
-    width: 100% !important;
-  }
-  .compare-table th, .compare-table td {
-    padding: 10px 8px !important;
-  }
-  .col-metric {
-    width: 36% !important;
-    font-size: 10px !important;
-    padding: 8px 6px !important;
-  }
-  .col-speedflow {
-    width: 34% !important;
-    padding: 8px 6px !important;
-  }
-  .th-brand-title {
-    font-size: 13px !important;
-  }
-  .th-brand-top .badge {
-    display: none !important;
-  }
-  .col-other {
-    display: none !important;
-    width: 30% !important;
-    padding: 8px 6px !important;
-  }
-  .show-idm .col-idm {
-    display: table-cell !important;
-  }
-  .show-gopeed .col-gopeed {
-    display: table-cell !important;
-  }
-  .show-browser .col-browser {
-    display: table-cell !important;
-  }
-  .cell-metric {
-    font-size: 11px !important;
-  }
-  .cell-speedflow-val, .cell-other-val {
-    font-size: 12px !important;
-  }
-  .cell-speedflow-note, .cell-other-sub {
-    font-size: 10px !important;
-  }
 }
 
 /* ==========================================================================
@@ -1815,24 +1578,4 @@ details[open] .faq-toggle-icon {
   align-items: center !important;
   gap: 8px !important;
   flex-wrap: wrap !important;
-}
-
-@media (max-width: 600px) {
-  .archive-modal-card {
-    max-height: 90vh !important;
-  }
-  .archive-modal-content {
-    padding: 18px 14px !important;
-  }
-  .archive-item-head {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-  }
-  .archive-item-actions {
-    width: 100% !important;
-  }
-  .archive-item-actions .btn {
-    flex: 1 !important;
-    justify-content: center !important;
-  }
 }
