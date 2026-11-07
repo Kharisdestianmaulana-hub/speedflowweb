@@ -17,8 +17,16 @@ interface GitHubRelease {
   assets: ReleaseAsset[];
 }
 
-const CACHE_KEY = 'speedflow_github_release_v1';
+interface CachePayload {
+  timestamp: number;
+  latest: GitHubRelease;
+  all: GitHubRelease[];
+}
+
+const CACHE_KEY = 'speedflow_github_releases_v2';
 const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+
+let cachedReleases: GitHubRelease[] = [];
 
 function formatBytes(bytes: number): string {
   if (!bytes || bytes === 0) return '0 MB';
@@ -97,11 +105,8 @@ function parseMarkdownToHtml(markdown: string): string {
 
 function formatInlineMarkdown(text: string): string {
   let safe = escapeHtml(text);
-  // Bold: **text**
   safe = safe.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-  // Inline code: `code`
   safe = safe.replace(/`([^`]+)`/g, '<code>$1</code>');
-  // Links: [text](url)
   safe = safe.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
   return safe;
 }
@@ -115,12 +120,11 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#039;');
 }
 
-function applyReleaseToDom(release: GitHubRelease) {
+function applyLatestReleaseToDom(release: GitHubRelease) {
   const isPre = Boolean(release.prerelease);
   const tag = release.tag_name || 'v0.1.0-beta';
   const pubDate = formatDate(release.published_at);
 
-  // Find assets
   const assets = release.assets || [];
   const setupAsset = assets.find(a => 
     a.name.toLowerCase().includes('setup') && a.name.toLowerCase().endsWith('.exe')
@@ -212,14 +216,144 @@ function applyReleaseToDom(release: GitHubRelease) {
   }
 }
 
+function renderArchiveModalContent(allReleases: GitHubRelease[]) {
+  const container = document.getElementById('archive-modal-content');
+  if (!container) return;
+
+  const olderReleases = allReleases.slice(1);
+  const latestTag = allReleases[0]?.tag_name || 'v0.1.0-beta';
+
+  if (olderReleases.length === 0) {
+    // EMPTY STATE: No older versions exist yet
+    container.innerHTML = `
+      <div class="archive-empty-state">
+        <div class="empty-icon-wrap" aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div class="empty-badge">
+          <span class="badge badge-brand font-mono">Initial Public Release</span>
+        </div>
+        <h4 class="empty-title">No Previous Versions Yet</h4>
+        <p class="empty-desc">
+          <code>${escapeHtml(latestTag)}</code> is the very first public release of SpeedFlow. Older versions and past release archives will automatically appear here as future updates are published.
+        </p>
+        <div class="empty-action">
+          <a href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm font-mono">
+            <span>View Releases on GitHub ↗</span>
+          </a>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // POPULATED STATE: When past releases exist
+  container.innerHTML = `
+    <div class="archive-list">
+      ${olderReleases.map(rel => {
+        const assets = rel.assets || [];
+        const setupAsset = assets.find(a => 
+          a.name.toLowerCase().includes('setup') && a.name.toLowerCase().endsWith('.exe')
+        ) || assets.find(a => a.name.toLowerCase().endsWith('.exe'));
+
+        const portableAsset = assets.find(a => 
+          a.name.toLowerCase().includes('portable') && a.name.toLowerCase().endsWith('.zip')
+        ) || assets.find(a => a.name.toLowerCase().endsWith('.zip'));
+
+        return `
+          <div class="archive-item">
+            <div class="archive-item-head">
+              <div class="archive-item-tag">
+                <span class="archive-tag-name font-mono font-bold">${escapeHtml(rel.tag_name)}</span>
+                <span class="badge ${rel.prerelease ? 'badge-warning' : 'badge-brand'}">
+                  ${rel.prerelease ? 'Pre-release' : 'Stable'}
+                </span>
+              </div>
+              <span class="archive-item-date font-mono text-tertiary">${formatDate(rel.published_at)}</span>
+            </div>
+            <div class="archive-item-actions">
+              ${setupAsset ? `
+                <a href="${setupAsset.browser_download_url}" class="btn btn-primary btn-sm font-mono" download>
+                  Installer (${formatBytes(setupAsset.size)})
+                </a>
+              ` : ''}
+              ${portableAsset ? `
+                <a href="${portableAsset.browser_download_url}" class="btn btn-secondary btn-sm font-mono" download>
+                  Portable (${formatBytes(portableAsset.size)})
+                </a>
+              ` : ''}
+              <a href="${rel.html_url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm font-mono">
+                Notes ↗
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
+function initArchiveModalListeners() {
+  const openBtn = document.getElementById('btn-open-archive-modal');
+  const closeBtn = document.getElementById('btn-close-archive-modal');
+  const backdrop = document.getElementById('archive-modal-backdrop');
+
+  const openModal = () => {
+    if (!backdrop) return;
+    renderArchiveModalContent(cachedReleases);
+    backdrop.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    if (!backdrop) return;
+    backdrop.classList.remove('is-open');
+    document.body.style.overflow = '';
+  };
+
+  if (openBtn) {
+    openBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeModal();
+    });
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) {
+        closeModal();
+      }
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop && backdrop.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+}
+
 export async function initGitHubRelease() {
-  // 1. Try Cache First for zero-lag rendering
+  initArchiveModalListeners();
+
+  // 1. Try Cache First for zero-latency rendering
   try {
     const rawCache = localStorage.getItem(CACHE_KEY);
     if (rawCache) {
-      const parsed = JSON.parse(rawCache);
-      if (parsed && parsed.data && (Date.now() - parsed.timestamp < CACHE_TTL_MS)) {
-        applyReleaseToDom(parsed.data);
+      const parsed: CachePayload = JSON.parse(rawCache);
+      if (parsed && parsed.latest && (Date.now() - parsed.timestamp < CACHE_TTL_MS)) {
+        cachedReleases = parsed.all || [parsed.latest];
+        applyLatestReleaseToDom(parsed.latest);
       }
     }
   } catch (err) {
@@ -244,16 +378,15 @@ export async function initGitHubRelease() {
       return; // No published releases yet
     }
 
-    // Latest published release (including prerelease) is index 0
+    cachedReleases = releases;
     const latestRelease = releases[0];
 
-    // Apply to DOM
-    applyReleaseToDom(latestRelease);
+    applyLatestReleaseToDom(latestRelease);
 
-    // Save to Cache
     localStorage.setItem(CACHE_KEY, JSON.stringify({
       timestamp: Date.now(),
-      data: latestRelease
+      latest: latestRelease,
+      all: releases
     }));
   } catch (err) {
     console.warn('[SpeedFlow] Could not fetch latest release from GitHub:', err);

@@ -1373,3 +1373,209 @@ details[open] .faq-toggle-icon {
   font-size: 11px !important;
   color: var(--text-tertiary) !important;
 }
+
+/* ==========================================================================
+   VERSION ARCHIVE MODAL & EMPTY STATE
+   ========================================================================== */
+.btn-archive-trigger {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 11px !important;
+  color: var(--text-secondary) !important;
+  cursor: pointer !important;
+  transition: color 0.15s ease !important;
+}
+
+.btn-archive-trigger:hover {
+  color: var(--brand-primary) !important;
+  text-decoration: underline !important;
+}
+
+.archive-modal-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2000 !important;
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(3px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.archive-modal-backdrop.is-open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.archive-modal-card {
+  width: 100% !important;
+  max-width: 540px !important;
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  max-height: 85vh !important;
+  overflow: hidden !important;
+  transform: translateY(12px) !important;
+  transition: transform 0.2s ease !important;
+}
+
+.archive-modal-backdrop.is-open .archive-modal-card {
+  transform: translateY(0) !important;
+}
+
+.archive-modal-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 14px 18px !important;
+  background-color: var(--surface-secondary) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.modal-title-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.modal-title {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  color: var(--text-primary) !important;
+  margin: 0 !important;
+}
+
+.modal-close-btn {
+  background: none !important;
+  border: 1px solid transparent !important;
+  border-radius: var(--radius) !important;
+  color: var(--text-tertiary) !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  width: 28px !important;
+  height: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
+}
+
+.modal-close-btn:hover {
+  background-color: var(--surface-hover) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+
+.archive-modal-content {
+  padding: 24px !important;
+  overflow-y: auto !important;
+}
+
+/* Empty State */
+.archive-empty-state {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 20px 8px !important;
+  gap: 12px !important;
+}
+
+.empty-icon-wrap {
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50% !important;
+  background-color: var(--surface-secondary) !important;
+  border: 1px solid var(--border) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--text-tertiary) !important;
+  margin-bottom: 4px !important;
+}
+
+.empty-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  margin: 0 !important;
+}
+
+.empty-desc {
+  font-size: 13px !important;
+  color: var(--text-secondary) !important;
+  line-height: 1.6 !important;
+  max-width: 420px !important;
+  margin: 0 !important;
+}
+
+.empty-desc code {
+  background-color: var(--surface-secondary) !important;
+  padding: 2px 6px !important;
+  border-radius: var(--radius) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--brand-primary) !important;
+}
+
+.empty-action {
+  margin-top: 8px !important;
+}
+
+/* Populated Archive List */
+.archive-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.archive-item {
+  background-color: var(--surface-secondary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  padding: 14px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.archive-item-head {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+.archive-item-tag {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.archive-tag-name {
+  font-size: 14px !important;
+  color: var(--text-primary) !important;
+}
+
+.archive-item-date {
+  font-size: 11px !important;
+}
+
+.archive-item-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}

@@ -67,6 +67,14 @@
           <span class="sep">•</span>
           <span>RAM: &lt; 35 MB</span>
           <span class="sep">•</span>
+          <button id="btn-open-archive-modal" class="btn-archive-trigger font-mono" type="button" title="View past versions archive">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Older Versions</span>
+          </button>
+          <span class="sep">•</span>
           <a
             id="release-github-link"
             href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/tag/v0.1.0-beta"
@@ -116,6 +124,45 @@
         <button id="copy-btn-minimal" class="btn btn-ghost btn-sm" title="Copy command">
           <span id="copy-status">Copy</span>
         </button>
+      </div>
+    </div>
+
+    <!-- Option 1: Release Archive Modal Dialog -->
+    <div id="archive-modal-backdrop" class="archive-modal-backdrop" aria-hidden="true">
+      <div class="archive-modal-card" role="dialog" aria-modal="true" aria-labelledby="archive-modal-title">
+        <div class="archive-modal-header">
+          <div class="modal-title-wrap font-mono">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <h3 id="archive-modal-title" class="modal-title">Version Archive</h3>
+          </div>
+          <button id="btn-close-archive-modal" class="modal-close-btn" aria-label="Close dialog">✕</button>
+        </div>
+        <div id="archive-modal-content" class="archive-modal-content">
+          <!-- Populated dynamically by github-release.ts -->
+          <div class="archive-empty-state">
+            <div class="empty-icon-wrap" aria-hidden="true">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div class="empty-badge">
+              <span class="badge badge-brand font-mono">Initial Public Release</span>
+            </div>
+            <h4 class="empty-title">No Previous Versions Yet</h4>
+            <p class="empty-desc">
+              <code>v0.1.0-beta</code> is the very first public release of SpeedFlow. Previous versions and standalone build archives will automatically appear here as future updates are published.
+            </p>
+            <div class="empty-action">
+              <a href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm font-mono">
+                <span>View Releases on GitHub ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
