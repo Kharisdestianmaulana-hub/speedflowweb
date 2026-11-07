@@ -16,6 +16,20 @@ export const translations: Record<Lang, Record<string, string>> = {
     nav_star_label: "Star SpeedFlow on GitHub",
     nav_download_btn: "Download",
 
+    // Drawer Mega Menu
+    drawer_section_title: "ADDITIONAL MENU & SPEEDFLOW ECOSYSTEM",
+    drawer_section_sub: "SpeedFlow — High-Performance Download Manager",
+    drawer_compare_title: "Comparison",
+    drawer_compare_desc: "SpeedFlow vs IDM, Gopeed & default browsers",
+    drawer_changelog_title: "Changelog & Archive",
+    drawer_changelog_desc: "v0.1.0-beta release notes and past versions",
+    drawer_privacy_title: "Privacy & Clean Software",
+    drawer_privacy_desc: "Zero ads, no data telemetry, 100% local-first",
+    drawer_guide_title: "Extension Setup Guide",
+    drawer_guide_desc: "Step-by-step setup for Chrome, Edge, and Firefox",
+    drawer_community_title: "Community & Issues",
+    drawer_community_desc: "Report bugs, request features, or contribute on GitHub",
+
     // Hero
     hero_badge_status: "Pre-release",
     hero_headline_1: "Faster downloads.",
@@ -309,6 +323,20 @@ export const translations: Record<Lang, Record<string, string>> = {
     nav_star: "Bintang",
     nav_star_label: "Beri Bintang SpeedFlow di GitHub",
     nav_download_btn: "Unduh",
+
+    // Drawer Mega Menu
+    drawer_section_title: "MENU TAMBAHAN & EKOSISTEM SPEEDFLOW",
+    drawer_section_sub: "SpeedFlow — Pengelola Unduhan Berkinerja Tinggi",
+    drawer_compare_title: "Perbandingan",
+    drawer_compare_desc: "SpeedFlow vs IDM, Gopeed & browser bawaan",
+    drawer_changelog_title: "Log Perubahan & Arsip",
+    drawer_changelog_desc: "Catatan rilis v0.1.0-beta dan riwayat versi",
+    drawer_privacy_title: "Privasi & Software Bersih",
+    drawer_privacy_desc: "Bebas iklan, tanpa pelacakan, 100% lokal mandiri",
+    drawer_guide_title: "Panduan Pasang Ekstensi",
+    drawer_guide_desc: "Panduan setup untuk Chrome, Edge, dan Firefox",
+    drawer_community_title: "Komunitas & Masalah",
+    drawer_community_desc: "Laporkan bug, ajukan fitur, atau kontribusi GitHub",
 
     // Hero
     hero_badge_status: "Pra-rilis",

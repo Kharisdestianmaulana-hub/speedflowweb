@@ -11,14 +11,11 @@
       <span class="badge badge-brand nav-version-badge" id="nav-version-badge">v0.1.0-beta</span>
     </a>
 
-    <!-- Desktop Nav Links -->
+    <!-- Desktop Nav Links (Clean 4 Core Links) -->
     <nav class="nav-links">
       <a href="#how-it-works" class="nav-item" data-i18n="nav_how_it_works">How It Works</a>
       <a href="#features" class="nav-item" data-i18n="nav_features">Features</a>
-      <a href="#compare" class="nav-item" data-i18n="nav_compare">Compare</a>
-      <a href="#privacy" class="nav-item" data-i18n="nav_privacy">Privacy</a>
       <a href="#extension" class="nav-item" data-i18n="nav_extension">Extension</a>
-      <a href="#download" class="nav-item" data-i18n="nav_download">Download</a>
       <a href="#faq" class="nav-item" data-i18n="nav_faq">FAQ</a>
     </nav>
 
@@ -51,7 +48,7 @@
         <button type="button" class="lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
       </div>
 
-      <!-- Theme Switcher (Visible on both Desktop & Mobile) -->
+      <!-- Theme Switcher (Light/Dark) -->
       <button id="theme-toggle-btn" class="theme-toggle btn-ghost" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
         <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="4"></circle>
@@ -79,20 +76,21 @@
         <span data-i18n="nav_download_btn">Download</span>
       </a>
 
-      <!-- Mobile Hamburger Menu Button -->
+      <!-- Hamburger Mega-Menu Toggle Button (Desktop & Mobile) -->
       <button
-        id="mobile-menu-toggle"
-        class="mobile-menu-btn"
-        aria-label="Toggle Navigation Menu"
+        id="mega-menu-toggle"
+        class="menu-hamburger-btn"
+        aria-label="Toggle Additional Menu & Ecosystem"
         aria-expanded="false"
         type="button"
+        title="Menu Tambahan & Ekosistem"
       >
-        <svg class="icon-hamburger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg class="icon-hamburger" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
-        <svg class="icon-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg class="icon-close" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -100,32 +98,120 @@
     </div>
   </div>
 
-  <!-- Mobile Navigation Dropdown Drawer -->
-  <div id="mobile-menu-drawer" class="mobile-menu-drawer">
-    <div class="container mobile-menu-inner">
-      <div class="mobile-lang-row">
-        <span class="mobile-lang-label font-mono">Language:</span>
-        <div class="lang-switch-wrap font-mono" role="group">
-          <button type="button" class="lang-btn active" data-lang="en">EN</button>
-          <span class="lang-divider">/</span>
-          <button type="button" class="lang-btn" data-lang="id">ID</button>
+  <!-- Mega Menu Dropdown Drawer (Inspired by Baku PDF) -->
+  <div id="mega-menu-drawer" class="mega-menu-drawer" aria-hidden="true">
+    <div class="container mega-menu-inner">
+      <!-- Header Row: Title & Subtitle -->
+      <div class="mega-menu-header font-mono">
+        <span class="mega-header-title" data-i18n="drawer_section_title">MENU TAMBAHAN &amp; EKOSISTEM SPEEDFLOW</span>
+        <span class="mega-header-sub text-tertiary desktop-only" data-i18n="drawer_section_sub">SpeedFlow — High-Performance Download Manager</span>
+      </div>
+
+      <!-- Mobile Navigation Core Links (Only visible on mobile screens) -->
+      <div class="mobile-core-nav mobile-only">
+        <div class="mobile-nav-pills font-mono">
+          <a href="#how-it-works" class="drawer-nav-item" data-i18n="nav_how_it_works">How It Works</a>
+          <a href="#features" class="drawer-nav-item" data-i18n="nav_features">Features</a>
+          <a href="#extension" class="drawer-nav-item" data-i18n="nav_extension">Extension</a>
+          <a href="#faq" class="drawer-nav-item" data-i18n="nav_faq">FAQ</a>
         </div>
       </div>
 
-      <nav class="mobile-nav-list font-mono">
-        <a href="#how-it-works" class="mobile-nav-link" data-i18n="nav_how_it_works">How It Works</a>
-        <a href="#features" class="mobile-nav-link" data-i18n="nav_features">Features</a>
-        <a href="#compare" class="mobile-nav-link" data-i18n="nav_compare">Comparison</a>
-        <a href="#privacy" class="mobile-nav-link" data-i18n="nav_privacy">Privacy & Safety</a>
-        <a href="#extension" class="mobile-nav-link" data-i18n="nav_extension">Browser Extension</a>
-        <a href="#download" class="mobile-nav-link" data-i18n="nav_download">Downloads</a>
-        <a href="#faq" class="mobile-nav-link" data-i18n="nav_faq">FAQ</a>
-      </nav>
+      <!-- 5-Card Ecosystem Grid (Desktop: 5 Columns, Mobile: Responsive Stack) -->
+      <div class="mega-cards-grid">
+        <!-- Card 1: Comparison -->
+        <a href="#compare" class="mega-card pane drawer-nav-item">
+          <div class="mega-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="17 1 21 5 17 9"></polyline>
+              <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+              <polyline points="7 23 3 19 7 15"></polyline>
+              <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+            </svg>
+          </div>
+          <div class="mega-card-info">
+            <div class="mega-card-title-row">
+              <strong class="mega-card-title" data-i18n="drawer_compare_title">Comparison</strong>
+              <span class="mega-card-arrow">↗</span>
+            </div>
+            <p class="mega-card-desc" data-i18n="drawer_compare_desc">SpeedFlow vs IDM, Gopeed &amp; default browsers</p>
+          </div>
+        </a>
 
-      <div class="mobile-menu-divider"></div>
+        <!-- Card 2: Extension Setup Guide -->
+        <a href="#extension-guide" class="mega-card pane drawer-nav-item">
+          <div class="mega-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <div class="mega-card-info">
+            <div class="mega-card-title-row">
+              <strong class="mega-card-title" data-i18n="drawer_guide_title">Extension Setup Guide</strong>
+              <span class="mega-card-arrow">↗</span>
+            </div>
+            <p class="mega-card-desc" data-i18n="drawer_guide_desc">Step-by-step setup for Chrome, Edge, and Firefox</p>
+          </div>
+        </a>
 
-      <div class="mobile-menu-actions">
-        <!-- Mobile GitHub Star Button -->
+        <!-- Card 3: Privacy & Clean Software -->
+        <a href="#privacy" class="mega-card pane drawer-nav-item">
+          <div class="mega-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <div class="mega-card-info">
+            <div class="mega-card-title-row">
+              <strong class="mega-card-title" data-i18n="drawer_privacy_title">Privacy &amp; Clean Software</strong>
+              <span class="mega-card-arrow">↗</span>
+            </div>
+            <p class="mega-card-desc" data-i18n="drawer_privacy_desc">Zero ads, no data telemetry, 100% local-first</p>
+          </div>
+        </a>
+
+        <!-- Card 4: Changelog & Archive -->
+        <a href="#download" class="mega-card pane drawer-nav-item" id="mega-link-archive">
+          <div class="mega-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+          </div>
+          <div class="mega-card-info">
+            <div class="mega-card-title-row">
+              <strong class="mega-card-title" data-i18n="drawer_changelog_title">Changelog &amp; Archive</strong>
+              <span class="mega-card-arrow">↗</span>
+            </div>
+            <p class="mega-card-desc" data-i18n="drawer_changelog_desc">v0.1.0-beta release notes and past versions</p>
+          </div>
+        </a>
+
+        <!-- Card 5: Community & Issues -->
+        <a href="https://github.com/Kharisdestianmaulana-hub/speedflow/issues" target="_blank" rel="noopener noreferrer" class="mega-card pane drawer-nav-item">
+          <div class="mega-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <div class="mega-card-info">
+            <div class="mega-card-title-row">
+              <strong class="mega-card-title" data-i18n="drawer_community_title">Community &amp; Issues</strong>
+              <span class="mega-card-arrow">↗</span>
+            </div>
+            <p class="mega-card-desc" data-i18n="drawer_community_desc">Report bugs, request features, or contribute on GitHub</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Mobile Actions Row (Download & Star CTA on mobile) -->
+      <div class="mobile-mega-actions mobile-only">
         <a
           href="https://github.com/Kharisdestianmaulana-hub/speedflow"
           target="_blank"
@@ -142,19 +228,18 @@
           <span id="mobile-nav-star-count" class="star-count font-mono">0</span>
         </a>
 
-        <!-- Mobile Download CTA Button -->
         <a
           id="mobile-nav-download-btn"
           href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/download/v0.1.0-beta/SpeedFlow-Setup-v0.1.0.exe"
           class="btn btn-primary mobile-download-cta"
           download
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          <span data-i18n="hero_btn_download">Download for Windows</span>
+          <span data-i18n="nav_download_btn">Download</span>
         </a>
       </div>
     </div>
@@ -165,35 +250,36 @@
   .navbar-wrapper {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
     background-color: var(--surface);
     border-bottom: 1px solid var(--border);
-    width: 100%;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   .navbar-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 54px;
-    max-width: 1140px !important;
-    width: 100% !important;
-    padding: 0 24px !important;
+    height: 64px;
+    max-width: 1200px !important;
+    padding: 0 24px;
+    gap: 16px;
   }
 
   .brand-link {
     display: flex;
     align-items: center;
     gap: 8px;
+    text-decoration: none;
     font-weight: 700;
     font-size: 15px;
-    color: var(--text-primary);
-    text-decoration: none;
+    letter-spacing: -0.02em;
     flex-shrink: 0;
   }
 
   .brand-img {
-    display: block;
+    border-radius: 4px;
     flex-shrink: 0;
   }
 
@@ -211,30 +297,31 @@
     margin-left: 2px;
   }
 
+  /* 4 Core Nav Links */
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 24px;
     flex-shrink: 0;
   }
 
   .nav-item {
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 500;
     color: var(--text-secondary);
-    transition: color 0.1s ease;
+    transition: color 0.12s ease;
     text-decoration: none;
     white-space: nowrap !important;
   }
 
   .nav-item:hover {
-    color: var(--text-primary);
+    color: var(--brand-primary);
   }
 
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     flex-shrink: 0;
   }
 
@@ -281,18 +368,7 @@
     user-select: none;
   }
 
-  .mobile-lang-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4px 10px;
-  }
-
-  .mobile-lang-label {
-    font-size: 12px;
-    color: var(--text-tertiary);
-  }
-
+  /* Theme Switcher */
   .theme-toggle {
     width: 32px;
     height: 32px;
@@ -328,9 +404,47 @@
     display: block;
   }
 
-  /* Hamburger Menu Button */
-  .mobile-menu-btn {
-    display: none;
+  /* GitHub Star Button (Compact) */
+  .nav-gh-star-btn {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 10px;
+    background-color: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .nav-gh-star-btn:hover {
+    border-color: var(--brand-primary);
+    color: var(--brand-primary);
+    background-color: var(--surface-hover);
+  }
+
+  .star-icon {
+    color: #FACC15;
+    flex-shrink: 0;
+  }
+
+  .star-count {
+    font-size: 11px;
+    padding: 1px 5px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-secondary);
+  }
+
+  /* Hamburger Mega-Menu Button */
+  .menu-hamburger-btn {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 32px;
@@ -345,38 +459,45 @@
     flex-shrink: 0;
   }
 
-  .mobile-menu-btn:hover {
+  .menu-hamburger-btn:hover {
     background-color: var(--surface-hover);
     border-color: var(--brand-primary);
     color: var(--brand-primary);
   }
 
-  .mobile-menu-btn .icon-close {
+  .menu-hamburger-btn.is-active {
+    background-color: var(--surface-hover);
+    border-color: var(--brand-primary);
+    color: var(--brand-primary);
+  }
+
+  .menu-hamburger-btn .icon-close {
     display: none;
   }
 
-  .mobile-menu-btn.is-active .icon-hamburger {
+  .menu-hamburger-btn.is-active .icon-hamburger {
     display: none;
   }
 
-  .mobile-menu-btn.is-active .icon-close {
+  .menu-hamburger-btn.is-active .icon-close {
     display: block;
   }
 
-  /* Mobile Drawer */
-  .mobile-menu-drawer {
+  /* Mega Menu Dropdown Drawer (Inspired by Baku PDF) */
+  .mega-menu-drawer {
     display: none;
     background-color: var(--surface);
+    border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45);
-    animation: drawerSlideDown 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+    animation: megaMenuSlideDown 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .mobile-menu-drawer.is-open {
+  .mega-menu-drawer.is-open {
     display: block;
   }
 
-  @keyframes drawerSlideDown {
+  @keyframes megaMenuSlideDown {
     from {
       opacity: 0;
       transform: translateY(-8px);
@@ -387,45 +508,160 @@
     }
   }
 
-  .mobile-menu-inner {
-    padding: 16px 20px 20px 20px;
+  .mega-menu-inner {
+    padding: 18px 24px 22px 24px;
     display: flex;
     flex-direction: column;
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .mega-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+
+  .mega-header-title {
+    color: var(--brand-primary);
+    font-weight: 700;
+  }
+
+  .mega-header-sub {
+    font-size: 11px;
+  }
+
+  /* 5-Card Grid */
+  .mega-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 12px;
   }
 
-  .mobile-nav-list {
+  .mega-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 14px;
+    border: 1px solid var(--border);
+    background-color: var(--surface-secondary);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.15s ease;
+  }
+
+  .mega-card:hover {
+    background-color: var(--surface-hover);
+    border-color: var(--brand-primary);
+    transform: translateY(-2px);
+  }
+
+  .mega-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--brand-primary);
+    margin-bottom: 10px;
+    transition: all 0.15s ease;
+  }
+
+  .mega-card:hover .mega-card-icon {
+    border-color: var(--brand-primary);
+    color: #fff;
+    background-color: var(--brand-primary);
+  }
+
+  .mega-card-info {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    width: 100%;
   }
 
-  .mobile-nav-link {
-    display: block;
-    padding: 9px 12px;
+  .mega-card-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .mega-card-title {
     font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .mega-card-arrow {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    transition: transform 0.15s ease, color 0.15s ease;
+  }
+
+  .mega-card:hover .mega-card-arrow {
+    color: var(--brand-primary);
+    transform: translate(2px, -2px);
+  }
+
+  .mega-card-desc {
+    font-size: 11px;
     color: var(--text-secondary);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* Mobile Specific Elements */
+  .mobile-only {
+    display: none;
+  }
+
+  .mobile-core-nav {
+    margin-bottom: 2px;
+  }
+
+  .mobile-nav-pills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .mobile-nav-pills .drawer-nav-item {
+    display: block;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 12.5px;
+    font-weight: 500;
+    background-color: var(--surface-secondary);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
+    color: var(--text-primary);
     text-decoration: none;
     transition: all 0.1s ease;
   }
 
-  .mobile-nav-link:hover {
-    background-color: var(--surface-hover);
+  .mobile-nav-pills .drawer-nav-item:hover {
+    border-color: var(--brand-primary);
     color: var(--brand-primary);
   }
 
-  .mobile-menu-divider {
-    height: 1px;
-    background-color: var(--border);
-    width: 100%;
-    margin: 4px 0;
-  }
-
-  .mobile-menu-actions {
+  .mobile-mega-actions {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 4px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
   }
 
   .mobile-star-cta {
@@ -459,6 +695,14 @@
     justify-content: center;
     font-size: 13px;
     font-weight: 600;
+    gap: 8px;
+  }
+
+  /* Responsive Breakpoints */
+  @media (max-width: 1024px) {
+    .mega-cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   @media (max-width: 860px) {
@@ -468,8 +712,22 @@
     .desktop-only {
       display: none !important;
     }
-    .mobile-menu-btn {
-      display: inline-flex;
+    .mobile-only {
+      display: block;
+    }
+    .mega-cards-grid {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .mega-card {
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+    }
+    .mega-card-icon {
+      margin-bottom: 0;
+      flex-shrink: 0;
     }
   }
 
@@ -486,6 +744,9 @@
     .nav-version-badge {
       font-size: 10px !important;
       padding: 2px 6px !important;
+    }
+    .mega-menu-inner {
+      padding: 14px 14px 18px 14px;
     }
   }
 </style>
@@ -508,24 +769,54 @@
     });
   }
 
-  // Mobile Hamburger Menu Logic
-  const menuToggle = document.getElementById('mobile-menu-toggle');
-  const menuDrawer = document.getElementById('mobile-menu-drawer');
-  const drawerLinks = document.querySelectorAll('.mobile-nav-link');
+  // Mega-Menu Hamburger Toggle Logic (Unified Desktop & Mobile)
+  const megaToggle = document.getElementById('mega-menu-toggle');
+  const megaDrawer = document.getElementById('mega-menu-drawer');
+  const drawerLinks = document.querySelectorAll('.drawer-nav-item');
 
-  if (menuToggle && menuDrawer) {
-    menuToggle.addEventListener('click', () => {
-      const isOpen = menuDrawer.classList.toggle('is-open');
-      menuToggle.classList.toggle('is-active', isOpen);
-      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  function closeMegaMenu() {
+    if (megaDrawer && megaToggle) {
+      megaDrawer.classList.remove('is-open');
+      megaToggle.classList.remove('is-active');
+      megaToggle.setAttribute('aria-expanded', 'false');
+      megaDrawer.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  function toggleMegaMenu() {
+    if (!megaDrawer || !megaToggle) return;
+    const isOpen = megaDrawer.classList.toggle('is-open');
+    megaToggle.classList.toggle('is-active', isOpen);
+    megaToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    megaDrawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  }
+
+  if (megaToggle && megaDrawer) {
+    megaToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMegaMenu();
     });
 
+    // Close when clicking any nav item inside the drawer
     drawerLinks.forEach(link => {
       link.addEventListener('click', () => {
-        menuDrawer.classList.remove('is-open');
-        menuToggle.classList.remove('is-active');
-        menuToggle.setAttribute('aria-expanded', 'false');
+        closeMegaMenu();
       });
+    });
+
+    // Close when clicking outside of the navbar/drawer
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (megaDrawer.classList.contains('is-open') && !megaDrawer.contains(target) && !megaToggle.contains(target)) {
+        closeMegaMenu();
+      }
+    });
+
+    // Close on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && megaDrawer.classList.contains('is-open')) {
+        closeMegaMenu();
+      }
     });
   }
 </script>
