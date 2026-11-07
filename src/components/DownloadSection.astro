@@ -12,9 +12,11 @@
 
     <div class="download-card pane">
       <div class="download-content">
+        <!-- Release Badge Row -->
         <div class="badge-row">
-          <span class="badge badge-brand">v0.1.0 Stable</span>
-          <span class="font-mono text-tertiary" style="font-size: 11px;">Windows 10 / 11 64-bit</span>
+          <span class="badge badge-brand" id="release-tag-badge">v0.1.0-beta</span>
+          <span class="badge badge-warning" id="release-status-badge">Pre-release</span>
+          <span class="font-mono text-tertiary" id="release-date-text">Published: Nov 8, 2026</span>
         </div>
 
         <h3 class="download-title">SpeedFlow for Windows</h3>
@@ -22,28 +24,87 @@
           Super fast and lightweight download manager built with Rust. Compatible with Windows 10 and 11.
         </p>
 
+        <!-- Direct Action Buttons -->
         <div class="download-actions">
-          <a href="#download" class="btn btn-primary btn-lg" onclick="alert('SpeedFlow Desktop v0.1.0 Installer download started.');">
+          <a
+            id="btn-download-installer"
+            href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/download/v0.1.0-beta/SpeedFlow-Setup-v0.1.0.exe"
+            class="btn btn-primary btn-lg"
+            download
+          >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
             <span>Download Installer (.exe)</span>
+            <span class="btn-file-size font-mono" id="installer-size-tag">6.6 MB</span>
           </a>
 
-          <a href="#download" class="btn btn-secondary btn-lg" onclick="alert('SpeedFlow Desktop v0.1.0 Portable ZIP download started.');">
+          <a
+            id="btn-download-portable"
+            href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/download/v0.1.0-beta/SpeedFlow-v0.1.0-Portable.zip"
+            class="btn btn-secondary btn-lg"
+            download
+          >
             <span>Portable (.zip)</span>
+            <span class="btn-file-size font-mono" id="portable-size-tag">6.3 MB</span>
           </a>
         </div>
 
-        <div class="download-specs font-mono">
+        <!-- Release Metadata & Stats Row -->
+        <div class="download-meta-row font-mono">
+          <span class="meta-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span id="total-downloads-count">0 downloads</span>
+          </span>
+          <span class="sep">•</span>
           <span>SHA-256 Verified</span>
           <span class="sep">•</span>
-          <span>Size: ~18 MB</span>
-          <span class="sep">•</span>
           <span>RAM: &lt; 35 MB</span>
+          <span class="sep">•</span>
+          <a
+            id="release-github-link"
+            href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/tag/v0.1.0-beta"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="release-gh-link"
+          >
+            GitHub Release ↗
+          </a>
         </div>
+
+        <!-- Option A: Collapsible Release Notes / Changelog Accordion -->
+        <details class="release-notes-details" id="release-notes-accordion">
+          <summary class="release-notes-summary font-mono">
+            <span class="notes-summary-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+              <span>What's new in <span id="notes-tag-label">v0.1.0-beta</span>?</span>
+            </span>
+            <span class="notes-toggle-icon font-mono">+</span>
+          </summary>
+          <div class="release-notes-body" id="release-notes-body">
+            <h5 class="notes-heading">What is New in Beta:</h5>
+            <ul class="notes-list">
+              <li><strong>Multi-threaded Download Accelerator:</strong> Accelerate file downloads using up to 32 parallel connections.</li>
+              <li><strong>Clean Flat Desktop Interface:</strong> Distraction-free high-density UI with light and dark theme modes.</li>
+              <li><strong>Browser Integration:</strong> Seamless download interception ready for Google Chrome, Brave, Microsoft Edge, and Mozilla Firefox.</li>
+              <li><strong>Smart File Categorization:</strong> Automatically sorts downloads into Documents, Videos, Music, Programs, and Archives.</li>
+              <li><strong>Download Queue Management:</strong> Manage concurrent active tasks and queue waiting downloads automatically.</li>
+              <li><strong>Background System Tray:</strong> Minimize to tray with native Windows notifications for download events.</li>
+              <li><strong>Easy Onboarding Wizard:</strong> Interactive 4-step quick setup for first-time users.</li>
+            </ul>
+          </div>
+        </details>
       </div>
 
       <!-- Developer Command Box -->
@@ -60,101 +121,9 @@
   </div>
 </section>
 
-<style>
-  .download-card {
-    width: 100%;
-    max-width: 720px;
-    margin: 0 auto;
-    background-color: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-
-  .download-content {
-    padding: 44px 32px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 16px;
-  }
-
-  .badge-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .download-title {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--text-primary);
-    letter-spacing: -0.01em;
-  }
-
-  .download-desc {
-    font-size: 14px;
-    color: var(--text-secondary);
-    max-width: 480px;
-    line-height: 1.5;
-  }
-
-  .download-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 4px;
-  }
-
-  .download-specs {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    color: var(--text-tertiary);
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 4px;
-  }
-
-  .sep {
-    color: var(--border-strong);
-  }
-
-  /* Dev bar */
-  .dev-bar {
-    padding: 12px 24px;
-    background-color: var(--surface-secondary);
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 11px;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .dev-left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .text-brand {
-    color: var(--brand-primary);
-  }
-
-  @media (max-width: 600px) {
-    .download-content {
-      padding: 32px 20px;
-    }
-  }
-</style>
-
 <script>
+  import '../scripts/github-release';
+
   const copyBtn = document.getElementById('copy-btn-minimal');
   const copyStatus = document.getElementById('copy-status');
   if (copyBtn && copyStatus) {

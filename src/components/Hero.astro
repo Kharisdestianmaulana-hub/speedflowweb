@@ -10,7 +10,7 @@ import AppSimulator from './AppSimulator.astro';
       <div class="hero-badge">
         <span class="badge badge-brand">
           <span class="dot-indicator"></span>
-          v0.1.0 • Built with Rust
+          <span id="hero-tag-text">v0.1.0-beta</span> • <span id="hero-status-text">Pre-release</span>
         </span>
       </div>
 
@@ -24,7 +24,12 @@ import AppSimulator from './AppSimulator.astro';
       </p>
 
       <div class="hero-actions">
-        <a href="#download" class="btn btn-primary btn-lg">
+        <a
+          id="hero-download-btn"
+          href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/download/v0.1.0-beta/SpeedFlow-Setup-v0.1.0.exe"
+          class="btn btn-primary btn-lg"
+          download
+        >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
