@@ -118,7 +118,7 @@
   </div>
 
   <!-- 1. DESKTOP MEGA MENU DROPDOWN (Inspired by Baku PDF - Desktop Only) -->
-  <div id="desktop-mega-menu" class="desktop-mega-menu desktop-only" aria-hidden="true">
+  <div id="desktop-mega-menu" class="desktop-mega-menu" aria-hidden="true">
     <div class="container mega-menu-inner">
       <!-- Header Row: Title & Subtitle -->
       <div class="mega-menu-header font-mono">
@@ -222,7 +222,7 @@
   </div>
 
   <!-- 2. MOBILE NAVIGATION DRAWER (Clean Vertical List - Mobile Only) -->
-  <div id="mobile-menu-drawer" class="mobile-menu-drawer mobile-only" aria-hidden="true">
+  <div id="mobile-menu-drawer" class="mobile-menu-drawer" aria-hidden="true">
     <div class="container mobile-menu-inner">
       <nav class="mobile-nav-list font-mono">
         <a href="#how-it-works" class="mobile-nav-link" data-i18n="nav_how_it_works">How It Works</a>
@@ -752,9 +752,19 @@
     gap: 8px;
   }
 
-  /* Visibility Utility Classes */
+  /* Visibility Utility Classes & Desktop Defaults */
   .mobile-only {
     display: none !important;
+  }
+
+  #mobile-menu-toggle {
+    display: none !important;
+  }
+
+  @media (min-width: 861px) {
+    .mobile-menu-drawer {
+      display: none !important;
+    }
   }
 
   /* Responsive Breakpoints */
@@ -771,14 +781,20 @@
     .desktop-only {
       display: none !important;
     }
-    .mobile-only {
-      display: flex !important;
+    #desktop-menu-toggle {
+      display: none !important;
+    }
+    #desktop-mega-menu {
+      display: none !important;
+    }
+    #mobile-menu-toggle {
+      display: inline-flex !important;
+    }
+    .mobile-menu-drawer {
+      display: none;
     }
     .mobile-menu-drawer.is-open {
       display: block !important;
-    }
-    .mobile-menu-btn {
-      display: inline-flex !important;
     }
   }
 
