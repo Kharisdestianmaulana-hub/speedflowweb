@@ -152,11 +152,6 @@ function applyLatestReleaseToDom(release: GitHubRelease) {
     navDownloadBtn.href = setupAsset.browser_download_url;
   }
 
-  const mobileNavDownloadBtn = document.getElementById('mobile-nav-download-btn') as HTMLAnchorElement | null;
-  if (mobileNavDownloadBtn && setupAsset) {
-    mobileNavDownloadBtn.href = setupAsset.browser_download_url;
-  }
-
   // 2. Hero Section elements
   const heroTagText = document.getElementById('hero-tag-text');
   if (heroTagText) heroTagText.textContent = tag;
@@ -462,10 +457,6 @@ async function fetchGitHubRepoStars() {
       const navStarCount = document.getElementById('nav-star-count');
       if (navStarCount) {
         navStarCount.textContent = stars.toString();
-      }
-      const mobileNavStarCount = document.getElementById('mobile-nav-star-count');
-      if (mobileNavStarCount) {
-        mobileNavStarCount.textContent = stars.toString();
       }
     }
   } catch (err) {
