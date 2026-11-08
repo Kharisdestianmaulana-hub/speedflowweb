@@ -199,6 +199,11 @@ function applyLatestReleaseToDom(release: GitHubRelease) {
     releaseDateText.textContent = lang === 'id' ? `Dirilis: ${pubDate}` : `Published: ${pubDate}`;
   }
 
+  const setupDownloads = setupAsset ? (setupAsset.download_count ?? 0) : 0;
+  const portableDownloads = portableAsset ? (portableAsset.download_count ?? 0) : 0;
+  const extDownloads = extensionAsset ? (extensionAsset.download_count ?? 0) : 0;
+  const dlSuffix = lang === 'id' ? 'unduhan' : 'downloads';
+
   const btnInstaller = document.getElementById('btn-download-installer') as HTMLAnchorElement | null;
   const installerSizeTag = document.getElementById('installer-size-tag');
   if (btnInstaller && setupAsset) {
@@ -206,6 +211,12 @@ function applyLatestReleaseToDom(release: GitHubRelease) {
     if (installerSizeTag) {
       installerSizeTag.textContent = formatBytes(setupAsset.size);
     }
+  }
+
+  const installerDownloadsEl = document.getElementById('installer-downloads-count');
+  if (installerDownloadsEl) {
+    const formatted = lang === 'id' ? setupDownloads.toLocaleString('id-ID') : setupDownloads.toLocaleString('en-US');
+    installerDownloadsEl.textContent = `${formatted} ${dlSuffix}`;
   }
 
   const btnPortable = document.getElementById('btn-download-portable') as HTMLAnchorElement | null;
@@ -217,11 +228,16 @@ function applyLatestReleaseToDom(release: GitHubRelease) {
     }
   }
 
+  const portableDownloadsEl = document.getElementById('portable-downloads-count');
+  if (portableDownloadsEl) {
+    const formatted = lang === 'id' ? portableDownloads.toLocaleString('id-ID') : portableDownloads.toLocaleString('en-US');
+    portableDownloadsEl.textContent = `${formatted} ${dlSuffix}`;
+  }
+
   const downloadsCountEl = document.getElementById('total-downloads-count');
   if (downloadsCountEl) {
     const formattedCount = lang === 'id' ? totalDownloads.toLocaleString('id-ID') : totalDownloads.toLocaleString('en-US');
-    const suffix = lang === 'id' ? 'unduhan' : 'downloads';
-    downloadsCountEl.textContent = `${formattedCount} ${suffix}`;
+    downloadsCountEl.textContent = `Total: ${formattedCount} ${dlSuffix}`;
   }
 
   const ghReleaseLink = document.getElementById('release-github-link') as HTMLAnchorElement | null;
@@ -247,6 +263,12 @@ function applyLatestReleaseToDom(release: GitHubRelease) {
       const kb = Math.round(extensionAsset.size / 1024);
       bridgeExtSizeTag.textContent = `${kb} KB`;
     }
+  }
+
+  const extensionDownloadsEl = document.getElementById('extension-downloads-count');
+  if (extensionDownloadsEl) {
+    const formatted = lang === 'id' ? extDownloads.toLocaleString('id-ID') : extDownloads.toLocaleString('en-US');
+    extensionDownloadsEl.textContent = `${formatted} ${dlSuffix}`;
   }
 }
 

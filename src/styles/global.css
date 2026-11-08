@@ -412,7 +412,7 @@ html:not(.dark) .moon-icon { display: block; }
   align-items: center !important;
   gap: 8px !important;
   font-size: 11px !important;
-  margin-top: 2px !important;
+  margin-top: 10px !important;
 }
 
 .hero-visual-col {
@@ -911,6 +911,61 @@ html:not(.dark) .moon-icon { display: block; }
   justify-content: center;
   gap: 12px;
   margin-top: 4px;
+}
+
+.download-options-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.download-option-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.download-option-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.option-stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-secondary);
+}
+
+.option-stat-chip svg {
+  color: var(--brand-primary);
+  flex-shrink: 0;
+}
+
+.option-tag-text {
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 640px) {
+  .download-options-grid {
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+  }
+  .download-option-unit {
+    width: 100%;
+  }
+  .download-option-unit .btn-download-option {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .btn-file-size {
@@ -1938,6 +1993,20 @@ details[open] .faq-toggle-icon {
   align-items: center !important;
   gap: 8px !important;
   width: fit-content !important;
+}
+
+.extension-option-meta {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 11px !important;
+  color: var(--text-tertiary) !important;
+  margin-top: -2px !important;
+}
+
+.extension-option-meta .option-stat-chip svg {
+  color: var(--brand-primary) !important;
+  flex-shrink: 0 !important;
 }
 
 .bridge-ext-note {

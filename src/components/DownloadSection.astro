@@ -26,32 +26,62 @@
           Super fast and lightweight download manager built with Rust. Compatible with Windows 10 and 11.
         </p>
 
-        <!-- Direct Action Buttons -->
-        <div class="download-actions">
-          <a
-            id="btn-download-installer"
-            href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/download/v0.1.0-beta/SpeedFlow-Setup-v0.1.0.exe"
-            class="btn btn-primary btn-lg"
-            download
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            <span data-i18n="dl_btn_installer">Download Installer (.exe)</span>
-            <span class="btn-file-size font-mono" id="installer-size-tag">6.6 MB</span>
-          </a>
+        <!-- Direct Action Options (Option 2: Individual File Downloads Breakdown) -->
+        <div class="download-options-grid">
+          <!-- Installer Option -->
+          <div class="download-option-unit">
+            <a
+              id="btn-download-installer"
+              href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/download/v0.1.0-beta/SpeedFlow-Setup-v0.1.0.exe"
+              class="btn btn-primary btn-lg btn-download-option"
+              download
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span data-i18n="dl_btn_installer">Download Installer (.exe)</span>
+              <span class="btn-file-size font-mono" id="installer-size-tag">6.6 MB</span>
+            </a>
+            <div class="download-option-meta font-mono">
+              <span class="option-stat-chip">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span id="installer-downloads-count">23 downloads</span>
+              </span>
+              <span class="sep">•</span>
+              <span class="option-tag-text" data-i18n="dl_opt_recommended">Recommended</span>
+            </div>
+          </div>
 
-          <a
-            id="btn-download-portable"
-            href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/download/v0.1.0-beta/SpeedFlow-v0.1.0-Portable.zip"
-            class="btn btn-secondary btn-lg"
-            download
-          >
-            <span data-i18n="dl_btn_portable">Portable (.zip)</span>
-            <span class="btn-file-size font-mono" id="portable-size-tag">6.3 MB</span>
-          </a>
+          <!-- Portable Option -->
+          <div class="download-option-unit">
+            <a
+              id="btn-download-portable"
+              href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/download/v0.1.0-beta/SpeedFlow-v0.1.0-Portable.zip"
+              class="btn btn-secondary btn-lg btn-download-option"
+              download
+            >
+              <span data-i18n="dl_btn_portable">Portable (.zip)</span>
+              <span class="btn-file-size font-mono" id="portable-size-tag">6.3 MB</span>
+            </a>
+            <div class="download-option-meta font-mono">
+              <span class="option-stat-chip">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span id="portable-downloads-count">9 downloads</span>
+              </span>
+              <span class="sep">•</span>
+              <span class="option-tag-text" data-i18n="dl_opt_no_install">No install required</span>
+            </div>
+          </div>
         </div>
 
         <!-- Release Metadata & Stats Row -->
@@ -62,7 +92,7 @@
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            <span id="total-downloads-count">0 downloads</span>
+            <span id="total-downloads-count">Total: 48 downloads</span>
           </span>
           <span class="sep">•</span>
           <span data-i18n="dl_meta_verified">SHA-256 Verified</span>

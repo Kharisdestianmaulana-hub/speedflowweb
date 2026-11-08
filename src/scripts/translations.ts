@@ -200,6 +200,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     bridge_point2: "1-Click On/Off switch in toolbar",
     bridge_point3: "Quick popup — never interrupts your browsing",
     bridge_btn: "Download Extension (.zip)",
+    bridge_universal_meta: "Universal .zip (Chrome, Edge, Firefox, Brave)",
     bridge_compat: "Works on Microsoft Edge, Google Chrome, Brave, and Mozilla Firefox",
     bridge_guide_link: "View Browser Setup Guide ↓",
 
@@ -263,6 +264,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     dl_card_desc: "Super fast and lightweight download manager built with Rust. Compatible with Windows 10 and 11.",
     dl_btn_installer: "Download Installer (.exe)",
     dl_btn_portable: "Portable (.zip)",
+    dl_opt_recommended: "Recommended",
+    dl_opt_no_install: "No install required",
     dl_meta_verified: "SHA-256 Verified",
     dl_meta_older: "Older Versions",
     dl_meta_gh: "GitHub Release",
@@ -508,6 +511,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     bridge_point2: "Sakelar Nyala/Mati 1-klik di toolbar",
     bridge_point3: "Popup cepat — tidak mengganggu aktivitas browsing",
     bridge_btn: "Unduh Ekstensi (.zip)",
+    bridge_universal_meta: "Paket Universal .zip (Chrome, Edge, Firefox, Brave)",
     bridge_compat: "Bisa digunakan di Microsoft Edge, Google Chrome, Brave, dan Mozilla Firefox",
     bridge_guide_link: "Lihat Panduan Setup Browser ↓",
 
@@ -571,6 +575,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     dl_card_desc: "Download manager super cepat dan ringan yang dibuat dengan Rust. Kompatibel dengan Windows 10 dan 11.",
     dl_btn_installer: "Unduh Installer (.exe)",
     dl_btn_portable: "Portable (.zip)",
+    dl_opt_recommended: "Disarankan",
+    dl_opt_no_install: "Tanpa instalasi",
     dl_meta_verified: "Terverifikasi SHA-256",
     dl_meta_older: "Versi Sebelumnya",
     dl_meta_gh: "Rilis GitHub",
