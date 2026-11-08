@@ -37,7 +37,16 @@ export function setLanguage(lang: Lang) {
     }
   });
 
-  // 3. Update active states on all language switchers
+  // 3. Update placeholder for data-i18n-placeholder elements
+  const placeholderElements = document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[data-i18n-placeholder]');
+  placeholderElements.forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (key && dict[key] !== undefined) {
+      el.placeholder = dict[key];
+    }
+  });
+
+  // 4. Update active states on all language switchers
   const langButtons = document.querySelectorAll<HTMLButtonElement>('.lang-btn');
   langButtons.forEach(btn => {
     const btnLang = btn.getAttribute('data-lang');
@@ -48,14 +57,14 @@ export function setLanguage(lang: Lang) {
     }
   });
 
-  // 4. Save preference in localStorage
+  // 5. Save preference in localStorage
   try {
     localStorage.setItem(STORAGE_KEY, lang);
   } catch {
     // Ignore storage errors in sandbox
   }
 
-  // 5. Notify dynamic modules (e.g., github-release.ts)
+  // 6. Notify dynamic modules (e.g., github-release.ts)
   window.dispatchEvent(new CustomEvent('speedflow:langchange', { detail: { lang } }));
 }
 

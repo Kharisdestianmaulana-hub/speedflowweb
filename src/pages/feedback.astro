@@ -1,0 +1,1025 @@
+---
+// src/pages/feedback.astro
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Community Feedback & Issues — SpeedFlow"
+  description="Report a bug or suggest a new feature for SpeedFlow. Your submission will be created directly as an official issue on our GitHub repository."
+>
+  <Navbar />
+
+  <main class="feedback-page-wrapper">
+    <div class="container feedback-container">
+      <!-- Section Header -->
+      <div class="section-head-minimal feedback-header">
+        <div class="feedback-badge-wrap">
+          <span class="badge badge-brand" data-i18n="fb_badge">Community &amp; Feedback</span>
+        </div>
+        <h1 class="feedback-main-title" data-i18n="fb_title">Report a Bug or Request a Feature</h1>
+        <p class="feedback-main-sub" data-i18n="fb_subtitle">
+          Submit feedback directly from your browser. Your report will be automatically logged to the official SpeedFlow GitHub repository.
+        </p>
+        <div class="feedback-external-link font-mono">
+          <a
+            href="https://github.com/Kharisdestianmaulana-hub/speedflow/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gh-issues-pill"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span data-i18n="fb_view_gh">View issues on GitHub ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Feedback Pane -->
+      <div class="feedback-card pane">
+        <!-- Tab Navigation -->
+        <div class="feedback-tabs font-mono" role="tablist">
+          <button
+            type="button"
+            class="feedback-tab-btn active"
+            id="tab-btn-bug"
+            data-target="bug"
+            role="tab"
+            aria-selected="true"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="8" height="14" x="8" y="6" rx="4"></rect>
+              <path d="m19 7-3 2"></path>
+              <path d="m5 7 3 2"></path>
+              <path d="m19 19-3-2"></path>
+              <path d="m5 19 3-2"></path>
+              <path d="M20 13h-4"></path>
+              <path d="M4 13h4"></path>
+              <path d="m10 4 1 2"></path>
+              <path d="m14 4-1 2"></path>
+            </svg>
+            <span data-i18n="fb_tab_bug">Report a Bug</span>
+          </button>
+
+          <button
+            type="button"
+            class="feedback-tab-btn"
+            id="tab-btn-feature"
+            data-target="feature"
+            role="tab"
+            aria-selected="false"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+              <path d="M9 18h6"></path>
+              <path d="M10 22h4"></path>
+            </svg>
+            <span data-i18n="fb_tab_feature">Feature Request</span>
+          </button>
+        </div>
+
+        <!-- Success Result Card (Hidden by default) -->
+        <div id="feedback-success-card" class="feedback-status-box success-box" style="display: none;">
+          <div class="status-icon-circle success-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="status-title" data-i18n="fb_success_title">Submitted Successfully!</h3>
+          <p class="status-desc">
+            <span data-i18n="fb_success_desc">Your report has been logged to the SpeedFlow repository as</span>
+            <strong id="success-issue-badge" class="font-mono text-brand">Issue #--</strong>.
+          </p>
+          <div class="status-actions">
+            <a
+              id="success-issue-link"
+              href="https://github.com/Kharisdestianmaulana-hub/speedflow/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary font-mono"
+            >
+              <span data-i18n="fb_success_btn">View Issue on GitHub ↗</span>
+            </a>
+            <button type="button" id="btn-submit-another" class="btn btn-secondary font-mono">
+              <span data-i18n="fb_success_another">Submit Another Report</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Error Result Alert (Hidden by default) -->
+        <div id="feedback-error-banner" class="feedback-status-box error-box" style="display: none;">
+          <div class="status-icon-circle error-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <div class="error-msg-content">
+            <strong data-i18n="fb_error_title">Submission Failed</strong>
+            <p id="error-message-text" class="font-mono text-secondary">An unexpected error occurred.</p>
+          </div>
+        </div>
+
+        <!-- TAB 1: BUG REPORT FORM -->
+        <form id="form-bug" class="feedback-form" novalidate>
+          <input type="hidden" name="type" value="bug" />
+          <!-- Anti-spam honeypot (Invisible to human, traps bots) -->
+          <input type="text" name="website_url_hp" class="hp-field" tabindex="-1" autocomplete="off" />
+
+          <!-- Pre-submission Checklist Box -->
+          <div class="checklist-panel font-mono">
+            <div class="checklist-head">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <strong data-i18n="fb_prereq_title">Pre-submission Checklist</strong>
+            </div>
+            <label class="check-item">
+              <input type="checkbox" id="chk-bug-dup" required checked />
+              <span data-i18n="fb_prereq_dup">I have confirmed this is not a duplicate issue.</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="chk-bug-ver" required checked />
+              <span data-i18n="fb_prereq_ver">I am using the latest released version of SpeedFlow.</span>
+            </label>
+          </div>
+
+          <!-- Bug Title -->
+          <div class="form-group">
+            <label for="bug-title" class="form-label font-mono">
+              <span data-i18n="fb_label_title">Title</span> <span class="req">*</span>
+            </label>
+            <div class="input-prefix-wrap font-mono">
+              <span class="input-prefix">[Bug]:</span>
+              <input
+                type="text"
+                id="bug-title"
+                name="title"
+                class="form-input with-prefix"
+                placeholder="Brief summary (e.g. Download stalls at 99%)"
+                data-i18n-placeholder="fb_placeholder_bug_title"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Describe the Bug -->
+          <div class="form-group">
+            <label for="bug-description" class="form-label font-mono">
+              <span data-i18n="fb_label_desc">Describe the Bug</span> <span class="req">*</span>
+            </label>
+            <textarea
+              id="bug-description"
+              name="description"
+              class="form-textarea"
+              rows="4"
+              placeholder="A clear and concise description of what happened..."
+              data-i18n-placeholder="fb_placeholder_desc"
+              required
+            ></textarea>
+          </div>
+
+          <!-- Steps to Reproduce -->
+          <div class="form-group">
+            <label for="bug-steps" class="form-label font-mono">
+              <span data-i18n="fb_label_steps">Steps to Reproduce</span> <span class="req">*</span>
+            </label>
+            <textarea
+              id="bug-steps"
+              name="steps"
+              class="form-textarea font-mono"
+              rows="4"
+              placeholder="1. Open SpeedFlow&#10;2. Add download with URL...&#10;3. Observe error"
+              data-i18n-placeholder="fb_placeholder_steps"
+              required
+            ></textarea>
+          </div>
+
+          <!-- Expected Behavior -->
+          <div class="form-group">
+            <label for="bug-expected" class="form-label font-mono">
+              <span data-i18n="fb_label_expected">Expected Behavior</span> <span class="req">*</span>
+            </label>
+            <textarea
+              id="bug-expected"
+              name="expected"
+              class="form-textarea"
+              rows="3"
+              placeholder="What did you expect to happen instead?"
+              data-i18n-placeholder="fb_placeholder_expected"
+              required
+            ></textarea>
+          </div>
+
+          <!-- Environment 2x2 Grid -->
+          <div class="form-grid-2col">
+            <!-- OS -->
+            <div class="form-group">
+              <label for="bug-os" class="form-label font-mono">
+                <span data-i18n="fb_label_os">Operating System</span> <span class="req">*</span>
+              </label>
+              <select id="bug-os" name="os" class="form-select font-mono" required>
+                <option value="Windows 11 (64-bit)" selected>Windows 11 (64-bit)</option>
+                <option value="Windows 10 (64-bit)">Windows 10 (64-bit)</option>
+                <option value="Windows Server">Windows Server</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <!-- Package Type -->
+            <div class="form-group">
+              <label for="bug-package" class="form-label font-mono">
+                <span data-i18n="fb_label_pkg">Package Type</span> <span class="req">*</span>
+              </label>
+              <select id="bug-package" name="packageType" class="form-select font-mono" required>
+                <option value="Windows Installer (Setup.exe)" selected data-i18n="fb_pkg_installer">Windows Installer (Setup.exe)</option>
+                <option value="Portable (.zip)" data-i18n="fb_pkg_portable">Portable (.zip)</option>
+                <option value="Built from Source" data-i18n="fb_pkg_source">Built from Source</option>
+              </select>
+            </div>
+
+            <!-- SpeedFlow Version -->
+            <div class="form-group">
+              <label for="bug-version" class="form-label font-mono">
+                <span data-i18n="fb_label_ver">SpeedFlow Version</span> <span class="req">*</span>
+              </label>
+              <input
+                type="text"
+                id="bug-version"
+                name="version"
+                class="form-input font-mono"
+                value="v0.1.0-beta"
+                required
+              />
+            </div>
+
+            <!-- Browser -->
+            <div class="form-group">
+              <label for="bug-browser" class="form-label font-mono">
+                <span data-i18n="fb_label_browser">Browser (if related to extension)</span>
+              </label>
+              <select id="bug-browser" name="browser" class="form-select font-mono">
+                <option value="None / Not Applicable" selected data-i18n="fb_browser_none">None / Not Applicable</option>
+                <option value="Google Chrome">Google Chrome</option>
+                <option value="Microsoft Edge">Microsoft Edge</option>
+                <option value="Mozilla Firefox">Mozilla Firefox</option>
+                <option value="Brave Browser">Brave Browser</option>
+                <option value="Other Chromium Browser">Other Chromium Browser</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Screenshots or Logs -->
+          <div class="form-group">
+            <label for="bug-screenshots" class="form-label font-mono">
+              <span data-i18n="fb_label_screenshots">Screenshots or Error Logs (Optional)</span>
+            </label>
+            <textarea
+              id="bug-screenshots"
+              name="screenshots"
+              class="form-textarea font-mono"
+              rows="3"
+              placeholder="Paste error logs or image links here..."
+              data-i18n-placeholder="fb_placeholder_screenshots"
+            ></textarea>
+          </div>
+
+          <!-- Additional Context -->
+          <div class="form-group">
+            <label for="bug-additional" class="form-label font-mono">
+              <span data-i18n="fb_label_additional">Additional Context (Optional)</span>
+            </label>
+            <textarea
+              id="bug-additional"
+              name="additional"
+              class="form-textarea"
+              rows="2"
+              placeholder="Network type, antivirus, VPN, or any extra details..."
+              data-i18n-placeholder="fb_placeholder_additional"
+            ></textarea>
+          </div>
+
+          <!-- Reporter Name & Contact (Optional) -->
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label for="bug-reporter" class="form-label font-mono">
+                <span data-i18n="fb_label_reporter">Your Name or GitHub Handle (Optional)</span>
+              </label>
+              <input
+                type="text"
+                id="bug-reporter"
+                name="reporterName"
+                class="form-input"
+                placeholder="e.g. John Doe / @johndoe"
+                data-i18n-placeholder="fb_placeholder_reporter"
+              />
+            </div>
+            <div class="form-group">
+              <label for="bug-contact" class="form-label font-mono">
+                <span data-i18n="fb_label_contact">Email or Contact (Optional)</span>
+              </label>
+              <input
+                type="text"
+                id="bug-contact"
+                name="reporterContact"
+                class="form-input"
+                placeholder="For follow-up questions if needed"
+                data-i18n-placeholder="fb_placeholder_contact"
+              />
+            </div>
+          </div>
+
+          <!-- Form Submit Button -->
+          <div class="form-action-row">
+            <button type="submit" id="btn-submit-bug" class="btn btn-primary btn-lg font-mono btn-submit-form">
+              <svg class="submit-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+              <span class="btn-text" data-i18n="fb_btn_submit_bug">Submit Bug Report</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- TAB 2: FEATURE REQUEST FORM -->
+        <form id="form-feature" class="feedback-form" style="display: none;" novalidate>
+          <input type="hidden" name="type" value="feature" />
+          <!-- Anti-spam honeypot -->
+          <input type="text" name="website_url_hp" class="hp-field" tabindex="-1" autocomplete="off" />
+
+          <!-- Feature Title -->
+          <div class="form-group">
+            <label for="feat-title" class="form-label font-mono">
+              <span data-i18n="fb_label_title">Title</span> <span class="req">*</span>
+            </label>
+            <div class="input-prefix-wrap font-mono">
+              <span class="input-prefix">[Feature]:</span>
+              <input
+                type="text"
+                id="feat-title"
+                name="title"
+                class="form-input with-prefix"
+                placeholder="Brief summary (e.g. Add OLED dark mode theme)"
+                data-i18n-placeholder="fb_placeholder_feat_title"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Problem Statement -->
+          <div class="form-group">
+            <label for="feat-problem" class="form-label font-mono">
+              <span data-i18n="fb_label_problem">Problem Statement (Optional)</span>
+            </label>
+            <textarea
+              id="feat-problem"
+              name="problem"
+              class="form-textarea"
+              rows="3"
+              placeholder="Is this request related to a specific limitation or pain point?"
+              data-i18n-placeholder="fb_placeholder_problem"
+            ></textarea>
+          </div>
+
+          <!-- Proposed Solution -->
+          <div class="form-group">
+            <label for="feat-solution" class="form-label font-mono">
+              <span data-i18n="fb_label_solution">Proposed Solution / Idea</span> <span class="req">*</span>
+            </label>
+            <textarea
+              id="feat-solution"
+              name="proposedSolution"
+              class="form-textarea"
+              rows="4"
+              placeholder="Describe the new capability or behavior you would like added to SpeedFlow..."
+              data-i18n-placeholder="fb_placeholder_solution"
+              required
+            ></textarea>
+          </div>
+
+          <!-- Alternatives Considered -->
+          <div class="form-group">
+            <label for="feat-alternatives" class="form-label font-mono">
+              <span data-i18n="fb_label_alternatives">Alternatives Considered (Optional)</span>
+            </label>
+            <textarea
+              id="feat-alternatives"
+              name="alternatives"
+              class="form-textarea"
+              rows="3"
+              placeholder="In other download managers, this is handled by..."
+              data-i18n-placeholder="fb_placeholder_alternatives"
+            ></textarea>
+          </div>
+
+          <!-- Additional Context or Mockups -->
+          <div class="form-group">
+            <label for="feat-additional" class="form-label font-mono">
+              <span data-i18n="fb_label_additional">Additional Context or Mockups (Optional)</span>
+            </label>
+            <textarea
+              id="feat-additional"
+              name="additional"
+              class="form-textarea"
+              rows="3"
+              placeholder="Network type, screenshots, mockups, or any extra details..."
+              data-i18n-placeholder="fb_placeholder_additional"
+            ></textarea>
+          </div>
+
+          <!-- Reporter Name & Contact (Optional) -->
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label for="feat-reporter" class="form-label font-mono">
+                <span data-i18n="fb_label_reporter">Your Name or GitHub Handle (Optional)</span>
+              </label>
+              <input
+                type="text"
+                id="feat-reporter"
+                name="reporterName"
+                class="form-input"
+                placeholder="e.g. John Doe / @johndoe"
+                data-i18n-placeholder="fb_placeholder_reporter"
+              />
+            </div>
+            <div class="form-group">
+              <label for="feat-contact" class="form-label font-mono">
+                <span data-i18n="fb_label_contact">Email or Contact (Optional)</span>
+              </label>
+              <input
+                type="text"
+                id="feat-contact"
+                name="reporterContact"
+                class="form-input"
+                placeholder="For follow-up questions if needed"
+                data-i18n-placeholder="fb_placeholder_contact"
+              />
+            </div>
+          </div>
+
+          <!-- Form Submit Button -->
+          <div class="form-action-row">
+            <button type="submit" id="btn-submit-feat" class="btn btn-primary btn-lg font-mono btn-submit-form">
+              <svg class="submit-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+              <span class="btn-text" data-i18n="fb_btn_submit_feat">Submit Feature Request</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .feedback-page-wrapper {
+    min-height: calc(100vh - 160px);
+    padding: 48px 0 80px;
+  }
+
+  .feedback-container {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .feedback-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .feedback-badge-wrap {
+    margin-bottom: 12px;
+  }
+
+  .feedback-main-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 0 0 10px;
+  }
+
+  .feedback-main-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 16px;
+    line-height: 1.6;
+  }
+
+  .feedback-external-link {
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  .gh-issues-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: var(--brand-primary);
+    background-color: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  .gh-issues-pill:hover {
+    background-color: var(--surface-hover);
+    border-color: var(--brand-primary);
+    text-decoration: underline;
+  }
+
+  /* Main Feedback Pane */
+  .feedback-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Tab Navigation */
+  .feedback-tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  .feedback-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .feedback-tab-btn:hover {
+    color: var(--text-primary);
+    background-color: var(--surface-secondary);
+  }
+
+  .feedback-tab-btn.active {
+    color: var(--brand-primary);
+    background-color: var(--surface-secondary);
+    border-color: var(--border-strong);
+  }
+
+  /* Form Elements */
+  .feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hp-field {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Checklist Box */
+  .checklist-panel {
+    background-color: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .checklist-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--brand-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+
+  .check-item input[type="checkbox"] {
+    margin-top: 2px;
+    accent-color: var(--brand-primary);
+    cursor: pointer;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .form-label .req {
+    color: #ef4444;
+  }
+
+  .form-input,
+  .form-textarea,
+  .form-select {
+    width: 100%;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--text-primary);
+    transition: all 0.15s ease;
+    box-sizing: border-box;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    line-height: 1.5;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus,
+  .form-select:focus {
+    outline: none;
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 1px var(--brand-primary);
+    background-color: var(--surface);
+  }
+
+  .input-prefix-wrap {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all 0.15s ease;
+  }
+
+  .input-prefix-wrap:focus-within {
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 1px var(--brand-primary);
+    background-color: var(--surface);
+  }
+
+  .input-prefix {
+    padding: 0 12px;
+    font-size: 12px;
+    color: var(--brand-primary);
+    font-weight: 600;
+    user-select: none;
+    white-space: nowrap;
+    border-right: 1px solid var(--border);
+  }
+
+  .form-input.with-prefix {
+    border: none;
+    background-color: transparent;
+    padding-left: 12px;
+  }
+
+  .form-input.with-prefix:focus {
+    box-shadow: none;
+    border: none;
+  }
+
+  .form-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-action-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .btn-submit-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+  }
+
+  .btn-submit-form:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* Status Box (Success & Error) */
+  .feedback-status-box {
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .success-box {
+    background-color: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+  }
+
+  .error-box {
+    background-color: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+  }
+
+  .status-icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+  }
+
+  .success-circle {
+    background-color: rgba(16, 185, 129, 0.18);
+    color: #10b981;
+  }
+
+  .error-circle {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    margin-bottom: 0;
+    background-color: rgba(239, 68, 68, 0.18);
+    color: #ef4444;
+  }
+
+  .status-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--text-primary);
+  }
+
+  .status-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 20px;
+  }
+
+  .status-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .error-msg-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .error-msg-content strong {
+    color: #ef4444;
+    font-size: 14px;
+  }
+
+  .error-msg-content p {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .feedback-page-wrapper {
+      padding: 32px 0 60px;
+    }
+    .feedback-card {
+      padding: 16px;
+    }
+    .form-grid-2col {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .feedback-tabs {
+      flex-direction: column;
+      gap: 6px;
+    }
+    .feedback-tab-btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .btn-submit-form {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  function initFeedbackPage() {
+    const tabBugBtn = document.getElementById('tab-btn-bug');
+    const tabFeatBtn = document.getElementById('tab-btn-feature');
+    const formBug = document.getElementById('form-bug') as HTMLFormElement | null;
+    const formFeat = document.getElementById('form-feature') as HTMLFormElement | null;
+
+    const successCard = document.getElementById('feedback-success-card');
+    const errorBanner = document.getElementById('feedback-error-banner');
+    const errorMessageText = document.getElementById('error-message-text');
+    const successIssueBadge = document.getElementById('success-issue-badge');
+    const successIssueLink = document.getElementById('success-issue-link') as HTMLAnchorElement | null;
+    const btnSubmitAnother = document.getElementById('btn-submit-another');
+
+    let activeTab: 'bug' | 'feature' = 'bug';
+
+    // 1. Tab Switching
+    function setTab(target: 'bug' | 'feature') {
+      activeTab = target;
+      if (target === 'bug') {
+        tabBugBtn?.classList.add('active');
+        tabBugBtn?.setAttribute('aria-selected', 'true');
+        tabFeatBtn?.classList.remove('active');
+        tabFeatBtn?.setAttribute('aria-selected', 'false');
+
+        if (formBug) formBug.style.display = 'flex';
+        if (formFeat) formFeat.style.display = 'none';
+      } else {
+        tabFeatBtn?.classList.add('active');
+        tabFeatBtn?.setAttribute('aria-selected', 'true');
+        tabBugBtn?.classList.remove('active');
+        tabBugBtn?.setAttribute('aria-selected', 'false');
+
+        if (formFeat) formFeat.style.display = 'flex';
+        if (formBug) formBug.style.display = 'none';
+      }
+
+      // Hide status messages when switching tabs
+      if (errorBanner) errorBanner.style.display = 'none';
+    }
+
+    tabBugBtn?.addEventListener('click', () => setTab('bug'));
+    tabFeatBtn?.addEventListener('click', () => setTab('feature'));
+
+    // 2. Auto-detect OS from navigator
+    if (typeof navigator !== 'undefined') {
+      const ua = navigator.userAgent;
+      const bugOsSelect = document.getElementById('bug-os') as HTMLSelectElement | null;
+      if (bugOsSelect) {
+        if (ua.includes('Windows NT 10.0')) {
+          bugOsSelect.value = 'Windows 11 (64-bit)';
+        } else if (ua.includes('Windows')) {
+          bugOsSelect.value = 'Windows 10 (64-bit)';
+        }
+      }
+    }
+
+    // 3. Reset to another submission
+    btnSubmitAnother?.addEventListener('click', () => {
+      if (successCard) successCard.style.display = 'none';
+      if (errorBanner) errorBanner.style.display = 'none';
+      setTab(activeTab);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 4. Form Submission Handler
+    async function handleFormSubmit(form: HTMLFormElement, submitBtnId: string, originalBtnTextKey: string) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Checklist validation for Bug form
+        if (form.id === 'form-bug') {
+          const chkDup = document.getElementById('chk-bug-dup') as HTMLInputElement | null;
+          const chkVer = document.getElementById('chk-bug-ver') as HTMLInputElement | null;
+          if (chkDup && !chkDup.checked) {
+            alert('Please check "I have confirmed this is not a duplicate issue" before submitting.');
+            return;
+          }
+          if (chkVer && !chkVer.checked) {
+            alert('Please check "I am using the latest released version" before submitting.');
+            return;
+          }
+        }
+
+        const submitBtn = document.getElementById(submitBtnId) as HTMLButtonElement | null;
+        const btnTextSpan = submitBtn?.querySelector('.btn-text');
+        const lang = document.documentElement.lang === 'id' ? 'id' : 'en';
+
+        // Extract FormData
+        const formData = new FormData(form);
+        const payload: Record<string, any> = {};
+        formData.forEach((value, key) => {
+          payload[key] = value;
+        });
+
+        // Set Loading state
+        if (submitBtn) submitBtn.disabled = true;
+        if (btnTextSpan) {
+          btnTextSpan.textContent = lang === 'id' ? 'Sedang mengirim ke GitHub...' : 'Submitting to GitHub...';
+        }
+        if (errorBanner) errorBanner.style.display = 'none';
+
+        try {
+          const res = await fetch('/api/submit-issue', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await res.json();
+
+          if (!res.ok || !data.success) {
+            throw new Error(data.error || 'Failed to submit issue to GitHub.');
+          }
+
+          // SUCCESS STATE
+          form.reset();
+          form.style.display = 'none';
+
+          if (successCard) {
+            successCard.style.display = 'block';
+          }
+          if (successIssueBadge) {
+            successIssueBadge.textContent = `Issue #${data.issue_number}`;
+          }
+          if (successIssueLink && data.issue_url) {
+            successIssueLink.href = data.issue_url;
+          }
+
+          // Scroll to success banner
+          successCard?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        } catch (err: any) {
+          console.error('[Feedback Submit Error]:', err);
+          if (errorBanner) {
+            errorBanner.style.display = 'flex';
+          }
+          if (errorMessageText) {
+            errorMessageText.textContent = err.message || 'Network error or server unavailable.';
+          }
+          errorBanner?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+          if (btnTextSpan) {
+            const defaultText = lang === 'id'
+              ? (form.id === 'form-bug' ? 'Kirim Laporan Bug' : 'Kirim Usulan Fitur')
+              : (form.id === 'form-bug' ? 'Submit Bug Report' : 'Submit Feature Request');
+            btnTextSpan.textContent = defaultText;
+          }
+        }
+      });
+    }
+
+    if (formBug) handleFormSubmit(formBug, 'btn-submit-bug', 'fb_btn_submit_bug');
+    if (formFeat) handleFormSubmit(formFeat, 'btn-submit-feat', 'fb_btn_submit_feat');
+  }
+
+  // Auto-init on DOM Ready
+  if (typeof window !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initFeedbackPage);
+    } else {
+      initFeedbackPage();
+    }
+  }
+</script>
