@@ -361,7 +361,20 @@ export const translations: Record<Lang, Record<string, string>> = {
     fb_success_desc: "Your report has been logged to the SpeedFlow repository as",
     fb_success_btn: "View Issue on GitHub ↗",
     fb_success_another: "Submit Another Report",
-    fb_error_title: "Submission Failed"
+    fb_error_title: "Submission Failed",
+
+    // Changelog & Archive Page
+    cl_badge: "Changelog & Archive",
+    cl_title: "SpeedFlow Release History",
+    cl_subtitle: "Track every new feature, improvement, and past version of SpeedFlow. All releases are safe, clean, and open source.",
+    cl_view_gh: "View releases on GitHub ↗",
+    cl_latest_tag: "Latest Release",
+    cl_notes_title: "Release Notes & Changelog",
+    cl_archive_title: "Previous Versions & Build Archive",
+    cl_archive_subtitle: "Looking for older builds? Download past versions for specific system compatibility.",
+    cl_empty_title: "Initial Public Release",
+    cl_empty_desc: "is the very first public release of SpeedFlow. As newer builds roll out, older versions will automatically be archived here.",
+    cl_empty_btn: "View All on GitHub ↗"
   },
 
   id: {
@@ -722,6 +735,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     fb_success_desc: "Laporan Anda telah tercatat di repositori SpeedFlow sebagai",
     fb_success_btn: "Lihat Isu di GitHub ↗",
     fb_success_another: "Kirim Laporan Lainnya",
-    fb_error_title: "Gagal Mengirim Laporan"
+    fb_error_title: "Gagal Mengirim Laporan",
+
+    // Changelog & Archive Page
+    cl_badge: "Catatan Rilis & Arsip",
+    cl_title: "Riwayat Rilis SpeedFlow",
+    cl_subtitle: "Pantau setiap fitur baru, peningkatan performa, dan arsip versi SpeedFlow. Semua rilis bersih, aman, dan open source.",
+    cl_view_gh: "Lihat semua rilis di GitHub ↗",
+    cl_latest_tag: "Rilis Terbaru",
+    cl_notes_title: "Catatan Perubahan & Rilis",
+    cl_archive_title: "Arsip Versi Sebelumnya & Riwayat Build",
+    cl_archive_subtitle: "Mencari versi lama? Unduh arsip rilis terdahulu untuk kebutuhan kompatibilitas sistem tertentu.",
+    cl_empty_title: "Rilis Publik Perdana",
+    cl_empty_desc: "adalah versi rilis publik pertama dari SpeedFlow. Begitu versi baru dirilis di masa depan, versi sebelumnya akan otomatis terarsip di sini.",
+    cl_empty_btn: "Lihat Semua di GitHub ↗"
   }
 };

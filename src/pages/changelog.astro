@@ -1,0 +1,927 @@
+---
+// src/pages/changelog.astro
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Changelog & Release Archive — SpeedFlow"
+  description="Track every new feature, improvement, and past version of SpeedFlow. All releases are safe, clean, and open source."
+>
+  <Navbar />
+
+  <main class="changelog-page-wrapper">
+    <div class="container changelog-container">
+      <!-- Page Header -->
+      <div class="section-head-minimal changelog-header">
+        <div class="changelog-badge-wrap">
+          <span class="badge badge-brand" data-i18n="cl_badge">Changelog &amp; Archive</span>
+        </div>
+        <h1 class="changelog-main-title" data-i18n="cl_title">SpeedFlow Release History</h1>
+        <p class="changelog-main-sub" data-i18n="cl_subtitle">
+          Track every new feature, improvement, and past version of SpeedFlow. All releases are safe, clean, and open source.
+        </p>
+        <div class="changelog-external-link font-mono">
+          <a
+            href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gh-releases-pill"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            <span data-i18n="cl_view_gh">View releases on GitHub ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 1. LATEST RELEASE SECTION -->
+      <section class="latest-release-wrapper">
+        <div class="section-label-row font-mono">
+          <span class="pulse-indicator"></span>
+          <span class="label-heading" data-i18n="cl_latest_tag">Latest Release</span>
+        </div>
+
+        <div class="latest-release-card pane">
+          <!-- Card Header / Badges -->
+          <div class="release-card-header">
+            <div class="release-tags-group">
+              <span class="tag-version-pill font-mono font-bold" id="latest-tag-badge">v0.1.0-beta</span>
+              <span class="badge badge-warning" id="latest-status-badge">Pre-release</span>
+            </div>
+            <span class="release-pub-date font-mono text-tertiary" id="latest-date-text">Published: Nov 8, 2026</span>
+          </div>
+
+          <!-- Download Action Options Grid -->
+          <div class="release-download-grid">
+            <!-- Option 1: Installer -->
+            <div class="download-col-box">
+              <a
+                id="latest-btn-installer"
+                href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/download/v0.1.0-beta/SpeedFlow-Setup-v0.1.0.exe"
+                class="btn btn-primary btn-lg btn-download-block"
+                download
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span data-i18n="dl_btn_installer">Download Installer (.exe)</span>
+                <span class="btn-file-size font-mono" id="latest-installer-size">6.6 MB</span>
+              </a>
+              <div class="col-box-meta font-mono">
+                <span class="stat-chip">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span id="latest-installer-downloads">23 downloads</span>
+                </span>
+                <span class="sep">•</span>
+                <span data-i18n="dl_opt_recommended">Recommended</span>
+              </div>
+            </div>
+
+            <!-- Option 2: Portable -->
+            <div class="download-col-box">
+              <a
+                id="latest-btn-portable"
+                href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/download/v0.1.0-beta/SpeedFlow-v0.1.0-Portable.zip"
+                class="btn btn-secondary btn-lg btn-download-block"
+                download
+              >
+                <span data-i18n="dl_btn_portable">Portable (.zip)</span>
+                <span class="btn-file-size font-mono" id="latest-portable-size">6.3 MB</span>
+              </a>
+              <div class="col-box-meta font-mono">
+                <span class="stat-chip">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span id="latest-portable-downloads">9 downloads</span>
+                </span>
+                <span class="sep">•</span>
+                <span data-i18n="dl_opt_no_install">No install required</span>
+              </div>
+            </div>
+
+            <!-- Option 3: Browser Extension -->
+            <div class="download-col-box">
+              <a
+                id="latest-btn-extension"
+                href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/download/v0.1.0-beta/speedflow-extension-v1.0.0.zip"
+                class="btn btn-secondary btn-lg btn-download-block"
+                download
+              >
+                <span data-i18n="bridge_btn">Download Extension (.zip)</span>
+                <span class="btn-file-size font-mono" id="latest-extension-size">21 KB</span>
+              </a>
+              <div class="col-box-meta font-mono">
+                <span class="stat-chip">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span id="latest-extension-downloads">16 downloads</span>
+                </span>
+                <span class="sep">•</span>
+                <span>Chrome, Edge, Firefox</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="release-divider"></div>
+
+          <!-- Release Notes Header -->
+          <div class="notes-header font-mono">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            <span data-i18n="cl_notes_title">Release Notes &amp; Changelog</span>
+          </div>
+
+          <!-- Release Notes Formatted Body -->
+          <div id="latest-release-body" class="release-notes-content">
+            <p class="notes-para">Loading release notes from GitHub...</p>
+          </div>
+
+          <!-- Footer metadata -->
+          <div class="release-card-footer font-mono">
+            <span class="stat-chip">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span id="latest-total-downloads">Total: 48 downloads</span>
+            </span>
+            <span class="sep">•</span>
+            <span data-i18n="dl_meta_verified">SHA-256 Verified</span>
+            <span class="sep">•</span>
+            <a
+              id="latest-gh-release-link"
+              href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/tag/v0.1.0-beta"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-gh-link"
+            >
+              <span>GitHub Release</span> ↗
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. ARCHIVE / PREVIOUS VERSIONS SECTION -->
+      <section class="archive-section-wrapper">
+        <div class="archive-header-row">
+          <div class="archive-head-text">
+            <h2 class="archive-title" data-i18n="cl_archive_title">Previous Versions &amp; Build Archive</h2>
+            <p class="archive-sub" data-i18n="cl_archive_subtitle">
+              Looking for older builds? Download past versions for specific system compatibility.
+            </p>
+          </div>
+        </div>
+
+        <!-- Archive Content Container (Populated via JS) -->
+        <div id="archive-list-container" class="archive-list-wrap">
+          <!-- Fallback / Initial Public Release State -->
+          <div class="archive-empty-box pane">
+            <div class="empty-icon-wrap" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div class="empty-badge">
+              <span class="badge badge-brand font-mono" data-i18n="cl_empty_title">Initial Public Release</span>
+            </div>
+            <h3 class="empty-title" data-i18n="cl_empty_title">Initial Public Release</h3>
+            <p class="empty-desc">
+              <code id="empty-tag-text">v0.1.0-beta</code> <span data-i18n="cl_empty_desc">is the very first public release of SpeedFlow. As newer builds roll out, older versions will automatically be archived here.</span>
+            </p>
+            <div class="empty-action">
+              <a
+                href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-secondary btn-sm font-mono"
+              >
+                <span data-i18n="cl_empty_btn">View All on GitHub ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .changelog-page-wrapper {
+    min-height: calc(100vh - 160px);
+    padding: 48px 0 80px;
+  }
+
+  .changelog-container {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .changelog-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .changelog-badge-wrap {
+    margin-bottom: 12px;
+  }
+
+  .changelog-main-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 0 0 10px;
+  }
+
+  .changelog-main-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 16px;
+    line-height: 1.6;
+  }
+
+  .changelog-external-link {
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  .gh-releases-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: var(--brand-primary);
+    background-color: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  .gh-releases-pill:hover {
+    background-color: var(--surface-hover);
+    border-color: var(--brand-primary);
+    text-decoration: underline;
+  }
+
+  /* Latest Release Section */
+  .latest-release-wrapper {
+    margin-bottom: 48px;
+  }
+
+  .section-label-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--brand-primary);
+  }
+
+  .pulse-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--brand-primary);
+    box-shadow: 0 0 8px var(--brand-primary);
+    animation: pulseGlow 2s infinite ease-in-out;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  .latest-release-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .release-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .release-tags-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tag-version-pill {
+    font-size: 16px;
+    color: var(--brand-primary);
+    background-color: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    padding: 2px 10px;
+    border-radius: var(--radius);
+  }
+
+  .release-pub-date {
+    font-size: 12px;
+  }
+
+  /* Download Grid (3 columns on desktop, stack on mobile) */
+  .release-download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .download-col-box {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .btn-download-block {
+    width: 100%;
+    justify-content: center;
+    font-size: 13px;
+  }
+
+  .col-box-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-tertiary);
+  }
+
+  .stat-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-secondary);
+  }
+
+  .stat-chip svg {
+    color: var(--brand-primary);
+    flex-shrink: 0;
+  }
+
+  .release-divider {
+    height: 1px;
+    background-color: var(--border);
+    margin: 20px 0;
+  }
+
+  .notes-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .notes-header svg {
+    color: var(--brand-primary);
+  }
+
+  /* Markdown Formatted Body */
+  .release-notes-content {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+
+  :global(.notes-heading) {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 16px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  :global(.notes-heading:first-child) {
+    margin-top: 0;
+  }
+
+  :global(.notes-list) {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 12px;
+  }
+
+  :global(.notes-list li) {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  :global(.notes-list li::before) {
+    content: "•";
+    position: absolute;
+    left: 4px;
+    color: var(--brand-primary);
+    font-weight: bold;
+  }
+
+  :global(.notes-para) {
+    margin: 0 0 10px;
+  }
+
+  :global(.notes-divider) {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 14px 0;
+  }
+
+  .release-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 11px;
+    color: var(--text-tertiary);
+  }
+
+  .footer-gh-link {
+    color: var(--brand-primary);
+    text-decoration: none;
+  }
+
+  .footer-gh-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Archive Section */
+  .archive-section-wrapper {
+    margin-top: 32px;
+  }
+
+  .archive-header-row {
+    margin-bottom: 20px;
+  }
+
+  .archive-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin: 0 0 6px;
+  }
+
+  .archive-sub {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .archive-list-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .archive-item-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .archive-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .archive-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Empty state for single release */
+  .archive-empty-box {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .empty-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--surface-secondary);
+    color: var(--brand-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+
+  .empty-badge {
+    margin-bottom: 8px;
+  }
+
+  .empty-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+  }
+
+  .empty-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto 16px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .changelog-page-wrapper {
+      padding: 32px 0 60px;
+    }
+    .latest-release-card {
+      padding: 16px;
+    }
+    .release-download-grid {
+      grid-template-columns: 1fr;
+    }
+    .release-card-footer {
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  interface ReleaseAsset {
+    name: string;
+    size: number;
+    download_count: number;
+    browser_download_url: string;
+  }
+
+  interface GitHubRelease {
+    tag_name: string;
+    name: string;
+    prerelease: boolean;
+    published_at: string;
+    body: string;
+    html_url: string;
+    assets: ReleaseAsset[];
+  }
+
+  const CACHE_KEY = 'speedflow_github_releases_v2';
+  let cachedReleases: GitHubRelease[] = [];
+
+  function formatBytes(bytes: number): string {
+    if (!bytes || bytes === 0) return '0 MB';
+    const mb = bytes / (1024 * 1024);
+    return `${mb.toFixed(1)} MB`;
+  }
+
+  function formatDate(isoString: string, lang: 'en' | 'id' = 'en'): string {
+    try {
+      const date = new Date(isoString);
+      return date.toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      });
+    } catch {
+      return lang === 'id' ? 'Baru saja' : 'Recent';
+    }
+  }
+
+  function escapeHtml(str: string): string {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function formatInlineMarkdown(text: string): string {
+    let safe = escapeHtml(text);
+    safe = safe.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    safe = safe.replace(/`([^`]+)`/g, '<code>$1</code>');
+    safe = safe.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    return safe;
+  }
+
+  function parseMarkdownToHtml(markdown: string): string {
+    if (!markdown) return '<p class="notes-para">No release notes provided.</p>';
+    
+    const lines = markdown.split('\n');
+    const htmlLines: string[] = [];
+    let inList = false;
+
+    for (let rawLine of lines) {
+      const line = rawLine.trim();
+
+      if (line.startsWith('# ')) {
+        continue;
+      }
+
+      if (line.startsWith('### ') || line.startsWith('## ')) {
+        if (inList) {
+          htmlLines.push('</ul>');
+          inList = false;
+        }
+        const title = line.replace(/^#{2,3}\s+/, '');
+        htmlLines.push(`<h5 class="notes-heading">${escapeHtml(title)}</h5>`);
+      } else if (line.startsWith('- ') || line.startsWith('* ')) {
+        if (!inList) {
+          htmlLines.push('<ul class="notes-list">');
+          inList = true;
+        }
+        const itemContent = line.replace(/^[-*]\s+/, '');
+        htmlLines.push(`<li>${formatInlineMarkdown(itemContent)}</li>`);
+      } else if (line.startsWith('---')) {
+        if (inList) {
+          htmlLines.push('</ul>');
+          inList = false;
+        }
+        htmlLines.push('<hr class="notes-divider" />');
+      } else if (line === '') {
+        if (inList) {
+          htmlLines.push('</ul>');
+          inList = false;
+        }
+      } else {
+        if (inList) {
+          htmlLines.push('</ul>');
+          inList = false;
+        }
+        htmlLines.push(`<p class="notes-para">${formatInlineMarkdown(line)}</p>`);
+      }
+    }
+
+    if (inList) {
+      htmlLines.push('</ul>');
+    }
+
+    return htmlLines.join('\n');
+  }
+
+  function renderChangelog(releases: GitHubRelease[]) {
+    if (!releases || releases.length === 0) return;
+
+    const lang: 'en' | 'id' = document.documentElement.lang === 'id' ? 'id' : 'en';
+    const latest = releases[0];
+    const older = releases.slice(1);
+
+    // 1. Populate Latest Release
+    const tag = latest.tag_name || 'v0.1.0-beta';
+    const isPre = Boolean(latest.prerelease);
+    const pubDate = formatDate(latest.published_at, lang);
+
+    const tagBadge = document.getElementById('latest-tag-badge');
+    if (tagBadge) tagBadge.textContent = tag;
+
+    const emptyTagText = document.getElementById('empty-tag-text');
+    if (emptyTagText) emptyTagText.textContent = tag;
+
+    const statusBadge = document.getElementById('latest-status-badge');
+    if (statusBadge) {
+      statusBadge.textContent = isPre 
+        ? (lang === 'id' ? 'Pra-rilis' : 'Pre-release') 
+        : (lang === 'id' ? 'Stabil' : 'Stable');
+      statusBadge.className = isPre ? 'badge badge-warning' : 'badge badge-brand';
+    }
+
+    const dateText = document.getElementById('latest-date-text');
+    if (dateText) {
+      dateText.textContent = lang === 'id' ? `Dirilis: ${pubDate}` : `Published: ${pubDate}`;
+    }
+
+    const assets = latest.assets || [];
+    const setupAsset = assets.find(a => 
+      a.name.toLowerCase().includes('setup') && a.name.toLowerCase().endsWith('.exe')
+    ) || assets.find(a => a.name.toLowerCase().endsWith('.exe'));
+
+    const portableAsset = assets.find(a => 
+      a.name.toLowerCase().includes('portable') && a.name.toLowerCase().endsWith('.zip')
+    ) || assets.find(a => a.name.toLowerCase().endsWith('.zip') && !a.name.toLowerCase().includes('extension'));
+
+    const extensionAsset = assets.find(a => 
+      a.name.toLowerCase().includes('extension') && a.name.toLowerCase().endsWith('.zip')
+    );
+
+    const setupDl = setupAsset ? (setupAsset.download_count ?? 0) : 0;
+    const portableDl = portableAsset ? (portableAsset.download_count ?? 0) : 0;
+    const extDl = extensionAsset ? (extensionAsset.download_count ?? 0) : 0;
+    const totalDl = assets.reduce((acc, cur) => acc + (cur.download_count || 0), 0);
+    const suffix = lang === 'id' ? 'unduhan' : 'downloads';
+
+    // Installer
+    const btnInstaller = document.getElementById('latest-btn-installer') as HTMLAnchorElement | null;
+    const installerSize = document.getElementById('latest-installer-size');
+    const installerDl = document.getElementById('latest-installer-downloads');
+    if (btnInstaller && setupAsset) {
+      btnInstaller.href = setupAsset.browser_download_url;
+      if (installerSize) installerSize.textContent = formatBytes(setupAsset.size);
+      if (installerDl) installerDl.textContent = `${setupDl.toLocaleString(lang === 'id' ? 'id-ID' : 'en-US')} ${suffix}`;
+    }
+
+    // Portable
+    const btnPortable = document.getElementById('latest-btn-portable') as HTMLAnchorElement | null;
+    const portableSize = document.getElementById('latest-portable-size');
+    const portableDlEl = document.getElementById('latest-portable-downloads');
+    if (btnPortable && portableAsset) {
+      btnPortable.href = portableAsset.browser_download_url;
+      if (portableSize) portableSize.textContent = formatBytes(portableAsset.size);
+      if (portableDlEl) portableDlEl.textContent = `${portableDl.toLocaleString(lang === 'id' ? 'id-ID' : 'en-US')} ${suffix}`;
+    }
+
+    // Extension
+    const btnExt = document.getElementById('latest-btn-extension') as HTMLAnchorElement | null;
+    const extSize = document.getElementById('latest-extension-size');
+    const extDlEl = document.getElementById('latest-extension-downloads');
+    if (btnExt && extensionAsset) {
+      btnExt.href = extensionAsset.browser_download_url;
+      if (extSize) extSize.textContent = `${Math.round(extensionAsset.size / 1024)} KB`;
+      if (extDlEl) extDlEl.textContent = `${extDl.toLocaleString(lang === 'id' ? 'id-ID' : 'en-US')} ${suffix}`;
+    }
+
+    // Total Downloads
+    const totalDlEl = document.getElementById('latest-total-downloads');
+    if (totalDlEl) {
+      const formattedTotal = totalDl.toLocaleString(lang === 'id' ? 'id-ID' : 'en-US');
+      totalDlEl.textContent = `Total: ${formattedTotal} ${suffix}`;
+    }
+
+    // GitHub Release link
+    const ghReleaseLink = document.getElementById('latest-gh-release-link') as HTMLAnchorElement | null;
+    if (ghReleaseLink && latest.html_url) {
+      ghReleaseLink.href = latest.html_url;
+    }
+
+    // Release Notes
+    const notesBody = document.getElementById('latest-release-body');
+    if (notesBody && latest.body) {
+      notesBody.innerHTML = parseMarkdownToHtml(latest.body);
+    }
+
+    // 2. Populate Older Releases
+    const archiveContainer = document.getElementById('archive-list-container');
+    if (!archiveContainer) return;
+
+    if (older.length > 0) {
+      archiveContainer.innerHTML = older.map(rel => {
+        const relAssets = rel.assets || [];
+        const rSetup = relAssets.find(a => a.name.toLowerCase().includes('setup') && a.name.toLowerCase().endsWith('.exe')) || relAssets.find(a => a.name.toLowerCase().endsWith('.exe'));
+        const rPortable = relAssets.find(a => a.name.toLowerCase().includes('portable') && a.name.toLowerCase().endsWith('.zip')) || relAssets.find(a => a.name.toLowerCase().endsWith('.zip'));
+        const rIsPre = Boolean(rel.prerelease);
+        const rStatus = rIsPre ? (lang === 'id' ? 'Pra-rilis' : 'Pre-release') : (lang === 'id' ? 'Stabil' : 'Stable');
+        const rDate = formatDate(rel.published_at, lang);
+
+        return `
+          <div class="archive-item-card pane">
+            <div class="archive-card-head font-mono">
+              <div class="release-tags-group">
+                <span class="tag-version-pill font-bold">${escapeHtml(rel.tag_name)}</span>
+                <span class="badge ${rIsPre ? 'badge-warning' : 'badge-brand'}">${rStatus}</span>
+              </div>
+              <span class="text-tertiary" style="font-size: 12px;">${rDate}</span>
+            </div>
+
+            <div class="archive-card-actions font-mono">
+              ${rSetup ? `
+                <a href="${rSetup.browser_download_url}" class="btn btn-primary btn-sm" download>
+                  Installer (${formatBytes(rSetup.size)})
+                </a>
+              ` : ''}
+              ${rPortable ? `
+                <a href="${rPortable.browser_download_url}" class="btn btn-secondary btn-sm" download>
+                  Portable (${formatBytes(rPortable.size)})
+                </a>
+              ` : ''}
+              <a href="${rel.html_url}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
+                ${lang === 'id' ? 'Catatan Rilis ↗' : 'Notes ↗'}
+              </a>
+            </div>
+
+            ${rel.body ? `
+              <div class="release-notes-content" style="margin-bottom: 0;">
+                ${parseMarkdownToHtml(rel.body)}
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  async function fetchChangelogReleases() {
+    // 1. Try reading from cache first for instant render
+    try {
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (cached) {
+        const parsed = JSON.parse(cached);
+        if (parsed.all && Array.isArray(parsed.all)) {
+          cachedReleases = parsed.all;
+          renderChangelog(cachedReleases);
+        }
+      }
+    } catch {
+      // Ignore cache read errors
+    }
+
+    // 2. Fetch fresh from GitHub
+    try {
+      const res = await fetch('https://api.github.com/repos/Kharisdestianmaulana-hub/speedflow/releases', {
+        headers: { 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (res.ok) {
+        const releases: GitHubRelease[] = await res.json();
+        if (releases && releases.length > 0) {
+          cachedReleases = releases;
+          renderChangelog(cachedReleases);
+        }
+      }
+    } catch (err) {
+      console.warn('[SpeedFlow] Could not fetch fresh releases for changelog:', err);
+    }
+  }
+
+  function initChangelogPage() {
+    fetchChangelogReleases();
+
+    window.addEventListener('speedflow:langchange', () => {
+      if (cachedReleases.length > 0) {
+        renderChangelog(cachedReleases);
+      }
+    });
+  }
+
+  if (typeof window !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initChangelogPage);
+    } else {
+      initChangelogPage();
+    }
+  }
+</script>
