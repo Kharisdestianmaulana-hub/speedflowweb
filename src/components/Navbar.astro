@@ -76,10 +76,10 @@
         <span data-i18n="nav_download_btn">Download</span>
       </a>
 
-      <!-- Hamburger Mega-Menu Toggle Button (Desktop & Mobile) -->
+      <!-- Desktop Hamburger Mega-Menu Button (Desktop Only) -->
       <button
-        id="mega-menu-toggle"
-        class="menu-hamburger-btn"
+        id="desktop-menu-toggle"
+        class="menu-hamburger-btn desktop-only"
         aria-label="Toggle Additional Menu & Ecosystem"
         aria-expanded="false"
         type="button"
@@ -95,32 +95,41 @@
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </button>
+
+      <!-- Mobile Hamburger Menu Button (Mobile Only) -->
+      <button
+        id="mobile-menu-toggle"
+        class="menu-hamburger-btn mobile-only"
+        aria-label="Toggle Mobile Navigation Menu"
+        aria-expanded="false"
+        type="button"
+      >
+        <svg class="icon-hamburger" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg class="icon-close" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
     </div>
   </div>
 
-  <!-- Mega Menu Dropdown Drawer (Inspired by Baku PDF) -->
-  <div id="mega-menu-drawer" class="mega-menu-drawer" aria-hidden="true">
+  <!-- 1. DESKTOP MEGA MENU DROPDOWN (Inspired by Baku PDF - Desktop Only) -->
+  <div id="desktop-mega-menu" class="desktop-mega-menu desktop-only" aria-hidden="true">
     <div class="container mega-menu-inner">
       <!-- Header Row: Title & Subtitle -->
       <div class="mega-menu-header font-mono">
         <span class="mega-header-title" data-i18n="drawer_section_title">MENU TAMBAHAN &amp; EKOSISTEM SPEEDFLOW</span>
-        <span class="mega-header-sub text-tertiary desktop-only" data-i18n="drawer_section_sub">SpeedFlow — High-Performance Download Manager</span>
+        <span class="mega-header-sub text-tertiary" data-i18n="drawer_section_sub">SpeedFlow — High-Performance Download Manager</span>
       </div>
 
-      <!-- Mobile Navigation Core Links (Only visible on mobile screens) -->
-      <div class="mobile-core-nav mobile-only">
-        <div class="mobile-nav-pills font-mono">
-          <a href="#how-it-works" class="drawer-nav-item" data-i18n="nav_how_it_works">How It Works</a>
-          <a href="#features" class="drawer-nav-item" data-i18n="nav_features">Features</a>
-          <a href="#extension" class="drawer-nav-item" data-i18n="nav_extension">Extension</a>
-          <a href="#faq" class="drawer-nav-item" data-i18n="nav_faq">FAQ</a>
-        </div>
-      </div>
-
-      <!-- 5-Card Ecosystem Grid (Desktop: 5 Columns, Mobile: Responsive Stack) -->
+      <!-- 5-Card Horizontal Grid -->
       <div class="mega-cards-grid">
         <!-- Card 1: Comparison -->
-        <a href="#compare" class="mega-card pane drawer-nav-item">
+        <a href="#compare" class="mega-card pane desktop-nav-item">
           <div class="mega-card-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="17 1 21 5 17 9"></polyline>
@@ -139,7 +148,7 @@
         </a>
 
         <!-- Card 2: Extension Setup Guide -->
-        <a href="#extension-guide" class="mega-card pane drawer-nav-item">
+        <a href="#extension-guide" class="mega-card pane desktop-nav-item">
           <div class="mega-card-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
@@ -157,7 +166,7 @@
         </a>
 
         <!-- Card 3: Privacy & Clean Software -->
-        <a href="#privacy" class="mega-card pane drawer-nav-item">
+        <a href="#privacy" class="mega-card pane desktop-nav-item">
           <div class="mega-card-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -173,7 +182,7 @@
         </a>
 
         <!-- Card 4: Changelog & Archive -->
-        <a href="#download" class="mega-card pane drawer-nav-item" id="mega-link-archive">
+        <a href="#download" class="mega-card pane desktop-nav-item">
           <div class="mega-card-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -192,7 +201,7 @@
         </a>
 
         <!-- Card 5: Community & Issues -->
-        <a href="https://github.com/Kharisdestianmaulana-hub/speedflow/issues" target="_blank" rel="noopener noreferrer" class="mega-card pane drawer-nav-item">
+        <a href="https://github.com/Kharisdestianmaulana-hub/speedflow/issues" target="_blank" rel="noopener noreferrer" class="mega-card pane desktop-nav-item">
           <div class="mega-card-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
@@ -207,6 +216,58 @@
             </div>
             <p class="mega-card-desc" data-i18n="drawer_community_desc">Report bugs, request features, or contribute on GitHub</p>
           </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MOBILE NAVIGATION DRAWER (Clean Vertical List - Mobile Only) -->
+  <div id="mobile-menu-drawer" class="mobile-menu-drawer mobile-only" aria-hidden="true">
+    <div class="container mobile-menu-inner">
+      <nav class="mobile-nav-list font-mono">
+        <a href="#how-it-works" class="mobile-nav-link" data-i18n="nav_how_it_works">How It Works</a>
+        <a href="#features" class="mobile-nav-link" data-i18n="nav_features">Features</a>
+        <a href="#compare" class="mobile-nav-link" data-i18n="nav_compare">Comparison</a>
+        <a href="#privacy" class="mobile-nav-link" data-i18n="nav_privacy">Privacy &amp; Safety</a>
+        <a href="#extension" class="mobile-nav-link" data-i18n="nav_extension">Browser Extension</a>
+        <a href="#extension-guide" class="mobile-nav-link" data-i18n="guide_badge">Panduan Pasang Ekstensi</a>
+        <a href="#download" class="mobile-nav-link" data-i18n="nav_download">Downloads</a>
+        <a href="#faq" class="mobile-nav-link" data-i18n="nav_faq">FAQ</a>
+      </nav>
+
+      <div class="mobile-menu-divider"></div>
+
+      <div class="mobile-menu-actions">
+        <!-- Mobile GitHub Star Button -->
+        <a
+          href="https://github.com/Kharisdestianmaulana-hub/speedflow"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mobile-star-cta"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span class="mobile-star-label" data-i18n="nav_star_label">Star SpeedFlow on GitHub</span>
+          <svg class="star-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span id="mobile-nav-star-count" class="star-count font-mono">0</span>
+        </a>
+
+        <!-- Mobile Download CTA Button -->
+        <a
+          id="mobile-nav-download-btn"
+          href="https://github.com/Kharisdestianmaulana-hub/speedflow/releases/download/v0.1.0-beta/SpeedFlow-Setup-v0.1.0.exe"
+          class="btn btn-primary mobile-download-cta"
+          download
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span data-i18n="nav_download_btn">Download</span>
         </a>
       </div>
     </div>
@@ -264,7 +325,7 @@
     margin-left: 2px;
   }
 
-  /* 4 Core Nav Links */
+  /* 4 Core Nav Links (Desktop) */
   .nav-links {
     display: flex;
     align-items: center;
@@ -409,7 +470,7 @@
     color: var(--text-secondary);
   }
 
-  /* Hamburger Mega-Menu Button */
+  /* Hamburger Toggle Buttons */
   .menu-hamburger-btn {
     display: inline-flex;
     align-items: center;
@@ -450,8 +511,10 @@
     display: block;
   }
 
-  /* Mega Menu Dropdown Drawer (Inspired by Baku PDF) */
-  .mega-menu-drawer {
+  /* ==========================================================================
+     1. DESKTOP MEGA MENU DROPDOWN
+     ========================================================================== */
+  .desktop-mega-menu {
     display: none;
     background-color: var(--surface);
     border-top: 1px solid var(--border);
@@ -460,7 +523,7 @@
     animation: megaMenuSlideDown 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .mega-menu-drawer.is-open {
+  .desktop-mega-menu.is-open {
     display: block;
   }
 
@@ -503,7 +566,7 @@
     font-size: 11px;
   }
 
-  /* 5-Card Grid */
+  /* 5-Card Horizontal Grid */
   .mega-cards-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -588,38 +651,110 @@
     margin: 0;
   }
 
-  /* Mobile Specific Elements */
-  .mobile-only {
+  /* ==========================================================================
+     2. MOBILE NAVIGATION DRAWER
+     ========================================================================== */
+  .mobile-menu-drawer {
     display: none;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45);
+    animation: drawerSlideDown 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .mobile-core-nav {
-    margin-bottom: 2px;
-  }
-
-  .mobile-nav-pills {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
-  }
-
-  .mobile-nav-pills .drawer-nav-item {
+  .mobile-menu-drawer.is-open {
     display: block;
-    text-align: center;
-    padding: 8px 10px;
-    font-size: 12.5px;
-    font-weight: 500;
-    background-color: var(--surface-secondary);
-    border: 1px solid var(--border);
+  }
+
+  @keyframes drawerSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mobile-menu-inner {
+    padding: 16px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 9px 12px;
+    font-size: 13.5px;
+    color: var(--text-secondary);
     border-radius: var(--radius);
-    color: var(--text-primary);
     text-decoration: none;
     transition: all 0.1s ease;
   }
 
-  .mobile-nav-pills .drawer-nav-item:hover {
+  .mobile-nav-link:hover {
+    background-color: var(--surface-hover);
+    color: var(--brand-primary);
+  }
+
+  .mobile-menu-divider {
+    height: 1px;
+    background-color: var(--border);
+    width: 100%;
+    margin: 4px 0;
+  }
+
+  .mobile-menu-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .mobile-star-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background-color: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  .mobile-star-cta:hover {
+    background-color: var(--surface-hover);
     border-color: var(--brand-primary);
     color: var(--brand-primary);
+  }
+
+  .mobile-star-cta .star-icon {
+    color: #FACC15;
+  }
+
+  .mobile-download-cta {
+    height: 42px;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    gap: 8px;
+  }
+
+  /* Visibility Utility Classes */
+  .mobile-only {
+    display: none !important;
   }
 
   /* Responsive Breakpoints */
@@ -631,27 +766,19 @@
 
   @media (max-width: 860px) {
     .nav-links {
-      display: none;
+      display: none !important;
     }
     .desktop-only {
       display: none !important;
     }
     .mobile-only {
-      display: block;
+      display: flex !important;
     }
-    .mega-cards-grid {
-      grid-template-columns: 1fr;
-      gap: 8px;
+    .mobile-menu-drawer.is-open {
+      display: block !important;
     }
-    .mega-card {
-      flex-direction: row;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 12px;
-    }
-    .mega-card-icon {
-      margin-bottom: 0;
-      flex-shrink: 0;
+    .mobile-menu-btn {
+      display: inline-flex !important;
     }
   }
 
@@ -668,9 +795,6 @@
     .nav-version-badge {
       font-size: 10px !important;
       padding: 2px 6px !important;
-    }
-    .mega-menu-inner {
-      padding: 14px 14px 18px 14px;
     }
   }
 </style>
@@ -693,53 +817,98 @@
     });
   }
 
-  // Mega-Menu Hamburger Toggle Logic (Unified Desktop & Mobile)
-  const megaToggle = document.getElementById('mega-menu-toggle');
-  const megaDrawer = document.getElementById('mega-menu-drawer');
-  const drawerLinks = document.querySelectorAll('.drawer-nav-item');
+  // 1. Desktop Mega-Menu Logic (Desktop Only)
+  const desktopToggle = document.getElementById('desktop-menu-toggle');
+  const desktopMegaMenu = document.getElementById('desktop-mega-menu');
+  const desktopNavLinks = document.querySelectorAll('.desktop-nav-item');
 
-  function closeMegaMenu() {
-    if (megaDrawer && megaToggle) {
-      megaDrawer.classList.remove('is-open');
-      megaToggle.classList.remove('is-active');
-      megaToggle.setAttribute('aria-expanded', 'false');
-      megaDrawer.setAttribute('aria-hidden', 'true');
+  function closeDesktopMegaMenu() {
+    if (desktopMegaMenu && desktopToggle) {
+      desktopMegaMenu.classList.remove('is-open');
+      desktopToggle.classList.remove('is-active');
+      desktopToggle.setAttribute('aria-expanded', 'false');
+      desktopMegaMenu.setAttribute('aria-hidden', 'true');
     }
   }
 
-  function toggleMegaMenu() {
-    if (!megaDrawer || !megaToggle) return;
-    const isOpen = megaDrawer.classList.toggle('is-open');
-    megaToggle.classList.toggle('is-active', isOpen);
-    megaToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    megaDrawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  function toggleDesktopMegaMenu() {
+    if (!desktopMegaMenu || !desktopToggle) return;
+    const isOpen = desktopMegaMenu.classList.toggle('is-open');
+    desktopToggle.classList.toggle('is-active', isOpen);
+    desktopToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    desktopMegaMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
   }
 
-  if (megaToggle && megaDrawer) {
-    megaToggle.addEventListener('click', (e) => {
+  if (desktopToggle && desktopMegaMenu) {
+    desktopToggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      toggleMegaMenu();
+      toggleDesktopMegaMenu();
     });
 
-    // Close when clicking any nav item inside the drawer
-    drawerLinks.forEach(link => {
+    desktopNavLinks.forEach(link => {
       link.addEventListener('click', () => {
-        closeMegaMenu();
+        closeDesktopMegaMenu();
       });
     });
 
-    // Close when clicking outside of the navbar/drawer
     document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
-      if (megaDrawer.classList.contains('is-open') && !megaDrawer.contains(target) && !megaToggle.contains(target)) {
-        closeMegaMenu();
+      if (desktopMegaMenu.classList.contains('is-open') && !desktopMegaMenu.contains(target) && !desktopToggle.contains(target)) {
+        closeDesktopMegaMenu();
       }
     });
 
-    // Close on Escape key
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && megaDrawer.classList.contains('is-open')) {
-        closeMegaMenu();
+      if (e.key === 'Escape' && desktopMegaMenu.classList.contains('is-open')) {
+        closeDesktopMegaMenu();
+      }
+    });
+  }
+
+  // 2. Mobile Drawer Navigation Logic (Mobile Only)
+  const mobileToggle = document.getElementById('mobile-menu-toggle');
+  const mobileDrawer = document.getElementById('mobile-menu-drawer');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+  function closeMobileDrawer() {
+    if (mobileDrawer && mobileToggle) {
+      mobileDrawer.classList.remove('is-open');
+      mobileToggle.classList.remove('is-active');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+      mobileDrawer.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  function toggleMobileDrawer() {
+    if (!mobileDrawer || !mobileToggle) return;
+    const isOpen = mobileDrawer.classList.toggle('is-open');
+    mobileToggle.classList.toggle('is-active', isOpen);
+    mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    mobileDrawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  }
+
+  if (mobileToggle && mobileDrawer) {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileDrawer();
+    });
+
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileDrawer();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (mobileDrawer.classList.contains('is-open') && !mobileDrawer.contains(target) && !mobileToggle.contains(target)) {
+        closeMobileDrawer();
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileDrawer.classList.contains('is-open')) {
+        closeMobileDrawer();
       }
     });
   }
