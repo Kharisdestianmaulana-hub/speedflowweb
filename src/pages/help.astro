@@ -1,0 +1,17 @@
+---
+// src/pages/help.astro - Redirect alias to /feedback#contact
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0;url=/feedback#contact" />
+    <title>Redirecting to SpeedFlow Help & Contact...</title>
+    <script is:inline>
+      window.location.replace('/feedback#contact');
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <a href="/feedback#contact">SpeedFlow Help & Contact</a>...</p>
+  </body>
+</html>

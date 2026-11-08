@@ -80,6 +80,20 @@ import Footer from '../components/Footer.astro';
             </svg>
             <span data-i18n="fb_tab_feature">Feature Request</span>
           </button>
+
+          <button
+            type="button"
+            class="feedback-tab-btn"
+            id="tab-btn-contact"
+            data-target="contact"
+            role="tab"
+            aria-selected="false"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span data-i18n="fb_tab_contact">Contact &amp; Help</span>
+          </button>
         </div>
 
         <!-- Success Result Card (Hidden by default) -->
@@ -473,6 +487,138 @@ import Footer from '../components/Footer.astro';
             </button>
           </div>
         </form>
+
+        <!-- TAB 3: CONTACT & HELP (Direct Developer Channels + Troubleshooting) -->
+        <div id="tab-content-contact" class="contact-tab-pane" style="display: none;">
+          <!-- Section Heading -->
+          <div class="contact-pane-head">
+            <h3 class="contact-heading" data-i18n="contact_section_title">Direct Developer Channels</h3>
+            <p class="contact-subhead" data-i18n="contact_section_sub">
+              Need personal help, want to discuss SpeedFlow development, or have a partnership idea? Reach out directly via Telegram or Discord.
+            </p>
+          </div>
+
+          <!-- Direct Channels Grid -->
+          <div class="contact-channels-grid">
+            <!-- Telegram Card -->
+            <div class="contact-channel-card pane">
+              <div class="channel-card-top">
+                <div class="channel-icon-wrap tg-icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </div>
+                <span class="badge badge-brand font-mono" data-i18n="contact_tg_badge">Fast Response</span>
+              </div>
+              <h4 class="channel-name" data-i18n="contact_tg_title">Telegram</h4>
+              <span class="channel-handle font-mono text-tertiary">@Kharisdm</span>
+              <p class="channel-desc" data-i18n="contact_tg_desc">
+                Chat directly on Telegram for real-time questions, feedback, or developer discussions.
+              </p>
+              <div class="channel-action">
+                <a
+                  href="http://t.me/Kharisdm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-primary font-mono btn-channel-link"
+                >
+                  <span data-i18n="contact_tg_btn">Chat on Telegram →</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Discord Card -->
+            <div class="contact-channel-card pane">
+              <div class="channel-card-top">
+                <div class="channel-icon-wrap dc-icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect width="18" height="12" x="3" y="6" rx="2"></rect>
+                    <line x1="7" y1="12" x2="7.01" y2="12"></line>
+                    <line x1="17" y1="12" x2="17.01" y2="12"></line>
+                    <path d="M12 9v6"></path>
+                    <path d="M9 12h6"></path>
+                  </svg>
+                </div>
+                <span class="badge badge-warning font-mono" data-i18n="contact_dc_badge">Community &amp; Tech</span>
+              </div>
+              <h4 class="channel-name" data-i18n="contact_dc_title">Discord</h4>
+              <span class="channel-handle font-mono text-tertiary">ID: 1374621376706777179</span>
+              <p class="channel-desc" data-i18n="contact_dc_desc">
+                Connect on Discord for technical consulting, Rust development topics, or casual developer chats.
+              </p>
+              <div class="channel-action">
+                <a
+                  href="https://discord.com/users/1374621376706777179"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-secondary font-mono btn-channel-link"
+                >
+                  <span data-i18n="contact_dc_btn">Open Discord Profile →</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="contact-divider"></div>
+
+          <!-- Quick Self-Service Troubleshooting Section -->
+          <div class="contact-troubleshoot-wrapper">
+            <div class="troubleshoot-head">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              <div>
+                <h4 class="troubleshoot-title" data-i18n="contact_faq_title">Quick Self-Service Troubleshooting</h4>
+                <p class="troubleshoot-sub" data-i18n="contact_faq_sub">
+                  Solve common questions instantly without waiting for a reply:
+                </p>
+              </div>
+            </div>
+
+            <div class="troubleshoot-cards-grid">
+              <div class="troubleshoot-item pane">
+                <strong class="troubleshoot-q" data-i18n="contact_q1_title">1. Download not intercepted from browser?</strong>
+                <p class="troubleshoot-a" data-i18n="contact_q1_desc">
+                  Check that the SpeedFlow companion extension is enabled in your browser toolbar and the SpeedFlow desktop application is running.
+                </p>
+              </div>
+
+              <div class="troubleshoot-item pane">
+                <strong class="troubleshoot-q" data-i18n="contact_q2_title">2. Download paused or stalls near 99%?</strong>
+                <p class="troubleshoot-a" data-i18n="contact_q2_desc">
+                  Click Pause, wait 3 seconds, then click Resume. SpeedFlow will automatically verify and reconnect any lagging stream parts.
+                </p>
+              </div>
+
+              <div class="troubleshoot-item pane">
+                <strong class="troubleshoot-q" data-i18n="contact_q3_title">3. Download link expired while paused?</strong>
+                <p class="troubleshoot-a" data-i18n="contact_q3_desc">
+                  Copy the renewed link from your browser, right-click the paused task in SpeedFlow, and select 'Renew URL' to continue seamlessly.
+                </p>
+              </div>
+
+              <div class="troubleshoot-item pane">
+                <strong class="troubleshoot-q" data-i18n="contact_q4_title">4. Windows SmartScreen warning appeared?</strong>
+                <p class="troubleshoot-a" data-i18n="contact_q4_desc">
+                  Click 'More info' and then 'Run anyway'. SpeedFlow is 100% clean and open source; this warning is normal for newly released open-source software without expensive enterprise certificates.
+                </p>
+              </div>
+            </div>
+
+            <!-- Best Practice Box -->
+            <div class="contact-tips-box font-mono">
+              <strong class="tips-title" data-i18n="contact_tips_title">Tips for Faster Assistance:</strong>
+              <ul class="tips-list">
+                <li data-i18n="contact_tips_p1">Mention your SpeedFlow version (v0.1.0-beta) and Windows build (Windows 10/11).</li>
+                <li data-i18n="contact_tips_p2">Include a screenshot or error message if reporting a technical bug.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -852,6 +998,197 @@ import Footer from '../components/Footer.astro';
       width: 100%;
       justify-content: center;
     }
+    .contact-channels-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .troubleshoot-cards-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  /* Contact & Help Tab Styles */
+  .contact-tab-pane {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-pane-head {
+    margin-bottom: 4px;
+  }
+
+  .contact-heading {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 6px;
+  }
+
+  .contact-subhead {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .contact-channels-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .contact-channel-card {
+    background-color: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .contact-channel-card:hover {
+    border-color: var(--border-strong);
+    background-color: var(--surface-hover);
+  }
+
+  .channel-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .channel-icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tg-icon-wrap {
+    background-color: rgba(34, 197, 94, 0.12);
+    color: var(--brand-primary);
+  }
+
+  .dc-icon-wrap {
+    background-color: rgba(245, 158, 11, 0.12);
+    color: #f59e0b;
+  }
+
+  .channel-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .channel-handle {
+    font-size: 12px;
+  }
+
+  .channel-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 4px 0 12px;
+    flex-grow: 1;
+  }
+
+  .btn-channel-link {
+    width: 100%;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .contact-divider {
+    height: 1px;
+    background-color: var(--border);
+  }
+
+  .contact-troubleshoot-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .troubleshoot-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--text-primary);
+  }
+
+  .troubleshoot-head svg {
+    color: var(--brand-primary);
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .troubleshoot-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: var(--text-primary);
+  }
+
+  .troubleshoot-sub {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .troubleshoot-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .troubleshoot-item {
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .troubleshoot-q {
+    font-size: 12px;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  .troubleshoot-a {
+    font-size: 11px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .contact-tips-box {
+    background-color: var(--surface-secondary);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .tips-title {
+    display: block;
+    color: var(--brand-primary);
+    margin-bottom: 6px;
+  }
+
+  .tips-list {
+    margin: 0;
+    padding-left: 18px;
+    line-height: 1.6;
   }
 </style>
 
@@ -859,8 +1196,10 @@ import Footer from '../components/Footer.astro';
   function initFeedbackPage() {
     const tabBugBtn = document.getElementById('tab-btn-bug');
     const tabFeatBtn = document.getElementById('tab-btn-feature');
+    const tabContactBtn = document.getElementById('tab-btn-contact');
     const formBug = document.getElementById('form-bug') as HTMLFormElement | null;
     const formFeat = document.getElementById('form-feature') as HTMLFormElement | null;
+    const contentContact = document.getElementById('tab-content-contact');
 
     const successCard = document.getElementById('feedback-success-card');
     const errorBanner = document.getElementById('feedback-error-banner');
@@ -869,28 +1208,24 @@ import Footer from '../components/Footer.astro';
     const successIssueLink = document.getElementById('success-issue-link') as HTMLAnchorElement | null;
     const btnSubmitAnother = document.getElementById('btn-submit-another');
 
-    let activeTab: 'bug' | 'feature' = 'bug';
+    let activeTab: 'bug' | 'feature' | 'contact' = 'bug';
 
     // 1. Tab Switching
-    function setTab(target: 'bug' | 'feature') {
+    function setTab(target: 'bug' | 'feature' | 'contact') {
       activeTab = target;
-      if (target === 'bug') {
-        tabBugBtn?.classList.add('active');
-        tabBugBtn?.setAttribute('aria-selected', 'true');
-        tabFeatBtn?.classList.remove('active');
-        tabFeatBtn?.setAttribute('aria-selected', 'false');
 
-        if (formBug) formBug.style.display = 'flex';
-        if (formFeat) formFeat.style.display = 'none';
-      } else {
-        tabFeatBtn?.classList.add('active');
-        tabFeatBtn?.setAttribute('aria-selected', 'true');
-        tabBugBtn?.classList.remove('active');
-        tabBugBtn?.setAttribute('aria-selected', 'false');
+      tabBugBtn?.classList.toggle('active', target === 'bug');
+      tabBugBtn?.setAttribute('aria-selected', target === 'bug' ? 'true' : 'false');
 
-        if (formFeat) formFeat.style.display = 'flex';
-        if (formBug) formBug.style.display = 'none';
-      }
+      tabFeatBtn?.classList.toggle('active', target === 'feature');
+      tabFeatBtn?.setAttribute('aria-selected', target === 'feature' ? 'true' : 'false');
+
+      tabContactBtn?.classList.toggle('active', target === 'contact');
+      tabContactBtn?.setAttribute('aria-selected', target === 'contact' ? 'true' : 'false');
+
+      if (formBug) formBug.style.display = target === 'bug' ? 'flex' : 'none';
+      if (formFeat) formFeat.style.display = target === 'feature' ? 'flex' : 'none';
+      if (contentContact) contentContact.style.display = target === 'contact' ? 'flex' : 'none';
 
       // Hide status messages when switching tabs
       if (errorBanner) errorBanner.style.display = 'none';
@@ -898,6 +1233,12 @@ import Footer from '../components/Footer.astro';
 
     tabBugBtn?.addEventListener('click', () => setTab('bug'));
     tabFeatBtn?.addEventListener('click', () => setTab('feature'));
+    tabContactBtn?.addEventListener('click', () => setTab('contact'));
+
+    // Check URL hash or query param for ?tab=contact or #contact
+    if (window.location.hash === '#contact' || window.location.search.includes('tab=contact')) {
+      setTab('contact');
+    }
 
     // 2. Auto-detect OS from navigator
     if (typeof navigator !== 'undefined') {
